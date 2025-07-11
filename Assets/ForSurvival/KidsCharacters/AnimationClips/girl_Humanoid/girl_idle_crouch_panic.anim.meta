@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b94876695672f438e9ec5811f2ca8e7f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 241811
+  packageName: Kids characters for Survival
+  packageVersion: 1.02
+  assetPath: Assets/ForSurvival/KidsCharacters/AnimationClips/girl_Humanoid/girl_idle_crouch_panic.anim
+  uploadId: 578701

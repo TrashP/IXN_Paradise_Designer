@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 95286fdf2b0154682aac2f2a3d474ee7
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 241811
+  packageName: Kids characters for Survival
+  packageVersion: 1.02
+  assetPath: Assets/ForSurvival/KidsCharacters/AnimationClips/boy_Generic/boy_faint_forward.anim
+  uploadId: 578701

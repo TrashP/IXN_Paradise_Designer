@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b3da7a0829b3a4d22a45697a47621a4d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 241811
+  packageName: Kids characters for Survival
+  packageVersion: 1.02
+  assetPath: Assets/ForSurvival/KidsCharacters/AnimationClips/girl_Humanoid/girl_shift_forward.anim
+  uploadId: 578701

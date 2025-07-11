@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 57a206f70100f764c8c320a73219c681
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 203965
+  packageName: Ultimate Crafting System
+  packageVersion: 3.2
+  assetPath: Assets/polyperfect/Crafting System/- Code/Integration/Tests/EditMode/CraftingAndRecipesTesting.cs
+  uploadId: 707914

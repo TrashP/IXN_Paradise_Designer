@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: a1f91b52d47135e4285a65682378b533
+timeCreated: 1534496552
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204086
+  packageName: 'Low Poly Bird: Exotic Pack'
+  packageVersion: 1.0
+  assetPath: Assets/Low Poly Bird Exotic Pack/Assets/Low Poly Bird Parrot/Character/Materials/Parrot_Mat.mat
+  uploadId: 455409
