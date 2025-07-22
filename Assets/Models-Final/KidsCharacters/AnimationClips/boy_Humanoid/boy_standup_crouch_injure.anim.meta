@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c0649f89b80f94c37982bc37455fc35c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 241811
+  packageName: Kids characters for Survival
+  packageVersion: 1.02
+  assetPath: Assets/ForSurvival/KidsCharacters/AnimationClips/boy_Humanoid/boy_standup_crouch_injure.anim
+  uploadId: 578701

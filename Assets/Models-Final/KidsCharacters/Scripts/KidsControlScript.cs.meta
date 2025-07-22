@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 883d5d9b95ff3452980cedf1d6302983
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 241811
+  packageName: Kids characters for Survival
+  packageVersion: 1.02
+  assetPath: Assets/ForSurvival/KidsCharacters/Scripts/KidsControlScript.cs
+  uploadId: 578701

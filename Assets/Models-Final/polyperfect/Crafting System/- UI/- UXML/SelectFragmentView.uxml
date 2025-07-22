@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:VisualElement style="margin-left: 12px; margin-right: 12px; margin-top: 12px; margin-bottom: 12px; padding-left: 12px; padding-right: 12px; padding-top: 12px; padding-bottom: 12px; min-height: 135px;">
+        <ui:VisualElement name="fragment-field-container" style="margin-bottom: 18px; flex-shrink: 0;" />
+        <ui:Label text="Select an existing Item World Fragment from the box above, or create a new one using the button below." display-tooltip-when-elided="true" style="white-space: normal; margin-bottom: 25px;" />
+        <ui:Button text="Create New Fragment" display-tooltip-when-elided="true" name="new-fragment-button" style="height: 46px;" />
+    </ui:VisualElement>
+    <ui:VisualElement style="margin-left: 12px; margin-right: 12px; margin-top: 12px; margin-bottom: 12px; padding-left: 12px; padding-right: 12px; padding-top: 12px; padding-bottom: 12px; min-height: 135px;">
+        <ui:Label text="If you need help getting started, you can open the included Readme using the button below." display-tooltip-when-elided="true" style="white-space: normal; margin-bottom: 25px;" />
+        <ui:Button text="Open Readme" display-tooltip-when-elided="true" name="open-readme-button" style="height: 46px; margin-bottom: 12px;" />
+    </ui:VisualElement>
+</ui:UXML>

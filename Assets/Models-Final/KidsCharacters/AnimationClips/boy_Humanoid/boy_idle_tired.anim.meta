@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e8ca1c98bd1354aeea436d9df6cf87d5
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 241811
+  packageName: Kids characters for Survival
+  packageVersion: 1.02
+  assetPath: Assets/ForSurvival/KidsCharacters/AnimationClips/boy_Humanoid/boy_idle_tired.anim
+  uploadId: 578701

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 253182e6722794ba087c8077e85dc6a1
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 241811
+  packageName: Kids characters for Survival
+  packageVersion: 1.02
+  assetPath: Assets/ForSurvival/KidsCharacters/AnimationClips/UI/loading_run.controller
+  uploadId: 578701

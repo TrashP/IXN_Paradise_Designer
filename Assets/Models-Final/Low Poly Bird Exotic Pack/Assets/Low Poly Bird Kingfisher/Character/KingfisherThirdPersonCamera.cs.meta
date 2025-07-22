@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 9a42d7af6db172d46a9b260c3dc86c8a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204086
+  packageName: 'Low Poly Bird: Exotic Pack'
+  packageVersion: 1.0
+  assetPath: Assets/Low Poly Bird Exotic Pack/Assets/Low Poly Bird Kingfisher/Character/KingfisherThirdPersonCamera.cs
+  uploadId: 455409

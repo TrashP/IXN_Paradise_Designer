@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1753730050d8a4c72991df90eb7c3afe
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 241811
+  packageName: Kids characters for Survival
+  packageVersion: 1.02
+  assetPath: Assets/ForSurvival/KidsCharacters/AnimationClips/boy_Humanoid/boy_move_walk_tired.anim
+  uploadId: 578701
