@@ -5,6 +5,9 @@
 /[Bb]uilds/
 /[Aa]ssets/AssetStoreTools*
 /Assets/Plugins/Editor/JetBrains*
+# Unity log files
+Logs/
+*.log
 *.csproj
 *.sln
 *.suo
