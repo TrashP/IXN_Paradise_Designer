@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6bdf58c6c48f242809d54438e1f6d751
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 241811
+  packageName: Kids characters for Survival
+  packageVersion: 1.02
+  assetPath: Assets/ForSurvival/KidsCharacters/AnimationClips/trap/trap_open.anim
+  uploadId: 578701

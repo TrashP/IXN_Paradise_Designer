@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d6605cd4e0fd44043a1d3343eb3379bc
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 241811
+  packageName: Kids characters for Survival
+  packageVersion: 1.02
+  assetPath: Assets/ForSurvival/KidsCharacters/AnimationClips/boy_Humanoid/boy_shift_forward.anim
+  uploadId: 578701

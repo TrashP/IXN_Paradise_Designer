@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7bd87af27dab741f48d3218ba6e86790
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 241811
+  packageName: Kids characters for Survival
+  packageVersion: 1.02
+  assetPath: Assets/ForSurvival/KidsCharacters/Animators/AnimatorTrap.controller
+  uploadId: 578701

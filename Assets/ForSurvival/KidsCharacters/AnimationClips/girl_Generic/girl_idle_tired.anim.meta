@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9fbc317883eae4a49964793a288a3b5a
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 241811
+  packageName: Kids characters for Survival
+  packageVersion: 1.02
+  assetPath: Assets/ForSurvival/KidsCharacters/AnimationClips/girl_Generic/girl_idle_tired.anim
+  uploadId: 578701

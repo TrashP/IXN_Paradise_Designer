@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d53d7e975c1c8498f9dbebd2c69429de
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 22100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 241811
+  packageName: Kids characters for Survival
+  packageVersion: 1.02
+  assetPath: Assets/ForSurvival/KidsCharacters/Animators/AnimatorGirlHumanoid.overrideController
+  uploadId: 578701
