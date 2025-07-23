@@ -12,7 +12,7 @@ public class MapToTerrainSpawner : MonoBehaviour
     public GameObject pondPrefab;
 
     [Header("Drawing Map Settings")]
-    public string folderPath = @"C:\Users\lenovo\Desktop\SavedImage";
+    private string folderPath;
     public int blockSize = 32;
     public float worldUnitPerBlock = 100f;
 
@@ -41,11 +41,18 @@ public class MapToTerrainSpawner : MonoBehaviour
     private bool[,] isPondBlock;
     private bool[,] visited;
 
+    private int blocksX;
+    private int blocksY;
+
+
     enum TerrainType { Forest, Beach, Grass }
 
     void Start()
     {
+
+        string folderPath = Path.Combine(Application.persistentDataPath, "SavedImage");
         string imagePath = GetLatestImagePath(folderPath);
+
         if (string.IsNullOrEmpty(imagePath) || !File.Exists(imagePath))
         {
             Debug.LogError("❌ Cannot find image: " + imagePath);
@@ -59,12 +66,13 @@ public class MapToTerrainSpawner : MonoBehaviour
 
         terrainParent = new GameObject("GeneratedTerrain").transform;
 
-        int blocksX = tex.width / blockSize;
-        int blocksY = tex.height / blockSize;
+        blocksX = tex.width / blockSize;
+        blocksY = tex.height / blockSize;
         isPondBlock = new bool[blocksX, blocksY];
         visited = new bool[blocksX, blocksY];
 
-        // Step 1: 标记 pond 区域
+
+        // Step 1: target pond region
         for (int y = 0; y < blocksY; y++)
         {
             for (int x = 0; x < blocksX; x++)
@@ -74,7 +82,7 @@ public class MapToTerrainSpawner : MonoBehaviour
             }
         }
 
-        // Step 2: flood fill 并放置 pond prefab
+        // Step 2: flood fill and put pond prefab
         for (int y = 0; y < blocksY; y++)
         {
             for (int x = 0; x < blocksX; x++)
@@ -88,7 +96,7 @@ public class MapToTerrainSpawner : MonoBehaviour
             }
         }
 
-        // Step 3: 生成其他地形（跳过 pond）
+        // Step 3: generate the other terrains(jump the pond)
         for (int y = 0; y < blocksY; y++)
         {
             for (int x = 0; x < blocksX; x++)
@@ -173,25 +181,25 @@ public class MapToTerrainSpawner : MonoBehaviour
         float targetWidth = (maxX - minX + 1) * worldUnitPerBlock;
         float targetDepth = (maxY - minY + 1) * worldUnitPerBlock;
 
-        // ✅ 生成前先算目标左下角
+        // Calculate the bottom left corner of the target before generating.
         Vector3 targetBottomLeft = new Vector3(minX * worldUnitPerBlock, 0f, minY * worldUnitPerBlock);
 
-        // ✅ 实例化但先不缩放
+        // Instantiate but do not scale. Calculate the lower left corner of the target before generating.
         GameObject pond = Instantiate(pondPrefab, Vector3.zero, Quaternion.identity, terrainParent);
 
         MeshFilter meshFilter = pond.GetComponentInChildren<MeshFilter>();
         if (meshFilter == null || meshFilter.sharedMesh == null)
         {
-            Debug.LogError("❌ pondPrefab 缺少有效 MeshFilter");
+            Debug.LogError("❌ pondPrefab lacks valid MeshFilter");
             return;
         }
 
-        // ✅ 获取 prefab 原始 mesh 的 local 尺寸和中心点
+        //  Get the local dimensions and center point of the original mesh of the prefab.
         Bounds meshBounds = meshFilter.sharedMesh.bounds;
         Vector3 meshSize = meshBounds.size;
         Vector3 meshCenter = meshBounds.center;
 
-        // ✅ 正确的缩放系数
+        // The correct scaling factor
         float scaleX = targetWidth / meshSize.x;
         float scaleZ = targetDepth / meshSize.z;
 
@@ -201,15 +209,15 @@ public class MapToTerrainSpawner : MonoBehaviour
             pond.transform.localScale.z * scaleZ
         );
 
-        // ✅ mesh pivot 偏移量（local space）
+        // Mesh pivot offset (local space)
         Vector3 localOffset = meshCenter - new Vector3(meshSize.x / 2f, 0f, meshSize.z / 2f);
 
-        // ✅ 变换为 world 空间的偏移量（用于修正位置）
+        // Transform the offset value in the world space (used for correcting the position)
         Vector3 worldOffset = Vector3.Scale(localOffset, pond.transform.localScale);
 
-        //// ✅ 设置最终位置 = 目标左下角 - pivot 偏移
+        // Set final position = Target lower left corner - pivot offset
         //pond.transform.position = targetBottomLeft - worldOffset;
-        float pondYOffset = -1.5f; // ← 根据你的模型调整，建议你看 inspector 试出来
+        float pondYOffset = -1.5f; // based on the model
         pond.transform.position = targetBottomLeft - worldOffset + new Vector3(0f, pondYOffset, 0f);
 
         if (logDebug)

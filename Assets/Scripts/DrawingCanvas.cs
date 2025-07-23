@@ -43,18 +43,20 @@ public class DrawingCanvas : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     {
         byte[] bytes = texture.EncodeToPNG();
 
-        string folderPath = @"C:\Users\lenovo\Desktop\SavedImage";
+        string folderPath = Path.Combine(Application.persistentDataPath, "SavedImage");
 
-        if (!System.IO.Directory.Exists(folderPath))
+        if (!Directory.Exists(folderPath))
         {
-            System.IO.Directory.CreateDirectory(folderPath);
+            Directory.CreateDirectory(folderPath);
         }
 
-        string filePath = System.IO.Path.Combine(folderPath, "drawing_" + System.DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".png");
+        string fileName = "drawing_" + System.DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".png";
+        string filePath = Path.Combine(folderPath, fileName);
 
-        System.IO.File.WriteAllBytes(filePath, bytes);
+        File.WriteAllBytes(filePath, texture.EncodeToPNG());
 
-        Debug.Log("Image is saved to: " + filePath);
+        Debug.Log("Image saved to: " + filePath);
+
     }
 
 
