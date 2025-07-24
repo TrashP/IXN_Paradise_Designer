@@ -1,3 +1,55 @@
+# Fishing System Setup Guide
+
+## Overview
+This fishing system allows players to start a fishing mini-game by pressing F key when in designated fishing spots.
+
+## Component Description
+
+### 1. FishingPromptTrigger
+- **Function**: Detects player entering fishing zone and handles F key input
+- **Location**: Should be added to the fishing zone GameObject 
+- **Required Component**: Collider (set to IsTrigger)
+
+### 2. FishingMiniGameCopy
+- **Function**: Fishing mini-game logic
+- **Location**: On the root GameObject of fishing game UI
+ 
+## Setup Steps
+
+### Step 1: Setup Fishing Zone
+1. Create an empty GameObject in scene, name it "FishingZone"
+2. Add Collider component, set it to IsTrigger
+3. Adjust Collider size to cover fishing area
+4. Add FishingPromptTrigger script
+
+### Step 2: Setup UI Components  
+1. Create fishing prompt UI (showing "Press F to Fish" etc)
+2. Create fishing game UI (containing FishingMiniGameCopy script)
+3. Assign UI components in FishingPromptTrigger:
+   - Fishing Prompt UI: Prompt UI object
+   - Fishing Game UI: Game UI object
+
+### Step 3: Configure FishingMiniGameCopy
+Set up following components on fishing game UI:
+- Bar Background: Background bar
+- Catch Bar: Player controlled bar
+- Fish Icon: Fish icon
+- Catch Progress Bar: Progress bar
+
+## Controls
+
+### Player Controls
+- **Enter Fishing Zone**: Shows fishing prompt UI
+- **Press F**: Start fishing mini-game
+- **Press ESC**: Exit fishing mini-game
+- **Leave Fishing Zone**: Automatically exits fishing game
+
+### Gameplay
+- **Left Mouse Button**: Move fishing bar right
+- **Release Mouse**: Bar moves left
+- **Goal**: Cover fish position with catch bar to increase progress
+// ...
+
 # 钓鱼系统设置说明
 
 ## 概述

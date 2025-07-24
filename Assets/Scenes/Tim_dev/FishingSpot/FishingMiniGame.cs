@@ -64,7 +64,7 @@ public class FishingMiniGame : MonoBehaviour
 
     void ProgressCheck()
     {
-        // 显示钓鱼进度（水平方向）
+        // Display fishing progress (horizontal direction)
         Vector3 ls = progressBarContainer.localScale;
         ls.x = hookProgress;
         progressBarContainer.localScale = ls;
@@ -112,21 +112,21 @@ public class FishingMiniGame : MonoBehaviour
         }
         hookPullVelocity -= hookGravityPower * Time.deltaTime;
         
-        // 限制钩子速度
+        // Limit hook speed
         hookPullVelocity = Mathf.Clamp(hookPullVelocity, -maxHookVelocity, maxHookVelocity);
 
         hookPosition += hookPullVelocity;
         
-        // 限制钩子在可视区域内，考虑钩子大小
+        // Limit hook in visible area, considering hook size
         float maxHookPosition = 1f - hookSize;
         
-        // 如果钩子触顶，立即重置速度
+        // If hook touches the top, reset speed immediately
         if (hookPosition >= maxHookPosition)
         {
             hookPosition = maxHookPosition;
             hookPullVelocity = 0f;
         }
-        // 如果钩子触底，也重置速度
+        // If hook touches the bottom, also reset speed
         else if (hookPosition <= 0f)
         {
             hookPosition = 0f;

@@ -3,45 +3,45 @@ using System.Collections;
 
 public class Fish : MonoBehaviour
 {
-    [Header("游动设置")]
-    [SerializeField] public float swimSpeed = 2f;           // 游动速度
-    [SerializeField] public float turnSpeed = 3f;           // 转向速度
-    [SerializeField] public float changeDirectionInterval = 3f; // 改变方向的时间间隔
-    [SerializeField] public float boundaryBuffer = 1f;      // 边界缓冲区
+    [Header("Swim Settings")]
+    [SerializeField] public float swimSpeed = 2f;           // Swim speed
+    [SerializeField] public float turnSpeed = 3f;           // Turn speed
+    [SerializeField] public float changeDirectionInterval = 3f; // Time interval to change direction
+    [SerializeField] public float boundaryBuffer = 1f;      // Boundary buffer
     
-    [Header("停留设置")]
-    [SerializeField] private float stayProbability = 0.3f;  // 停留概率 (0-1)
-    [SerializeField] private float minStayTime = 1f;        // 最小停留时间
-    [SerializeField] private float maxStayTime = 3f;        // 最大停留时间
-    [SerializeField] private float stayCheckInterval = 2f;  // 检查是否停留的时间间隔
+    [Header("Stay Settings")]
+    [SerializeField] private float stayProbability = 0.3f;  // Stay probability (0-1)
+    [SerializeField] private float minStayTime = 1f;        // Minimum stay time
+    [SerializeField] private float maxStayTime = 3f;        // Maximum stay time
+    [SerializeField] private float stayCheckInterval = 2f;  // Time interval to check if staying
     
-    [Header("动画设置")]
-    [SerializeField] private Animator fishAnimator;          // 鱼的动画控制器
-    [SerializeField] private string isStayingParameterName = "IsStaying"; // 停留状态参数名称
+    [Header("Animation Settings")]
+    [SerializeField] private Animator fishAnimator;          // Fish animator
+    [SerializeField] private string isStayingParameterName = "IsStaying"; // Staying state parameter name
     
-    [Header("水体边界")]
-    [SerializeField] private Transform waterVolume;          // 水体体积的Transform
-    [SerializeField] private Vector3 waterBounds = new Vector3(10f, 5f, 10f); // 水体边界大小
+    [Header("Water Boundary")]
+    [SerializeField] private Transform waterVolume;          // Water volume transform
+    [SerializeField] private Vector3 waterBounds = new Vector3(10f, 5f, 10f); // Water boundary size
     
-    [Header("游动行为")]
-    [SerializeField] private float minSwimHeight = 0.5f;    // 最小游动高度
-    [SerializeField] private float maxSwimHeight = 4.5f;    // 最大游动高度
-    [SerializeField] private float heightChangeSpeed = 1f;   // 高度变化速度
+    [Header("Swim Behavior")]
+    [SerializeField] private float minSwimHeight = 0.5f;    // Minimum swim height
+    [SerializeField] private float maxSwimHeight = 4.5f;    // Maximum swim height
+    [SerializeField] private float heightChangeSpeed = 1f;   // Height change speed
     
-    private Vector3 targetDirection;                         // 目标方向
-    private Vector3 currentVelocity;                         // 当前速度
-    private float nextDirectionChange;                       // 下次改变方向的时间
-    private float targetHeight;                             // 目标高度
+    private Vector3 targetDirection;                         // Target direction
+    private Vector3 currentVelocity;                         // Current velocity
+    private float nextDirectionChange;                       // Time to change direction next
+    private float targetHeight;                             // Target height
     
-    // 停留相关变量
-    private bool isStaying = false;                         // 是否正在停留
-    private float stayEndTime;                              // 停留结束时间
-    private float nextStayCheck;                            // 下次检查停留的时间
+    // Staying related variables
+    private bool isStaying = false;                         // Whether staying
+    private float stayEndTime;                              // Stay end time
+    private float nextStayCheck;                            // Time to check if staying next
     
-    // 水体边界
-    private Vector3 waterCenter;                            // 水体中心
-    private Vector3 waterMinBounds;                         // 水体最小边界
-    private Vector3 waterMaxBounds;                         // 水体最大边界
+    // Water boundary
+    private Vector3 waterCenter;                            // Water center
+    private Vector3 waterMinBounds;                         // Water minimum boundary
+    private Vector3 waterMaxBounds;                         // Water maximum boundary
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -51,13 +51,13 @@ public class Fish : MonoBehaviour
         SetNewTargetHeight();
         nextStayCheck = Time.time + stayCheckInterval;
         
-        // 如果没有指定Animator，尝试自动获取
+        // If no Animator is specified, try to get it automatically
         if (fishAnimator == null)
         {
             fishAnimator = GetComponent<Animator>();
         }
         
-        // 初始化动画状态
+        // Initialize animation state
         UpdateAnimatorState();
     }
 
@@ -73,16 +73,16 @@ public class Fish : MonoBehaviour
             UpdateDirection();
         }
         
-        // 同步状态到Animator
+        // Synchronize state to Animator
         UpdateAnimatorState();
     }
     
     /// <summary>
-    /// 更新停留行为
+    /// Update staying behavior
     /// </summary>
     private void UpdateStayBehavior()
     {
-        // 如果正在停留，检查是否应该结束停留
+        // If staying, check if it should end staying
         if (isStaying)
         {
             if (Time.time >= stayEndTime)
@@ -93,7 +93,7 @@ public class Fish : MonoBehaviour
                 nextStayCheck = Time.time + stayCheckInterval;
             }
         }
-        // 如果正在游动，检查是否应该开始停留
+        // If swimming, check if it should start staying
         else if (Time.time >= nextStayCheck)
         {
             if (Random.Range(0f, 1f) < stayProbability)
@@ -108,7 +108,7 @@ public class Fish : MonoBehaviour
     }
     
     /// <summary>
-    /// 开始停留
+    /// Start staying
     /// </summary>
     private void StartStaying()
     {
@@ -118,7 +118,7 @@ public class Fish : MonoBehaviour
     }
     
     /// <summary>
-    /// 更新Animator状态
+    /// Update Animator state
     /// </summary>
     private void UpdateAnimatorState()
     {
@@ -129,7 +129,7 @@ public class Fish : MonoBehaviour
     }
     
     /// <summary>
-    /// 初始化水体边界
+    /// Initialize water boundary
     /// </summary>
     private void InitializeWaterBounds()
     {
@@ -141,7 +141,7 @@ public class Fish : MonoBehaviour
         }
         else
         {
-            // 如果没有指定水体，使用默认边界
+            // If no water volume is specified, use default boundaries
             waterCenter = Vector3.zero;
             waterMinBounds = -waterBounds * 0.5f;
             waterMaxBounds = waterBounds * 0.5f;
@@ -149,19 +149,19 @@ public class Fish : MonoBehaviour
     }
     
     /// <summary>
-    /// 更新游动逻辑
+    /// Update swimming logic
     /// </summary>
     private void UpdateSwimming()
     {
-        // 平滑转向目标方向
+        // Smoothly turn to target direction
         Vector3 currentDirection = transform.forward;
         Vector3 newDirection = Vector3.Slerp(currentDirection, targetDirection, turnSpeed * Time.deltaTime);
         transform.rotation = Quaternion.LookRotation(newDirection);
         
-        // 向前游动
+        // Swim forward
         transform.position += transform.forward * swimSpeed * Time.deltaTime;
         
-        // 平滑调整高度
+        // Smoothly adjust height
         float currentHeight = transform.position.y;
         float heightDifference = targetHeight - currentHeight;
         if (Mathf.Abs(heightDifference) > 0.1f)
@@ -172,38 +172,38 @@ public class Fish : MonoBehaviour
     }
     
     /// <summary>
-    /// 检查边界并调整方向
+    /// Check boundaries and adjust direction
     /// </summary>
     private void CheckBoundaries()
     {
         Vector3 position = transform.position;
         bool needsDirectionChange = false;
         
-        // 检查X轴边界
+        // Check X axis boundaries
         if (position.x <= waterMinBounds.x + boundaryBuffer || position.x >= waterMaxBounds.x - boundaryBuffer)
         {
             targetDirection.x = -targetDirection.x;
             needsDirectionChange = true;
         }
         
-        // 检查Z轴边界
+        // Check Z axis boundaries
         if (position.z <= waterMinBounds.z + boundaryBuffer || position.z >= waterMaxBounds.z - boundaryBuffer)
         {
             targetDirection.z = -targetDirection.z;
             needsDirectionChange = true;
         }
         
-        // 检查Y轴边界
+        // Check Y axis boundaries
         if (position.y <= waterMinBounds.y + boundaryBuffer || position.y >= waterMaxBounds.y - boundaryBuffer)
         {
             targetDirection.y = -targetDirection.y;
             needsDirectionChange = true;
         }
         
-        // 确保鱼不会游出边界
+        // Ensure the fish does not swim out of boundaries
         if (needsDirectionChange)
         {
-            // 将鱼拉回边界内
+            // Pull the fish back into the boundaries
             Vector3 clampedPosition = new Vector3(
                 Mathf.Clamp(position.x, waterMinBounds.x + boundaryBuffer, waterMaxBounds.x - boundaryBuffer),
                 Mathf.Clamp(position.y, waterMinBounds.y + boundaryBuffer, waterMaxBounds.y - boundaryBuffer),
@@ -214,7 +214,7 @@ public class Fish : MonoBehaviour
     }
     
     /// <summary>
-    /// 更新方向
+    /// Update direction
     /// </summary>
     private void UpdateDirection()
     {
@@ -227,20 +227,20 @@ public class Fish : MonoBehaviour
     }
     
     /// <summary>
-    /// 设置新的目标方向
+    /// Set new target direction
     /// </summary>
     private void SetNewTargetDirection()
     {
-        // 生成随机方向，但保持水平方向为主
+        // Generate random direction, but keep horizontal direction as the main direction
         targetDirection = new Vector3(
             Random.Range(-1f, 1f),
-            Random.Range(-0.3f, 0.3f), // 垂直方向变化较小
+            Random.Range(-0.3f, 0.3f), // Vertical direction changes slightly
             Random.Range(-1f, 1f)
         ).normalized;
     }
     
     /// <summary>
-    /// 设置新的目标高度
+    /// Set new target height
     /// </summary>
     private void SetNewTargetHeight()
     {
@@ -248,7 +248,7 @@ public class Fish : MonoBehaviour
     }
     
     /// <summary>
-    /// 设置水体边界（可在Inspector中调用）
+    /// Set water boundary (can be called in Inspector)
     /// </summary>
     public void SetWaterBounds(Vector3 bounds)
     {
@@ -257,7 +257,7 @@ public class Fish : MonoBehaviour
     }
     
     /// <summary>
-    /// 设置水体中心（可在Inspector中调用）
+    /// Set water center (can be called in Inspector)
     /// </summary>
     public void SetWaterCenter(Vector3 center)
     {
@@ -266,7 +266,7 @@ public class Fish : MonoBehaviour
     }
     
     /// <summary>
-    /// 手动设置动画控制器（可在Inspector中调用）
+    /// Manually set animator (can be called in Inspector)
     /// </summary>
     public void SetAnimator(Animator animator)
     {
@@ -274,7 +274,7 @@ public class Fish : MonoBehaviour
     }
     
     /// <summary>
-    /// 手动设置停留状态参数名称（可在Inspector中调用）
+    /// Manually set staying state parameter name (can be called in Inspector)
     /// </summary>
     public void SetIsStayingParameterName(string parameterName)
     {
@@ -282,7 +282,7 @@ public class Fish : MonoBehaviour
     }
     
     /// <summary>
-    /// 获取当前停留状态（可在Inspector中调用）
+    /// Get current staying state (can be called in Inspector)
     /// </summary>
     public bool GetIsStaying()
     {
@@ -290,7 +290,7 @@ public class Fish : MonoBehaviour
     }
     
     /// <summary>
-    /// 在Scene视图中绘制边界（仅用于调试）
+    /// Draw boundaries in Scene view (only for debugging)
     /// </summary>
     void OnDrawGizmosSelected()
     {
@@ -299,7 +299,7 @@ public class Fish : MonoBehaviour
             Gizmos.color = Color.blue;
             Gizmos.DrawWireCube(waterCenter, waterBounds);
             
-            // 绘制缓冲区
+            // Draw buffer
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireCube(waterCenter, waterBounds - Vector3.one * boundaryBuffer * 2);
         }

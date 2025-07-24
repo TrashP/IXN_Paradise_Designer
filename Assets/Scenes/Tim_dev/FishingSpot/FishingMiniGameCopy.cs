@@ -4,37 +4,37 @@ using UnityEngine.UI;
 public class FishingMiniGameCopy : MonoBehaviour
 {
     [Header("UI Elements")]
-    public RectTransform barBackground;      // 背景条（决定范围）
-    public RectTransform catchBar;           // 玩家控制条
-    public RectTransform fishIcon;           // 鱼的位置
-    public Image catchProgressBar;           // 顶部进度条
+    public RectTransform barBackground;      // Background bar (determines range)
+    public RectTransform catchBar;           // Player control bar
+    public RectTransform fishIcon;           // Fish position
+    public Image catchProgressBar;           // Top progress bar
 
     [Header("Victory UI")]
-    public GameObject victoryUI;             // 胜利UI面板
-    public Text victoryText;                 // 胜利文本
-    public Button restartButton;             // 重新开始按钮
-    public Button closeButton;               // 关闭按钮
+    public GameObject victoryUI;             // Victory UI panel
+    public Text victoryText;                 // Victory text
+    public Button restartButton;             // Restart button
+    public Button closeButton;               // Close button
 
     [Header("Bar Settings")]
-    public float barSpeed = 200f;            // 向右前进速度
-    public float gravity = 100f;             // 向左后退速度
-    public float catchBarWidth = 60f;        // 玩家控制条宽度
+    public float barSpeed = 200f;            // Rightward movement speed
+    public float gravity = 100f;             // Leftward movement speed
+    public float catchBarWidth = 60f;        // Player control bar width
     
     [Header("Fish Movement Settings")]
-    public float fishSpeed = 1f;             // 鱼移动平滑度
-    public float fishTimerMultiplier = 3f;   // 鱼改变方向的时间倍数
+    public float fishSpeed = 1f;             // Fish movement smoothness
+    public float fishTimerMultiplier = 3f;   // Fish change direction time multiplier
 
     [Header("Game Control")]
-    [SerializeField] private bool startGameOnEnable = false;  // 是否在启用时自动开始游戏
+    [SerializeField] private bool startGameOnEnable = false;  // Whether to start game automatically when enabled
 
     private float catchProgress = 0f;
-    private float fishX;                     // 鱼当前 X 位置
-    private float fishDestination;           // 鱼的目标位置
-    private float fishVelocity;              // 鱼的速度（用于平滑移动）
-    private float fishTimer;                 // 鱼改变方向的计时器
-    private bool isGameActive = false;       // 游戏是否激活
-    private bool isInitialized = false;      // 是否已初始化
-    private bool isVictory = false;          // 是否已胜利
+    private float fishX;                     // Fish current X position
+    private float fishDestination;           // Fish target position
+    private float fishVelocity;              // Fish speed (for smooth movement)
+    private float fishTimer;                 // Fish change direction timer
+    private bool isGameActive = false;       // Whether the game is active
+    private bool isInitialized = false;      // Whether it has been initialized
+    private bool isVictory = false;          // Whether it has won
 
     void Start()
     {
@@ -59,7 +59,7 @@ public class FishingMiniGameCopy : MonoBehaviour
         if (!isGameActive || !enabled) return;
 
         float delta = Time.deltaTime;
-        if (delta <= 0f) return; // 防止时间异常
+        if (delta <= 0f) return; // Prevent time exception
 
         UpdateCatchBar(delta);
         UpdateFishMovement(delta);
@@ -68,32 +68,32 @@ public class FishingMiniGameCopy : MonoBehaviour
     }
 
     /// <summary>
-    /// 初始化游戏
+    /// Initialize game
     /// </summary>
     private void InitializeGame()
     {
-        // 验证必要组件是否存在
+        // Validate necessary components
         if (!ValidateComponents())
         {
-            Debug.LogError("❌ FishingMiniGame: 缺少必要的UI组件，游戏无法启动！");
+            Debug.LogError("❌ FishingMiniGame: Missing necessary UI components, game cannot start!");
             enabled = false;
             return;
         }
 
-        // 验证数值设置
+        // Validate settings
         ValidateSettings();
 
-        // 初始化鱼的位置和状态
+        // Initialize fish position and state
         ResetGameState();
 
         isInitialized = true;
         
-        // 初始时游戏不激活
+        // Game is not active at the start
         SetGameActive(false);
     }
 
     /// <summary>
-    /// 重置游戏状态
+    /// Reset game state
     /// </summary>
     private void ResetGameState()
     {
@@ -104,13 +104,13 @@ public class FishingMiniGameCopy : MonoBehaviour
         catchProgress = 0f;
         isVictory = false;
         
-        // 重置进度条
+        // Reset progress bar
         if (catchProgressBar != null)
         {
             catchProgressBar.fillAmount = 0f;
         }
 
-        // 隐藏胜利UI
+        // Hide victory UI
         HideVictoryUI();
     }
 
@@ -118,32 +118,32 @@ public class FishingMiniGameCopy : MonoBehaviour
     {
         if (barBackground == null)
         {
-            Debug.LogError("❌ barBackground 未设置！");
+            Debug.LogError("❌ barBackground not set!");
             return false;
         }
         
         if (catchBar == null)
         {
-            Debug.LogError("❌ catchBar 未设置！");
+            Debug.LogError("❌ catchBar not set!");
             return false;
         }
         
         if (fishIcon == null)
         {
-            Debug.LogError("❌ fishIcon 未设置！");
+            Debug.LogError("❌ fishIcon not set!");
             return false;
         }
         
         if (catchProgressBar == null)
         {
-            Debug.LogError("❌ catchProgressBar 未设置！");
+            Debug.LogError("❌ catchProgressBar not set!");
             return false;
         }
 
-        // 验证胜利UI组件（可选）
+        // Validate victory UI components (optional)
         if (victoryUI == null)
         {
-            Debug.LogWarning("⚠️ victoryUI 未设置，胜利时不会显示UI！");
+            Debug.LogWarning("⚠️ victoryUI not set, victory UI will not be displayed!");
         }
 
         return true;
@@ -151,18 +151,18 @@ public class FishingMiniGameCopy : MonoBehaviour
 
     private void ValidateSettings()
     {
-        // 确保数值在合理范围内
+        // Ensure values are within reasonable range
         barSpeed = Mathf.Max(0f, barSpeed);
         gravity = Mathf.Max(0f, gravity);
         catchBarWidth = Mathf.Max(1f, catchBarWidth);
         fishSpeed = Mathf.Max(0.1f, fishSpeed);
         fishTimerMultiplier = Mathf.Max(0.5f, fishTimerMultiplier);
 
-        // 确保catchBarWidth不超过背景宽度
+        // Ensure catchBarWidth does not exceed background width
         if (barBackground != null && catchBarWidth > barBackground.rect.width)
         {
             catchBarWidth = barBackground.rect.width * 0.8f;
-            Debug.LogWarning("⚠️ catchBarWidth 超过背景宽度，已自动调整！");
+            Debug.LogWarning("⚠️ catchBarWidth exceeds background width, automatically adjusted!");
         }
     }
 
@@ -172,7 +172,7 @@ public class FishingMiniGameCopy : MonoBehaviour
 
         float barX = catchBar.anchoredPosition.x;
         
-        // 控制玩家控制条移动（按住左键向右前进，松开向左后退）
+        // Control player control bar movement (hold left key to move right, release to move left)
         if (Input.GetMouseButton(0))
         {
             barX += barSpeed * delta;
@@ -182,7 +182,7 @@ public class FishingMiniGameCopy : MonoBehaviour
             barX -= gravity * delta;
         }
 
-        // 限制在有效范围内
+        // Limit to valid range
         float maxX = barBackground.rect.width - catchBarWidth;
         barX = Mathf.Clamp(barX, 0f, maxX);
         
@@ -193,23 +193,23 @@ public class FishingMiniGameCopy : MonoBehaviour
     {
         if (fishIcon == null || barBackground == null) return;
 
-        // 更新鱼的计时器
+        // Update fish timer
         fishTimer -= delta;
         
-        // 当计时器归零时，设置新的目标位置
+        // When timer reaches zero, set new target position
         if (fishTimer <= 0f)
         {
             fishTimer = Random.Range(0f, fishTimerMultiplier);
             fishDestination = Random.Range(0f, 1f);
         }
 
-        // 使用平滑移动让鱼向目标位置移动
+        // Use smooth movement to move fish towards target position
         fishX = Mathf.SmoothDamp(fishX, fishDestination, ref fishVelocity, fishSpeed);
         
-        // 确保鱼的位置在有效范围内
+        // Ensure fish position is within valid range
         fishX = Mathf.Clamp(fishX, 0f, 1f);
         
-        // 计算鱼的实际显示位置
+        // Calculate fish's actual display position
         float fishPosX = fishX * (barBackground.rect.width - 20f);
         fishIcon.anchoredPosition = new Vector2(fishPosX, fishIcon.anchoredPosition.y);
     }
@@ -218,46 +218,46 @@ public class FishingMiniGameCopy : MonoBehaviour
     {
         if (catchBar == null || fishIcon == null || catchProgressBar == null) return;
 
-        // 判断鱼是否在控制条内（左右重合）
+        // Check if fish is within control bar (left and right overlap)
         float barLeft = catchBar.anchoredPosition.x;
         float barRight = barLeft + catchBarWidth;
         float fishPosX = fishIcon.anchoredPosition.x;
         
         bool fishInBar = fishPosX >= barLeft && fishPosX <= barRight;
 
-        // 更新捕获进度
+        // Update catch progress
         float progressChange = (fishInBar ? 1f : -1f) * delta * 0.5f;
         catchProgress += progressChange;
         catchProgress = Mathf.Clamp01(catchProgress);
         
-        // 更新UI显示
+        // Update UI display
         catchProgressBar.fillAmount = catchProgress;
     }
 
     private void CheckGameEnd()
     {
-        // 检查胜利条件
+        // Check victory conditions
         if (catchProgress >= 1f && !isVictory)
         {
             isVictory = true;
-            Debug.Log("✅ 鱼钓上来了！游戏胜利！");
-            catchProgress = 1f; // 保持在最大值
+            Debug.Log("Fish caught! Game victory!");
+            catchProgress = 1f; // Keep at maximum value
             
-            // 暂停游戏
+            // Pause game
             SetGameActive(false);
             
-            // 显示胜利UI
+            // Show victory UI
             ShowVictoryUI();
         }
         else if (catchProgress <= 0f)
         {
-            Debug.Log("❌ 鱼逃跑了！但游戏继续...");
-            catchProgress = 0f; // 保持在最小值
+            Debug.Log("Fish escaped! But the game continues...");
+            catchProgress = 0f; // Keep at minimum value
         }
     }
 
     /// <summary>
-    /// 重置游戏
+    /// Reset game
     /// </summary>
     public void ResetGame()
     {
@@ -268,52 +268,52 @@ public class FishingMiniGameCopy : MonoBehaviour
     }
 
     /// <summary>
-    /// 设置游戏激活状态
+    /// Set game activation status
     /// </summary>
-    /// <param name="active">是否激活游戏</param>
+    /// <param name="active">Whether to activate the game</param>
     public void SetGameActive(bool active)
     {
         isGameActive = active;
         
         if (active)
         {
-            Debug.Log("🎣 钓鱼游戏已激活");
+            Debug.Log("Fishing game activated");
         }
         else
         {
-            Debug.Log("⏸️ 钓鱼游戏已暂停");
+            Debug.Log("Fishing game paused");
         }
     }
 
     /// <summary>
-    /// 获取游戏激活状态
+    /// Get game activation status
     /// </summary>
-    /// <returns>游戏是否激活</returns>
+    /// <returns>Whether the game is activated</returns>
     public bool IsGameActive()
     {
         return isGameActive;
     }
 
     /// <summary>
-    /// 获取当前捕获进度
+    /// Get current catch progress
     /// </summary>
-    /// <returns>捕获进度 (0-1)</returns>
+    /// <returns>Catch progress (0-1)</returns>
     public float GetCatchProgress()
     {
         return catchProgress;
     }
 
     /// <summary>
-    /// 获取胜利状态
+    /// Get victory status
     /// </summary>
-    /// <returns>是否已胜利</returns>
+    /// <returns>Whether it has won</returns>
     public bool IsVictory()
     {
         return isVictory;
     }
 
     /// <summary>
-    /// 显示钓鱼游戏UI
+    /// Show fishing game UI
     /// </summary>
     public void ShowGameUI()
     {
@@ -324,7 +324,7 @@ public class FishingMiniGameCopy : MonoBehaviour
     }
 
     /// <summary>
-    /// 隐藏钓鱼游戏UI
+    /// Hide fishing game UI
     /// </summary>
     public void HideGameUI()
     {
@@ -335,7 +335,7 @@ public class FishingMiniGameCopy : MonoBehaviour
     }
 
     /// <summary>
-    /// 显示胜利UI
+    /// Show victory UI
     /// </summary>
     private void ShowVictoryUI()
     {
@@ -344,7 +344,7 @@ public class FishingMiniGameCopy : MonoBehaviour
             victoryUI.SetActive(true);
             if (victoryText != null)
             {
-                victoryText.text = "🎉 钓鱼成功！";
+                victoryText.text = "Fishing success!";
             }
             if (restartButton != null)
             {
@@ -358,7 +358,7 @@ public class FishingMiniGameCopy : MonoBehaviour
     }
 
     /// <summary>
-    /// 隐藏胜利UI
+    /// Hide victory UI
     /// </summary>
     private void HideVictoryUI()
     {
@@ -377,7 +377,7 @@ public class FishingMiniGameCopy : MonoBehaviour
     }
 
     /// <summary>
-    /// 重新开始按钮点击事件
+    /// Restart button click event
     /// </summary>
     private void OnRestartButtonClick()
     {
@@ -386,7 +386,7 @@ public class FishingMiniGameCopy : MonoBehaviour
     }
 
     /// <summary>
-    /// 关闭按钮点击事件
+    /// Close button click event
     /// </summary>
     private void OnCloseButtonClick()
     {

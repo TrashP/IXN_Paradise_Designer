@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SimplePlayerMovement : MonoBehaviour
 {
-    [Header("移动设置")]
+    [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 5f;
     
@@ -13,39 +13,39 @@ public class SimplePlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         
-        // 如果没有Rigidbody组件，添加一个
+        // If no Rigidbody component, add one
         if (rb == null)
         {
             rb = gameObject.AddComponent<Rigidbody>();
         }
         
-        // 设置Rigidbody属性
-        rb.freezeRotation = true; // 防止角色倾倒
+        // Set Rigidbody properties
+        rb.freezeRotation = true; // Prevent character from tilting
     }
     
     void Update()
     {
-        // 获取输入
+        // Get input
         float horizontalInput = Input.GetAxis("Horizontal"); // A/D
         float verticalInput = Input.GetAxis("Vertical");     // W/S
         
-        // 计算移动向量
+        // Calculate move vector
         Vector3 movement = new Vector3(horizontalInput, 0f, verticalInput);
         
-        // 应用移动
+        // Apply movement
         transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World);
         
-        // 跳跃
+        // Jump
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
     
-    // 检测是否在地面上
+    // Check if on the ground
     void OnCollisionStay(Collision collision)
     {
-        // 检查碰撞点是否在角色下方
+        // Check if the collision point is below the character
         foreach (ContactPoint contact in collision.contacts)
         {
             if (contact.point.y < transform.position.y + 0.1f)

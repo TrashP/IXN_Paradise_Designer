@@ -2,16 +2,16 @@ using UnityEngine;
 
 public class WaterBoxCamera : MonoBehaviour
 {
-    [Header("摄像机设置")]
+    [Header("Camera Settings")]
     public Transform waterTank;
     public Camera cam;
 
     void Start()
     {
-        // 检查必要组件
+        // Check necessary components
         if (waterTank == null)
         {
-            Debug.LogError("未设置水缸Transform！请在Inspector中设置Water Tank。");
+            Debug.LogError("Water Tank Transform is not set! Please set Water Tank in Inspector.");
             return;
         }
 
@@ -20,16 +20,16 @@ public class WaterBoxCamera : MonoBehaviour
             cam = Camera.main;
             if (cam == null)
             {
-                Debug.LogError("未找到主摄像机！请在Inspector中设置Camera。");
+                Debug.LogError("Main camera not found! Please set Camera in Inspector.");
                 return;
             }
         }
 
-        // 获取水缸的边界
+        // Get the boundary of the water tank
         Renderer waterRenderer = waterTank.GetComponent<Renderer>();
         if (waterRenderer == null)
         {
-            Debug.LogError("水缸对象没有Renderer组件！");
+            Debug.LogError("Water tank object does not have Renderer component!");
             return;
         }
 
@@ -37,34 +37,34 @@ public class WaterBoxCamera : MonoBehaviour
         Vector3 size = bounds.size;
         Vector3 center = bounds.center;
 
-        // 设置摄像机为正交投影
+        // Set the camera to orthographic projection
         cam.orthographic = true;
 
-        // 保证水缸横向刚好填满画面
+        // Ensure the water tank fills the screen horizontally
         float aspect = (float)Screen.width / Screen.height;
         cam.orthographicSize = size.y / 2f;
 
-        // 如果你想"横向"填满而不是"纵向"
+        // If you want to fill horizontally instead of vertically
         // cam.orthographicSize = size.x / (2f * aspect);
 
-        // 将摄像机放到水缸前方
+        // Put the camera in front of the water tank
         cam.transform.position = center + new Vector3(0, 0, -size.z / 2 - 0.5f);
         cam.transform.rotation = Quaternion.Euler(0, 0, 0);
 
-        Debug.Log($"摄像机已设置完成。位置: {cam.transform.position}, 正交大小: {cam.orthographicSize}");
+        Debug.Log($"Camera has been set. Position: {cam.transform.position}, Orthographic Size: {cam.orthographicSize}");
     }
 
     /// <summary>
-    /// 手动重新设置摄像机位置和大小
+    /// Manually reset camera position and size
     /// </summary>
-    [ContextMenu("重新设置摄像机")]
+    [ContextMenu("Reset Camera")]
     public void ResetCamera()
     {
         Start();
     }
 
     /// <summary>
-    /// 在Scene视图中绘制摄像机设置的可视化
+    /// Draw the camera settings in the Scene view
     /// </summary>
     void OnDrawGizmosSelected()
     {
@@ -73,11 +73,11 @@ public class WaterBoxCamera : MonoBehaviour
             Renderer waterRenderer = waterTank.GetComponent<Renderer>();
             if (waterRenderer != null)
             {
-                // 绘制水缸边界
+                // Draw the water tank boundary
                 Gizmos.color = Color.blue;
                 Gizmos.DrawWireCube(waterRenderer.bounds.center, waterRenderer.bounds.size);
 
-                // 绘制摄像机位置
+                // Draw the camera position
                 Gizmos.color = Color.red;
                 Gizmos.DrawWireSphere(cam.transform.position, 0.5f);
                 Gizmos.DrawLine(cam.transform.position, waterRenderer.bounds.center);
