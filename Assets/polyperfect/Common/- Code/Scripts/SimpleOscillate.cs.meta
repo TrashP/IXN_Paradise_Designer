@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 955a54a184640d54cb7fc6d3794bb35b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 203965
+  packageName: Ultimate Crafting System
+  packageVersion: 3.2
+  assetPath: Assets/polyperfect/Common/- Code/Scripts/SimpleOscillate.cs
+  uploadId: 707914

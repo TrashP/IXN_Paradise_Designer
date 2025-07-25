@@ -7,9 +7,17 @@
 /Assets/Plugins/Editor/JetBrains*
 /Assets/Models-Final/
 /Assets/Models-Free/
-# Unity log files
+
+# Ignore local Unity user settings
+UserSettings/
+*.dwlt
+*.settings
+
 Logs/
 *.log
+*.exe
+
+
 *.csproj
 *.sln
 *.suo

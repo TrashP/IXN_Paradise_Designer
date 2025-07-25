@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4f371b43c8acd488d8db0cd190011d52
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 241811
+  packageName: Kids characters for Survival
+  packageVersion: 1.02
+  assetPath: Assets/ForSurvival/KidsCharacters/Animators/AnimatorSwitch.controller
+  uploadId: 578701

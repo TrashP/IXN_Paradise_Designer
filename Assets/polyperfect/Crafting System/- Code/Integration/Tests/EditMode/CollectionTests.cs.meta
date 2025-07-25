@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 77052c3ea307d294eab899f8ec75b24e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 203965
+  packageName: Ultimate Crafting System
+  packageVersion: 3.2
+  assetPath: Assets/polyperfect/Crafting System/- Code/Integration/Tests/EditMode/CollectionTests.cs
+  uploadId: 707914

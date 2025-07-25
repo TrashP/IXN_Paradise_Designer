@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 35d3969a1fb14205b0eb63f693ebe028
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - MemberRequirement: {instanceID: 0}
+  - CapacitySource: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 203965
+  packageName: Ultimate Crafting System
+  packageVersion: 3.2
+  assetPath: Assets/polyperfect/Crafting System/- Code/Integration/Scripts/ItemSlotComponent.cs
+  uploadId: 707914

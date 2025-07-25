@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <uie:Toolbar>
+        <uie:ToolbarMenu display-tooltip-when-elided="true" text="+" name="new-item-menu" style="-unity-font-style: bold; font-size: 16px;" />
+        <uie:ToolbarSearchField focusable="true" name="search-field" style="width: auto; flex-grow: 1; flex-shrink: 1; margin-right: 12px;" />
+        <uie:ToolbarToggle focusable="false" label="All" name="filter-all" style="width: 62px;" />
+        <uie:ToolbarToggle focusable="false" label="Items" name="filter-items" style="width: 80px;" />
+        <uie:ToolbarToggle focusable="false" label="Categories" name="filter-categories" style="width: 80px;" />
+        <uie:ToolbarToggle focusable="false" label="Recipes" name="filter-recipes" style="width: 80px;" />
+    </uie:Toolbar>
+    <ui:VisualElement name="display-grid-view" style="flex-grow: 1;" />
+</ui:UXML>

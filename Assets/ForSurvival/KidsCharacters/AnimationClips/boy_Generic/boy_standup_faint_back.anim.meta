@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6fe1e2859e32c4cf394c763b1881be09
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 241811
+  packageName: Kids characters for Survival
+  packageVersion: 1.02
+  assetPath: Assets/ForSurvival/KidsCharacters/AnimationClips/boy_Generic/boy_standup_faint_back.anim
+  uploadId: 578701

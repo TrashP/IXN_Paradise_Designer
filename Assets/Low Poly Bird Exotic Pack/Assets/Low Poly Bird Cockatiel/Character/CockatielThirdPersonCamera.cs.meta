@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 013a835e3414f7941ae219d0f7005584
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204086
+  packageName: 'Low Poly Bird: Exotic Pack'
+  packageVersion: 1.0
+  assetPath: Assets/Low Poly Bird Exotic Pack/Assets/Low Poly Bird Cockatiel/Character/CockatielThirdPersonCamera.cs
+  uploadId: 455409

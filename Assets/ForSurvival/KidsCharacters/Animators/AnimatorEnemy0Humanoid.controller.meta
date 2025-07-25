@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3e8a50974fb9e480b833dd9d1d5bdad6
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 241811
+  packageName: Kids characters for Survival
+  packageVersion: 1.02
+  assetPath: Assets/ForSurvival/KidsCharacters/Animators/AnimatorEnemy0Humanoid.controller
+  uploadId: 578701

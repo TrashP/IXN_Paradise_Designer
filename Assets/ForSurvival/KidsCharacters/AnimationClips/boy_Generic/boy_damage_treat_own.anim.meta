@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e01068150b9694a54b4509749606e10e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 241811
+  packageName: Kids characters for Survival
+  packageVersion: 1.02
+  assetPath: Assets/ForSurvival/KidsCharacters/AnimationClips/boy_Generic/boy_damage_treat_own.anim
+  uploadId: 578701

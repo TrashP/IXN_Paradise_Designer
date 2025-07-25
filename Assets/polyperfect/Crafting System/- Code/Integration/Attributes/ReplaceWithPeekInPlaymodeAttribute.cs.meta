@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: e2ea741b6ae04c76b8e764570c314873
+timeCreated: 1654193324
+AssetOrigin:
+  serializedVersion: 1
+  productId: 203965
+  packageName: Ultimate Crafting System
+  packageVersion: 3.2
+  assetPath: Assets/polyperfect/Crafting System/- Code/Integration/Attributes/ReplaceWithPeekInPlaymodeAttribute.cs
+  uploadId: 707914

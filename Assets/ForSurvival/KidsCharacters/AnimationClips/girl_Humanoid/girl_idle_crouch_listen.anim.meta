@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ef7c761f7a69e43e2826145493624cef
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 241811
+  packageName: Kids characters for Survival
+  packageVersion: 1.02
+  assetPath: Assets/ForSurvival/KidsCharacters/AnimationClips/girl_Humanoid/girl_idle_crouch_listen.anim
+  uploadId: 578701
