@@ -1030,7 +1030,6 @@ GameObject:
   - component: {fileID: 1113706920}
   - component: {fileID: 1113706923}
   - component: {fileID: 1113706922}
-  - component: {fileID: 1113706921}
   - component: {fileID: 1113706924}
   m_Layer: 5
   m_Name: DrawingCanvas
@@ -1058,18 +1057,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1113706921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1113706919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3004879ec5e9e2c4b8011a5475de1d62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1113706922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1273,9 +1260,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1177563063}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce2ce1ae8ea1e3c468864f3addc4f13b, type: 3}
+  m_Script: {fileID: 11500000, guid: 900dc890396bb7d4ab761061b9db733a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorPicker: {fileID: 2142133839}
+  drawingCanvas: {fileID: 1113706924}
 --- !u!1 &1503641654
 GameObject:
   m_ObjectHideFlags: 0
@@ -1722,6 +1711,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1193328538569454877, guid: 0bef82e454ca4cc43a8060d6a8b61df3, type: 3}
   m_PrefabInstance: {fileID: 1633885145}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2142133839 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8399524836257076678, guid: 0bef82e454ca4cc43a8060d6a8b61df3, type: 3}
+  m_PrefabInstance: {fileID: 1633885145}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 673c8919e92e0634ba85c61fbf3c612d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

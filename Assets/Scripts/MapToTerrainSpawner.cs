@@ -12,7 +12,7 @@ public class MapToTerrainSpawner : MonoBehaviour
     public GameObject pondPrefab;
 
     [Header("Drawing Map Settings")]
-    public string folderPath = @"C:\Users\lenovo\Desktop\SavedImage";
+    private string folderPath;
     public int blockSize = 32;
     public float worldUnitPerBlock = 100f;
 
@@ -23,6 +23,7 @@ public class MapToTerrainSpawner : MonoBehaviour
 
     [Header("Prefab Scale Adjustment")]
     public float blockScaleFactor = 1f;
+
 
     [Header("Debug Options")]
     public bool logDebug = true;
@@ -38,6 +39,10 @@ public class MapToTerrainSpawner : MonoBehaviour
     public float oceanOffsetRight = 0.1f;
 
     private Transform terrainParent;
+
+    private int blocksX;
+    private int blocksY;
+
     private bool[,] isPondBlock;
     private bool[,] visited;
 
@@ -45,7 +50,9 @@ public class MapToTerrainSpawner : MonoBehaviour
 
     void Start()
     {
+        folderPath = Path.Combine(Application.persistentDataPath, "SavedImage");
         string imagePath = GetLatestImagePath(folderPath);
+
         if (string.IsNullOrEmpty(imagePath) || !File.Exists(imagePath))
         {
             Debug.LogError("❌ Cannot find image: " + imagePath);
@@ -64,7 +71,7 @@ public class MapToTerrainSpawner : MonoBehaviour
         isPondBlock = new bool[blocksX, blocksY];
         visited = new bool[blocksX, blocksY];
 
-        // Step 1: 标记 pond 区域
+        // Step 1: target pond region
         for (int y = 0; y < blocksY; y++)
         {
             for (int x = 0; x < blocksX; x++)
