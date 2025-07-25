@@ -1,0 +1,30 @@
+fileFormatVersion: 2
+guid: 6ed8b947089026049a4295dd5820648e
+timeCreated: 1572612165
+licenseType: Store
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Balloon
+  fontNames:
+  - Balloon
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157210
+  packageName: Retro Casual Cartoon UI Pack
+  packageVersion: 1.0
+  assetPath: Assets/Retro Cartoon UI Pack/Retro Cartoon UI Resources/Fonts/Balloon-1.otf
+  uploadId: 704986
