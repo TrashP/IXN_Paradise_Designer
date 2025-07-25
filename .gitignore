@@ -5,6 +5,8 @@
 /[Bb]uilds/
 /[Aa]ssets/AssetStoreTools*
 /Assets/Plugins/Editor/JetBrains*
+/Assets/Models-Final/
+/Assets/Models-Free/
 # Unity log files
 Logs/
 *.log
