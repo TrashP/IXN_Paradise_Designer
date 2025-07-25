@@ -3,7 +3,30 @@
 /[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
+/[Aa]ssets/BarzdaFactory/
+/[Aa]ssets/BOXOPHOBIC/
+/[Aa]ssets/BOXOPHOBIC+/
+/[Aa]ssets/Daniel Mistage/
+/[Aa]ssets/Distant Lands/
+/[Aa]ssets/ForSurvival/
+/[Aa]ssets/Goodies!/
+/[Aa]ssets/Island Pack/
+/[Aa]ssets/LMHPOLY/
+/[Aa]ssets/Low Poly Bird Exotic Pack/
+/[Aa]ssets/nTools/
+/[Aa]ssets/Oode studios/
+/[Aa]ssets/Polybrush Data/
+/[Aa]ssets/polyperfect/
+/[Aa]ssets/StarterAssets/
+/[Aa]ssets/Tree_Textures/
+/[Aa]ssets/TutorialInfo/
+/[Aa]ssets/WoodsLifestyle/
+/[Aa]ssets/ColorPicker/
+/[Aa]ssets/Phantom Studios/
+/[Aa]ssets/Retro Cartoon UI Pack/
+/[Aa]ssets/RG-PolyIslandPack/
 /[Aa]ssets/AssetStoreTools*
+/[Ll]og/
 /Assets/Plugins/Editor/JetBrains*
 /Assets/Models-Final/
 /Assets/Models-Free/
@@ -31,3 +54,4 @@
 *.DS_Store
 *.unitypackage
 *.app
+*.log
