@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: c4bbfe54028e64a3fa6606cc13e6135c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 241811
+  packageName: Kids characters for Survival
+  packageVersion: 1.02
+  assetPath: Assets/ForSurvival/KidsCharacters/Scripts/EventObjScript.cs
+  uploadId: 578701

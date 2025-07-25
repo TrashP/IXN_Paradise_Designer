@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: f95e936d41d4bf646a00efd4b9821191
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204086
+  packageName: 'Low Poly Bird: Exotic Pack'
+  packageVersion: 1.0
+  assetPath: Assets/Low Poly Bird Exotic Pack/Assets/Low Poly Bird Tucan/Character/TucanPlayer.cs
+  uploadId: 455409

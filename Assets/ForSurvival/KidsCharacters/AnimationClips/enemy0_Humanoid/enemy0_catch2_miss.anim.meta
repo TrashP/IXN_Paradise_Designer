@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: bb3fb7263393f40778fe8ee64b0a02d6
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 241811
+  packageName: Kids characters for Survival
+  packageVersion: 1.02
+  assetPath: Assets/ForSurvival/KidsCharacters/AnimationClips/enemy0_Humanoid/enemy0_catch2_miss.anim
+  uploadId: 578701

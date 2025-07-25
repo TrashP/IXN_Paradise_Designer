@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f0a8520a8128e4af1a2d9ecb2fec57c2
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 241811
+  packageName: Kids characters for Survival
+  packageVersion: 1.02
+  assetPath: Assets/ForSurvival/KidsCharacters/AnimationClips/boy_Generic/boy_idle_crouch.anim
+  uploadId: 578701

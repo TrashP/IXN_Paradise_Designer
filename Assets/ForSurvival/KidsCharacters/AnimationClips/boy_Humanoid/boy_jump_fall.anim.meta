@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: aec786455d4e94e8fa655f1ec49e05dd
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 241811
+  packageName: Kids characters for Survival
+  packageVersion: 1.02
+  assetPath: Assets/ForSurvival/KidsCharacters/AnimationClips/boy_Humanoid/boy_jump_fall.anim
+  uploadId: 578701

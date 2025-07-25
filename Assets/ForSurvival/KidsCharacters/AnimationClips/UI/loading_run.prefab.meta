@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 970fc1ca033d9471388ef9689abb0c76
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 241811
+  packageName: Kids characters for Survival
+  packageVersion: 1.02
+  assetPath: Assets/ForSurvival/KidsCharacters/AnimationClips/UI/loading_run.prefab
+  uploadId: 578701

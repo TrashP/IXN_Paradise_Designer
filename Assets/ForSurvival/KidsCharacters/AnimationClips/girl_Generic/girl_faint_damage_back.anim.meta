@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6789a8b26039a41d485bb96a8e5afac2
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 241811
+  packageName: Kids characters for Survival
+  packageVersion: 1.02
+  assetPath: Assets/ForSurvival/KidsCharacters/AnimationClips/girl_Generic/girl_faint_damage_back.anim
+  uploadId: 578701
