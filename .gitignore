@@ -3,7 +3,10 @@
 /[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
+/[Pp]ackages/
+/[Aa]ssets/
 /[Aa]ssets/AssetStoreTools*
+/[Ll]og/
 /Assets/Plugins/Editor/JetBrains*
 *.csproj
 *.sln
