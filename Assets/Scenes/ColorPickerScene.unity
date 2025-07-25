@@ -459,7 +459,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1113706921}
+      - m_Target: {fileID: 1113706924}
         m_TargetAssemblyTypeName: DrawingCanvas, Assembly-CSharp
         m_MethodName: UseEraser
         m_Mode: 1
@@ -894,7 +894,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1113706921}
+      - m_Target: {fileID: 1113706924}
         m_TargetAssemblyTypeName: DrawingCanvas, Assembly-CSharp
         m_MethodName: SaveImage
         m_Mode: 1
@@ -1031,6 +1031,7 @@ GameObject:
   - component: {fileID: 1113706923}
   - component: {fileID: 1113706922}
   - component: {fileID: 1113706921}
+  - component: {fileID: 1113706924}
   m_Layer: 5
   m_Name: DrawingCanvas
   m_TagString: Untagged
@@ -1069,10 +1070,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3004879ec5e9e2c4b8011a5475de1d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentColor: {r: 0, g: 0, b: 0, a: 1}
-  texture: {fileID: 0}
-  rawImage: {fileID: 1113706922}
-  brushSizeSlider: {fileID: 408035735}
 --- !u!114 &1113706922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1108,6 +1105,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1113706919}
   m_CullTransparentMesh: 1
+--- !u!114 &1113706924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113706919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0dc544869c43fd45972513f88e285de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentColor: {r: 0, g: 0, b: 0, a: 1}
+  texture: {fileID: 0}
+  rawImage: {fileID: 1113706922}
+  brushSizeSlider: {fileID: 408035735}
 --- !u!1 &1120640898
 GameObject:
   m_ObjectHideFlags: 0
@@ -1263,8 +1276,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce2ce1ae8ea1e3c468864f3addc4f13b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorPicker: {fileID: 2142133839}
-  drawingCanvas: {fileID: 1113706921}
 --- !u!1 &1503641654
 GameObject:
   m_ObjectHideFlags: 0
@@ -1711,17 +1722,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1193328538569454877, guid: 0bef82e454ca4cc43a8060d6a8b61df3, type: 3}
   m_PrefabInstance: {fileID: 1633885145}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2142133839 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8399524836257076678, guid: 0bef82e454ca4cc43a8060d6a8b61df3, type: 3}
-  m_PrefabInstance: {fileID: 1633885145}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 673c8919e92e0634ba85c61fbf3c612d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
