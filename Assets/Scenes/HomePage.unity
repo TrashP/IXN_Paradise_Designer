@@ -821,7 +821,11 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -155, y: -139}
+<<<<<<< Updated upstream
   m_SizeDelta: {x: 250, y: 110}
+=======
+  m_SizeDelta: {x: 260, y: 150}
+>>>>>>> Stashed changes
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1032290869
 MonoBehaviour:
@@ -1296,7 +1300,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
+<<<<<<< Updated upstream
   m_Text: Pre-designed map
+=======
+  m_Text: Choose Pre-designed map
+>>>>>>> Stashed changes
 --- !u!222 &1483876677
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1702,7 +1710,11 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 151, y: -139}
+<<<<<<< Updated upstream
   m_SizeDelta: {x: 250, y: 110}
+=======
+  m_SizeDelta: {x: 222, y: 106}
+>>>>>>> Stashed changes
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1812416838
 MonoBehaviour:

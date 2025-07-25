@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.IO;
@@ -27,6 +27,7 @@ public class DrawingCanvas : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
             brushSize = Mathf.RoundToInt(brushSizeSlider.value);
         }
     }
+
 
     public void SetColor(Color color)
     {
