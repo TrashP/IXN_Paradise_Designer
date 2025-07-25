@@ -3,6 +3,7 @@
 /[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
+/UserSettings/
 /[Aa]ssets/AssetStoreTools*
 /Assets/Plugins/Editor/JetBrains*
 *.csproj
