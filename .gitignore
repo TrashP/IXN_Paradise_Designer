@@ -9,13 +9,12 @@
 /Assets/Models-Free/
 
 # Ignore local Unity user settings
-UserSettings/
+/UserSettings/
 *.dwlt
 *.settings
 
-Logs/
+/Logs/
 *.log
-*.exe
 
 
 *.csproj
