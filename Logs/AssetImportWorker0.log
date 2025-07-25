@@ -2,7 +2,7 @@ Using pre-set license
 Built from '6000.1/staging' branch; Version is '6000.1.6f1 (d64b1a599cad) revision 14043930'; Using compiler version '194234433'; Build Type 'Release'
 OS: 'Windows 11  (10.0.26100) 64bit CoreCountrySpecific' Language: 'zh' Physical Memory: 32492 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
-Date: 2025-07-22T14:25:37Z
+Date: 2025-07-25T11:31:48Z
 
 COMMAND LINE ARGUMENTS:
 D:\Program Files\6000.1.6f1\Editor\Unity.exe
@@ -16,7 +16,7 @@ D:/Program Files/UniProject/IXN_Paradise_Designer
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-61052
+50799
 -job-worker-count
 9
 -background-job-worker-count
@@ -62,16 +62,16 @@ D:/Program Files/UniProject/IXN_Paradise_Designer
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [23372]  Target information:
+Player connection [44512]  Target information:
 
-Player connection [23372]  * "[IP] 192.168.118.1 [Port] 0 [Flags] 2 [Guid] 2387667081 [EditorId] 2387667081 [Version] 1048832 [Id] WindowsEditor(7,TimWork) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [44512]  * "[IP] 192.168.118.1 [Port] 0 [Flags] 2 [Guid] 214491341 [EditorId] 214491341 [Version] 1048832 [Id] WindowsEditor(7,TimWork) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [23372]  * "[IP] 192.168.88.1 [Port] 0 [Flags] 2 [Guid] 2387667081 [EditorId] 2387667081 [Version] 1048832 [Id] WindowsEditor(7,TimWork) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [44512]  * "[IP] 192.168.88.1 [Port] 0 [Flags] 2 [Guid] 214491341 [EditorId] 214491341 [Version] 1048832 [Id] WindowsEditor(7,TimWork) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [23372]  * "[IP] 100.70.152.79 [Port] 0 [Flags] 2 [Guid] 2387667081 [EditorId] 2387667081 [Version] 1048832 [Id] WindowsEditor(7,TimWork) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [44512]  * "[IP] 100.70.152.79 [Port] 0 [Flags] 2 [Guid] 214491341 [EditorId] 214491341 [Version] 1048832 [Id] WindowsEditor(7,TimWork) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [23372] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [23372] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [44512] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [44512] Host joined alternative multi-casting on [225.0.0.222:34997]...
 JobSystem: Creating JobQueue using job-worker-count value 9
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
@@ -83,7 +83,7 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 10.00 ms, found 7 plugins.
+Refreshing native plugins compatible for Editor in 10.70 ms, found 7 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 6000.1.6f1 (d64b1a599cad)
 [Subsystems] Discovering subsystems at path D:/Program Files/6000.1.6f1/Editor/Data/Resources/UnitySubsystems
@@ -94,49 +94,49 @@ Direct3D:
     Renderer:        NVIDIA GeForce RTX 3050 4GB Laptop GPU (ID=0x25ab)
     Vendor:          NVIDIA
     VRAM:            3965 MB
-    App VRAM Budget: 441 MB
+    App VRAM Budget: 3370 MB
     Driver:          32.0.15.6636
 Initialize mono
 Mono path[0] = 'D:/Program Files/6000.1.6f1/Editor/Data/Managed'
 Mono path[1] = 'D:/Program Files/6000.1.6f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'D:/Program Files/6000.1.6f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56644
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56020
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: D:/Program Files/6000.1.6f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001036 seconds.
-- Loaded All Assemblies, in  0.391 seconds
+Registered in 0.001265 seconds.
+- Loaded All Assemblies, in  0.437 seconds
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.302 seconds
-Domain Reload Profiling: 693ms
-	BeginReloadAssembly (170ms)
+- Finished resetting the current domain, in  0.412 seconds
+Domain Reload Profiling: 849ms
+	BeginReloadAssembly (179ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (35ms)
-	RebuildNativeTypeToScriptingClass (10ms)
-	initialDomainReloadingComplete (39ms)
-	LoadAllAssembliesAndSetupDomain (137ms)
-		LoadAssemblies (170ms)
+	RebuildCommonClasses (38ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (46ms)
+	LoadAllAssembliesAndSetupDomain (161ms)
+		LoadAssemblies (179ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (134ms)
-			TypeCache.Refresh (132ms)
-				TypeCache.ScanAssembly (121ms)
+		AnalyzeDomain (157ms)
+			TypeCache.Refresh (155ms)
+				TypeCache.ScanAssembly (140ms)
 			BuildScriptInfoCaches (0ms)
 			ResolveRequiredComponents (0ms)
-	FinalizeReload (302ms)
+	FinalizeReload (413ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (261ms)
+		SetupLoadedEditorAssemblies (357ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (43ms)
-			SetLoadedEditorAssemblies (3ms)
-			BeforeProcessingInitializeOnLoad (50ms)
-			ProcessInitializeOnLoadAttributes (117ms)
-			ProcessInitializeOnLoadMethodAttributes (48ms)
+			InitializePlatformSupportModulesInManaged (51ms)
+			SetLoadedEditorAssemblies (5ms)
+			BeforeProcessingInitializeOnLoad (64ms)
+			ProcessInitializeOnLoadAttributes (167ms)
+			ProcessInitializeOnLoadMethodAttributes (69ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -145,75 +145,46 @@ Domain Reload Profiling: 693ms
 Worker process is ready to serve import requests
 Import Worker Mode flag is 0x00
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.777 seconds
-Refreshing native plugins compatible for Editor in 2.10 ms, found 7 plugins.
+- Loaded All Assemblies, in  0.978 seconds
+Refreshing native plugins compatible for Editor in 2.69 ms, found 7 plugins.
 Native extension for WindowsStandalone target not found
-Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\Program Files\UniProject\IXN_Paradise_Designer\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
-  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <71119615d44348f087b10ce3c1671c84>:0 
-  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <71119615d44348f087b10ce3c1671c84>:0 
-  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
-  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <71119615d44348f087b10ce3c1671c84>:0 
-  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <71119615d44348f087b10ce3c1671c84>:0 
-  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
-  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <71119615d44348f087b10ce3c1671c84>:0 
-  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <7d0f4b46bf5447b19bd90921d0b52df0>:0 
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:LogError (object)
-UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
-UnityEditor.Tools:set_lockedLayers (int)
-UnityEditor.Tools:OnEnable ()
-UnityEngine.ScriptableObject:CreateScriptableObjectInstanceFromType (System.Type,bool)
-UnityEngine.ScriptableObject:CreateInstance (System.Type)
-UnityEngine.ScriptableObject:CreateInstance<UnityEditor.Tools> ()
-UnityEditor.Tools:get_get ()
-UnityEditor.Tools:get_visibleLayers ()
-UnityEditor.Animations.Rigging.BoneRendererUtils:.cctor () (at ./Library/PackageCache/com.unity.animation.rigging@68167b505d2b/Editor/Utils/BoneRendererUtils.cs:121)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: ./Library/PackageCache/com.unity.animation.rigging@68167b505d2b/Editor/Utils/BoneRendererUtils.cs Line: 121)
-
 [MODES] ModeService[none].Initialize
 [MODES] ModeService[none].LoadModes
 [MODES] Loading mode Default (0) for mode-current-id-IXN_Paradise_Designer
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.997 seconds
-Domain Reload Profiling: 1773ms
-	BeginReloadAssembly (195ms)
+- Finished resetting the current domain, in  1.096 seconds
+Domain Reload Profiling: 2074ms
+	BeginReloadAssembly (234ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (5ms)
+		DisableScriptedObjects (6ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (23ms)
-	RebuildCommonClasses (35ms)
-	RebuildNativeTypeToScriptingClass (11ms)
-	initialDomainReloadingComplete (31ms)
-	LoadAllAssembliesAndSetupDomain (504ms)
-		LoadAssemblies (367ms)
+		CreateAndSetChildDomain (29ms)
+	RebuildCommonClasses (46ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (48ms)
+	LoadAllAssembliesAndSetupDomain (637ms)
+		LoadAssemblies (454ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (271ms)
-			TypeCache.Refresh (200ms)
-				TypeCache.ScanAssembly (178ms)
-			BuildScriptInfoCaches (55ms)
-			ResolveRequiredComponents (12ms)
-	FinalizeReload (997ms)
+		AnalyzeDomain (337ms)
+			TypeCache.Refresh (243ms)
+				TypeCache.ScanAssembly (224ms)
+			BuildScriptInfoCaches (75ms)
+			ResolveRequiredComponents (16ms)
+	FinalizeReload (1097ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (822ms)
+		SetupLoadedEditorAssemblies (873ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (3ms)
+			InitializePlatformSupportModulesInManaged (2ms)
 			SetLoadedEditorAssemblies (5ms)
-			BeforeProcessingInitializeOnLoad (102ms)
-			ProcessInitializeOnLoadAttributes (663ms)
-			ProcessInitializeOnLoadMethodAttributes (48ms)
-			AfterProcessingInitializeOnLoad (1ms)
-			EditorAssembliesLoaded (0ms)
+			BeforeProcessingInitializeOnLoad (124ms)
+			ProcessInitializeOnLoadAttributes (678ms)
+			ProcessInitializeOnLoadMethodAttributes (61ms)
+			AfterProcessingInitializeOnLoad (2ms)
+			EditorAssembliesLoaded (1ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (10ms)
+		AwakeInstancesAfterBackupRestoration (18ms)
 Shader 'Distant Lands/Stylized Terrain First Pass': dependency 'BaseMapShader' shader 'Distant Lands/Stylized Terrain' not found
 WARNING: Shader Unsupported: 'Distant Lands/Stylized Terrain First Pass' - All subshaders removed
 WARNING: Shader Did you use #pragma only_renderers and omit this platform?
@@ -238,203 +209,19 @@ WARNING: Shader If subshaders removal was intentional, you may have forgotten tu
 Shader 'Nature/Terrain/StylizedTerrain': dependency 'BaseMapShader' shader 'ASESampleShaders/SimpleTerrainBase' not found
 Shader 'Nature/Terrain/StylizedTerrain': dependency 'AddPassShader' shader 'ASESampleShaders/Terrain/SimpleTerrainAddPass' not found
 Shader 'Distant Lands/Stylized Terrain First Pass': dependency 'BaseMapShader' shader 'Distant Lands/Stylized Terrain' not found
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
-Refreshing native plugins compatible for Editor in 2.47 ms, found 7 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
+Refreshing native plugins compatible for Editor in 2.70 ms, found 7 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 295 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6870 unused Assets / (14.2 MB). Loaded Objects now: 7626.
-Memory consumption went from 228.7 MB to 214.5 MB.
-Total: 8.638000 ms (FindLiveObjects: 0.482800 ms CreateObjectMapping: 0.339300 ms MarkObjects: 3.932500 ms  DeleteObjects: 3.881200 ms)
+Unloading 300 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6872 unused Assets / (13.8 MB). Loaded Objects now: 7634.
+Memory consumption went from 237.0 MB to 223.2 MB.
+Total: 12.818300 ms (FindLiveObjects: 0.825900 ms CreateObjectMapping: 0.412100 ms MarkObjects: 6.524000 ms  DeleteObjects: 5.051300 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 538012.879095 seconds.
-  path: Assets/New Terrain.asset
-  artifactKey: Guid(29968f304247d6941b43703e127f0045) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/New Terrain.asset using Guid(29968f304247d6941b43703e127f0045) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'e76d86258904338c3565c2565824a516') in 0.0316032 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/Readme.asset
-  artifactKey: Guid(8105016687592461f977c054a80ce2f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Readme.asset using Guid(8105016687592461f977c054a80ce2f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '7564957e633b305f4e69560a9de8e20a') in 0.0055268 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.885777 seconds.
-  path: Assets/Models-Final
-  artifactKey: Guid(e1b9e5f821f92934c934a69420ba4ca3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models-Final using Guid(e1b9e5f821f92934c934a69420ba4ca3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '20a23fc9fb3dde788f5caef9a2dbc960') in 0.0006332 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 22.457764 seconds.
-  path: Assets/Models-Final/LowPolyJungle/Prefabs/Islands/BigIsland.prefab
-  artifactKey: Guid(dd93803e0fccb884da7ce7dd3eee7122) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models-Final/LowPolyJungle/Prefabs/Islands/BigIsland.prefab using Guid(dd93803e0fccb884da7ce7dd3eee7122) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '052a2ffd956e91f5583c66f826367d96') in 5.6018042 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3526
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000050 seconds.
-  path: Assets/Models-Final/LowPolyJungle/Prefabs/Islands/smallIslandVolcano.prefab
-  artifactKey: Guid(f4604592f4b1f854e9dbc638a7612940) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models-Final/LowPolyJungle/Prefabs/Islands/smallIslandVolcano.prefab using Guid(f4604592f4b1f854e9dbc638a7612940) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'bed7351989ae258aebe5a4b778687bab') in 0.0217647 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000056 seconds.
-  path: Assets/Models-Final/LowPolyJungle/Prefabs/Islands/smallIslandBeach.prefab
-  artifactKey: Guid(d392259913336ca47aad3d2739c79bbd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models-Final/LowPolyJungle/Prefabs/Islands/smallIslandBeach.prefab using Guid(d392259913336ca47aad3d2739c79bbd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '3950888f7ddde38a10b8c4aefc5c7b61') in 0.0160842 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 9
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000034 seconds.
-  path: Assets/Models-Final/LowPolyJungle/Prefabs/Islands/MountainIsland.prefab
-  artifactKey: Guid(2f214b3b24f4b41488af827057fcc45f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models-Final/LowPolyJungle/Prefabs/Islands/MountainIsland.prefab using Guid(2f214b3b24f4b41488af827057fcc45f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'e80ca3a77a542facbe1184c98b562f6d') in 0.0193951 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000034 seconds.
-  path: Assets/Models-Final/LowPolyJungle/Prefabs/Islands/SmallVolcanoIsland.prefab
-  artifactKey: Guid(080d8e9ca3020234198e066f89deba94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models-Final/LowPolyJungle/Prefabs/Islands/SmallVolcanoIsland.prefab using Guid(080d8e9ca3020234198e066f89deba94) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd5b61993223ec116e760bc6bf4deaf05') in 2.7222764 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 600
-
-========================================================================
-Received Import Request.
-  Time since last request: 4.143610 seconds.
-  path: Assets/Models-Final/LowPolyJungle/Prefabs/Plants/BigLeaf.prefab
-  artifactKey: Guid(48344ef9ee8f3804994e1f5ed25e71e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models-Final/LowPolyJungle/Prefabs/Plants/BigLeaf.prefab using Guid(48344ef9ee8f3804994e1f5ed25e71e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '463e4a80baec878000f880e9a36afb79') in 0.1131798 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 13
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000030 seconds.
-  path: Assets/Models-Final/LowPolyJungle/Prefabs/Plants/log.prefab
-  artifactKey: Guid(d6f5515042050b145a7a6eed130808fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models-Final/LowPolyJungle/Prefabs/Plants/log.prefab using Guid(d6f5515042050b145a7a6eed130808fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'bcf6832b072522735ac24aa2fb8a0ddc') in 0.0403809 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 16
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000055 seconds.
-  path: Assets/Models-Final/LowPolyJungle/Prefabs/Plants/JungleTree.prefab
-  artifactKey: Guid(9454b5c2e57690d428a5eba4095dbc36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models-Final/LowPolyJungle/Prefabs/Plants/JungleTree.prefab using Guid(9454b5c2e57690d428a5eba4095dbc36) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '220c7a83027041a82ee090f3278d93a7') in 0.0218989 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 168
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.524919 seconds.
-  path: Assets/Models-Final/LowPolyJungle/Prefabs/Props/Anchor.prefab
-  artifactKey: Guid(74067002337f57d41969a48b8e22bab9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models-Final/LowPolyJungle/Prefabs/Props/Anchor.prefab using Guid(74067002337f57d41969a48b8e22bab9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '031947a176c8ee24f34dd9ae652fc041') in 0.0230147 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 16
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000041 seconds.
-  path: Assets/Models-Final/LowPolyJungle/Prefabs/Props/coffin.prefab
-  artifactKey: Guid(540ed13991c528d479696f31d8e070cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models-Final/LowPolyJungle/Prefabs/Props/coffin.prefab using Guid(540ed13991c528d479696f31d8e070cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '14031ee0e2b3177ea19aa0cb7dc337c8') in 0.0253673 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 17
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000047 seconds.
-  path: Assets/Models-Final/LowPolyJungle/Prefabs/Props/ChairSummerBlue.prefab
-  artifactKey: Guid(d450714dad4c8974b995dbe1c2db507c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models-Final/LowPolyJungle/Prefabs/Props/ChairSummerBlue.prefab using Guid(d450714dad4c8974b995dbe1c2db507c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'fd0a69b59aa017cf393b437790ff05cb') in 0.0246392 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 102
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000034 seconds.
-  path: Assets/Models-Final/LowPolyJungle/Prefabs/Props/ChairSummerRed.prefab
-  artifactKey: Guid(adeac25149173624783fb8aa4a17e619) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models-Final/LowPolyJungle/Prefabs/Props/ChairSummerRed.prefab using Guid(adeac25149173624783fb8aa4a17e619) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '4b19e9c4504c8a79eb62516e84da7a00') in 0.0338587 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 110
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000100 seconds.
-  path: Assets/Models-Final/LowPolyJungle/Prefabs/Props/Cross.prefab
-  artifactKey: Guid(db508a1af4a6bb141a45e516d82e9181) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models-Final/LowPolyJungle/Prefabs/Props/Cross.prefab using Guid(db508a1af4a6bb141a45e516d82e9181) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c165b6541eda8c51a2760f7eb94c065e') in 0.0297971 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 59
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000043 seconds.
-  path: Assets/Models-Final/LowPolyJungle/Prefabs/Props/HelpWheel.prefab
-  artifactKey: Guid(99bd98798a3642748a084d1c6d9376fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models-Final/LowPolyJungle/Prefabs/Props/HelpWheel.prefab using Guid(99bd98798a3642748a084d1c6d9376fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a13c21509171dee2bee5ca6aeb839905') in 0.0181999 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 14
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000041 seconds.
-  path: Assets/Models-Final/LowPolyJungle/Prefabs/Props/Key.prefab
-  artifactKey: Guid(fb957a5ebabbb254eb93dff8d209fed4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models-Final/LowPolyJungle/Prefabs/Props/Key.prefab using Guid(fb957a5ebabbb254eb93dff8d209fed4) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '205059d245a0c61f62b01401697490da') in 0.0272611 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 10
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000022 seconds.
-  path: Assets/Models-Final/LowPolyJungle/Prefabs/Props/UmbrellaSummer.prefab
-  artifactKey: Guid(f0763e9b0cebc8d4bbead8696c7ff66b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models-Final/LowPolyJungle/Prefabs/Props/UmbrellaSummer.prefab using Guid(f0763e9b0cebc8d4bbead8696c7ff66b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'bc07f0358ecd8676f5f2e5ae6829c0cc') in 0.0298686 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 27
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000023 seconds.
-  path: Assets/Models-Final/LowPolyJungle/Prefabs/Props/Showel.prefab
-  artifactKey: Guid(7175f773981928f4fb9363d780a6bf67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models-Final/LowPolyJungle/Prefabs/Props/Showel.prefab using Guid(7175f773981928f4fb9363d780a6bf67) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '1347b285d0173f0ea7c157ba18589792') in 0.0265157 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 17
-
-========================================================================
-Received Import Request.
-  Time since last request: 117022.404541 seconds.
-  path: Assets/Settings/DefaultVolumeProfile.asset
-  artifactKey: Guid(ab09877e2e707104187f6f83e2f62510) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Settings/DefaultVolumeProfile.asset using Guid(ab09877e2e707104187f6f83e2f62510) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2b49ee66048a657f1a2c2c26a8e96c10') in 0.0013766 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000054 seconds.
-  path: Assets/Settings/Mobile_RPAsset.asset
-  artifactKey: Guid(5e6cbd92db86f4b18aec3ed561671858) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Settings/Mobile_RPAsset.asset using Guid(5e6cbd92db86f4b18aec3ed561671858) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '3ee58339353993c2d2d7ee60e8205cf2') in 0.00265 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000058 seconds.
-  path: Assets/Settings/UniversalRenderPipelineGlobalSettings.asset
-  artifactKey: Guid(18dc0cd2c080841dea60987a38ce93fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Settings/UniversalRenderPipelineGlobalSettings.asset using Guid(18dc0cd2c080841dea60987a38ce93fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '5def0b5bf007626d2cfcc2f480f415ff') in 0.0009959 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000031 seconds.
-  path: Assets/Settings/PC_Renderer.asset
-  artifactKey: Guid(f288ae1f4751b564a96ac7587541f7a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Settings/PC_Renderer.asset using Guid(f288ae1f4751b564a96ac7587541f7a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b5595849c30a826d437072badaba5c31') in 0.0012439 seconds
+  Time since last request: 131570.079620 seconds.
+  path: Assets/Scenes/Tim_dev/New Folder
+  artifactKey: Guid(eb9c1b6ec4889f241babb1e7cf5b6c65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Tim_dev/New Folder using Guid(eb9c1b6ec4889f241babb1e7cf5b6c65) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'cc383e8aa2a2866c9d6b40af274484c0') in 0.0087396 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 

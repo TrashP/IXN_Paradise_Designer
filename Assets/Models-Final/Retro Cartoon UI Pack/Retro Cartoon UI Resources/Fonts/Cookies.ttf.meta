@@ -1,0 +1,30 @@
+fileFormatVersion: 2
+guid: 23732c79a12cf2646af99a59206cfe42
+timeCreated: 1572612164
+licenseType: Store
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Cookies
+  fontNames:
+  - Cookies
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157210
+  packageName: Retro Casual Cartoon UI Pack
+  packageVersion: 1.0
+  assetPath: Assets/Retro Cartoon UI Pack/Retro Cartoon UI Resources/Fonts/Cookies.ttf
+  uploadId: 704986
