@@ -15,10 +15,7 @@ public class StartGameDialogController : MonoBehaviour
     void Start()
     {
         startGamePanel.SetActive(false);
-    }
 
-    void OnEnable()
-    {
         if (btnBuildMap != null)
             btnBuildMap.onClick.AddListener(OnBuildMapClicked);
         if (btnChooseMap != null)
@@ -42,12 +39,17 @@ public class StartGameDialogController : MonoBehaviour
     void OnBuildMapClicked()
     {
         Debug.Log("Build your own map clicked!");
-        // SceneManager.LoadScene("DrawingScene");
+        LoadColorPickerScene();
     }
 
     void OnChooseMapClicked()
     {
         Debug.Log("Choose pre-designed map clicked!");
         // SceneManager.LoadScene("SelectMapScene");
+    }
+
+    public void LoadColorPickerScene()
+    {
+        SceneManager.LoadScene("ColorPickerScene");
     }
 }

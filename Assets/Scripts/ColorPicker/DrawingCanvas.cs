@@ -1,14 +1,23 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using System.IO;
 
 public class DrawingCanvas : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
+    [Header("Drawing Settings")]
     public Color currentColor = Color.black;
     public Texture2D texture;
     public RawImage rawImage;
     public Slider brushSizeSlider;
+
+    [Header("Confirmation UI")]
+    public GameObject confirmPanel;
+    public Button btnYes;
+    public Button btnNo;
+    public Button btnContinue;
+    public Button btnClose;
 
     private bool isDrawing = false;
     private int brushSize = 1;
@@ -18,6 +27,14 @@ public class DrawingCanvas : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         texture = new Texture2D(512, 512);
         rawImage.texture = texture;
         ClearCanvas();
+
+        if (confirmPanel != null) confirmPanel.SetActive(false);
+
+        // 绑定按钮事件
+        if (btnContinue != null) btnContinue.onClick.AddListener(ShowConfirmPanel);
+        if (btnYes != null) btnYes.onClick.AddListener(SaveAndGoToTerrain);
+        if (btnNo != null) btnNo.onClick.AddListener(HideConfirmPanel);
+        if (buttClose != null) btnClose.onClick.AddListener(HideConfirmPanel);
     }
 
     void Update()
@@ -38,12 +55,10 @@ public class DrawingCanvas : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         currentColor = Color.white;
     }
 
-
     public void SaveImage()
     {
         byte[] bytes = texture.EncodeToPNG();
 
-        //string folderPath = @"C:\Users\lenovo\Desktop\SavedImage";
         string folderPath = Path.Combine(Application.persistentDataPath, "SavedImage");
 
         if (!Directory.Exists(folderPath))
@@ -54,12 +69,10 @@ public class DrawingCanvas : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         string fileName = "drawing_" + System.DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".png";
         string filePath = Path.Combine(folderPath, fileName);
 
-        File.WriteAllBytes(filePath, texture.EncodeToPNG());
+        File.WriteAllBytes(filePath, bytes);
 
-        Debug.Log("Image saved to: " + filePath);
-
+        Debug.Log("✅ Image saved to: " + filePath);
     }
-
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -113,5 +126,25 @@ public class DrawingCanvas : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         for (int i = 0; i < clearColors.Length; i++) clearColors[i] = Color.white;
         texture.SetPixels32(clearColors);
         texture.Apply();
+    }
+
+
+    public void ShowConfirmPanel()
+    {
+        if (confirmPanel != null)
+            confirmPanel.SetActive(true);
+        else
+            Debug.LogError("ConfirmPanel not assigned in the Inspector!");
+    }
+
+    public void HideConfirmPanel()
+    {
+        if (confirmPanel != null) confirmPanel.SetActive(false);
+    }
+
+    public void SaveAndGoToTerrain()
+    {
+        SaveImage();
+        SceneManager.LoadScene("TerrainScene");
     }
 }
