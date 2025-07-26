@@ -322,7 +322,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Save
+  m_Text: Clear
 --- !u!222 &62953239
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -514,6 +514,7 @@ MonoBehaviour:
   btnYes: {fileID: 1455855206}
   btnNo: {fileID: 1473604239}
   btnContinue: {fileID: 1803103602}
+  btnClose: {fileID: 0}
 --- !u!114 &158265233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1531,6 +1532,7 @@ MonoBehaviour:
   btnYes: {fileID: 1455855206}
   btnNo: {fileID: 1473604239}
   btnContinue: {fileID: 1803103602}
+  btnClose: {fileID: 121055013}
 --- !u!1 &1151484781
 GameObject:
   m_ObjectHideFlags: 0
@@ -1580,7 +1582,7 @@ GameObject:
   - component: {fileID: 1170216064}
   - component: {fileID: 1170216063}
   m_Layer: 5
-  m_Name: Btn_Save
+  m_Name: Btn_Clear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1652,7 +1654,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1113706924}
         m_TargetAssemblyTypeName: DrawingCanvas, Assembly-CSharp
-        m_MethodName: SaveImage
+        m_MethodName: ClearCanvas
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
