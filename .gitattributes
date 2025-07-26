@@ -4,3 +4,4 @@
 *.wav filter=lfs diff=lfs merge=lfs -text
 *.mp3 filter=lfs diff=lfs merge=lfs -text
 *.psd filter=lfs diff=lfs merge=lfs -text
+Assets/T_island/NavMesh-CPT_Island_L_f1_03_LOD.asset filter=lfs diff=lfs merge=lfs -text
