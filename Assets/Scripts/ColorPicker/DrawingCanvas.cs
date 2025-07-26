@@ -30,11 +30,10 @@ public class DrawingCanvas : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
         if (confirmPanel != null) confirmPanel.SetActive(false);
 
-        // 绑定按钮事件
         if (btnContinue != null) btnContinue.onClick.AddListener(ShowConfirmPanel);
         if (btnYes != null) btnYes.onClick.AddListener(SaveAndGoToTerrain);
         if (btnNo != null) btnNo.onClick.AddListener(HideConfirmPanel);
-        if (buttClose != null) btnClose.onClick.AddListener(HideConfirmPanel);
+        if (btnClose != null) btnClose.onClick.AddListener(HideConfirmPanel);
     }
 
     void Update()
