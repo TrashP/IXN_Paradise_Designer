@@ -251,6 +251,15 @@ public class BirdGlideTrigger : MonoBehaviour
             playerCollider.enabled = true;
         }
 
+        // 重置玩家旋转（保持Y轴旋转，重置X轴和Z轴）
+        // Reset player rotation (keep Y-axis rotation, reset X and Z axes)
+        if (player != null)
+        {
+            Vector3 currentRotation = player.transform.rotation.eulerAngles;
+            Vector3 resetRotation = new Vector3(0f, currentRotation.y, 0f);
+            player.transform.rotation = Quaternion.Euler(resetRotation);
+        }
+
         // 停止滑翔控制器
         // Stop glide controller
         if (glideController != null)

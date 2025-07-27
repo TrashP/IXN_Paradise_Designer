@@ -6,26 +6,22 @@ using UnityEngine;
 /// </summary>
 public class BirdGlideController : MonoBehaviour
 {
-    [Header("飞行参数")]
-    [Header("Flight Parameters")]
-    [SerializeField, Range(1f, 50f)] private float glideSpeed = 10f; // 滑翔速度 Glide Speed
+    [Header("Flight Parameters 飞行参数")]
+    [SerializeField, Range(1f, 50f)] private float glideSpeed = 50f; // 滑翔速度 Glide Speed
     [SerializeField, Range(0.1f, 2f)] private float verticalInfluence = 0.2f; // 垂直影响 Vertical Influence
     
-    [Header("视角控制")]
-    [Header("Camera Control")]
+    [Header("Camera Control 视角控制")]
     [SerializeField, Range(0.1f, 5f)] private float mouseSensitivity = 2f; // 鼠标灵敏度 Mouse Sensitivity
     [SerializeField] private bool invertY = false; // 反转Y轴 Invert Y Axis
     [SerializeField] private bool lockCursor = true; // 锁定光标 Lock Cursor
     
-    [Header("边界限制")]
-    [Header("Boundary Limits")]
+    [Header("Boundary Limits 边界限制")]
     [SerializeField] private bool enableBoundaries = true; // 启用边界 Enable Boundaries
     [SerializeField] private float maxHeight = 100f; // 最大高度 Maximum Height
     [SerializeField] private float minHeight = 5f; // 最小高度 Minimum Height
     [SerializeField] private float boundaryRadius = 500f; // 边界半径 Boundary Radius
     
-    [Header("平滑控制")]
-    [Header("Smoothing Control")]
+    [Header("Smoothing Control 平滑控制")]
     [SerializeField, Range(0.1f, 10f)] private float rotationSmoothing = 5f; // 旋转平滑 Rotation Smoothing
     [SerializeField, Range(0.1f, 10f)] private float movementSmoothing = 3f; // 移动平滑 Movement Smoothing
     
@@ -122,7 +118,7 @@ public class BirdGlideController : MonoBehaviour
         
         // 处理鼠标解锁
         // Handle mouse unlock
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             ToggleCursorLock();
         }
