@@ -31,6 +31,9 @@
 /Assets/Models-Final/
 /Assets/Models-Free/
 
+# Ignore visual studio stuff
+.vs/
+
 # Ignore local Unity user settings
 /UserSettings/
 *.dwlt
