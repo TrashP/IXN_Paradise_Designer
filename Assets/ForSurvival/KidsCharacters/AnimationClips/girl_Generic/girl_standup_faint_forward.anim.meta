@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9834c2dda235045c68e67fd57c86029b
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 241811
+  packageName: Kids characters for Survival
+  packageVersion: 1.02
+  assetPath: Assets/ForSurvival/KidsCharacters/AnimationClips/girl_Generic/girl_standup_faint_forward.anim
+  uploadId: 578701

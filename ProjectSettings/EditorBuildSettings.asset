@@ -6,8 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Tim_dev/Main World.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/HomePage.unity
+    guid: 8fe4a83734b932f4ca5e68e7222ece9c
+  - enabled: 1
+    path: Assets/Scenes/ColorPickerScene.unity
+    guid: 499842a09cc94104f8d9d87f871c4454
+  - enabled: 1
+    path: Assets/Scenes/TerrainScene.unity
+    guid: 6e4a726ec68a89c4ea18c7240bc66bde
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

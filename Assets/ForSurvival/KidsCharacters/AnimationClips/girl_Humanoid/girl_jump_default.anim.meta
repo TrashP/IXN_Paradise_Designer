@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9a5d7bf84e51c4fb0ac3aa6992ff7d1c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 241811
+  packageName: Kids characters for Survival
+  packageVersion: 1.02
+  assetPath: Assets/ForSurvival/KidsCharacters/AnimationClips/girl_Humanoid/girl_jump_default.anim
+  uploadId: 578701

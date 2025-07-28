@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: e665ba5f9ca1ad64387edcc90dbdb3bd
+timeCreated: 1572664444
+licenseType: Store
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157210
+  packageName: Retro Casual Cartoon UI Pack
+  packageVersion: 1.0
+  assetPath: Assets/Retro Cartoon UI Pack/Retro Cartoon UI Resources/Scripts/PressedBtn.cs
+  uploadId: 704986

@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: cfda102994124494280600f51d516138
+timeCreated: 1572674755
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157210
+  packageName: Retro Casual Cartoon UI Pack
+  packageVersion: 1.0
+  assetPath: Assets/Retro Cartoon UI Pack/Retro Cartoon UI Resources/Prefabs/4LoginCanvas.prefab
+  uploadId: 704986

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a8e155bba8aa24bf58be62536348ffad
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 241811
+  packageName: Kids characters for Survival
+  packageVersion: 1.02
+  assetPath: Assets/ForSurvival/KidsCharacters/AnimationClips/enemy0_Humanoid/enemy0_walk_catch1_r.anim
+  uploadId: 578701

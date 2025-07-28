@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f40274fb96fd841b68bd9a16c9e33ce2
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 241811
+  packageName: Kids characters for Survival
+  packageVersion: 1.02
+  assetPath: Assets/ForSurvival/KidsCharacters/AnimationClips/girl_Humanoid/girl_action_release_trapped.anim
+  uploadId: 578701

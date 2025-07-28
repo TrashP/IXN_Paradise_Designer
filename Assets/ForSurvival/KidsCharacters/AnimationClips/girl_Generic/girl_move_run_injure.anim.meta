@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e56dc38b588ed4481956b200749b037b
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 241811
+  packageName: Kids characters for Survival
+  packageVersion: 1.02
+  assetPath: Assets/ForSurvival/KidsCharacters/AnimationClips/girl_Generic/girl_move_run_injure.anim
+  uploadId: 578701
