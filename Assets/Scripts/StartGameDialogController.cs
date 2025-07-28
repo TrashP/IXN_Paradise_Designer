@@ -45,7 +45,7 @@ public class StartGameDialogController : MonoBehaviour
     void OnChooseMapClicked()
     {
         Debug.Log("Choose pre-designed map clicked!");
-        LoadTIslandScene();
+        LoadPreDesignedScene();
     }
 
     public void LoadColorPickerScene()
@@ -53,8 +53,8 @@ public class StartGameDialogController : MonoBehaviour
         SceneManager.LoadScene("ColorPickerScene");
     }
 
-    public void LoadTIslandScene()
+    public void LoadPreDesignedScene()
     {
-        SceneManager.LoadScene("T_island");
+        SceneManager.LoadScene("Dev");
     }
 }
