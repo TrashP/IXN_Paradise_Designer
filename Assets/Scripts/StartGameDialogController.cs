@@ -45,11 +45,16 @@ public class StartGameDialogController : MonoBehaviour
     void OnChooseMapClicked()
     {
         Debug.Log("Choose pre-designed map clicked!");
-        // SceneManager.LoadScene("SelectMapScene");
+        LoadPreDesignedScene();
     }
 
     public void LoadColorPickerScene()
     {
         SceneManager.LoadScene("ColorPickerScene");
+    }
+
+    public void LoadPreDesignedScene()
+    {
+        SceneManager.LoadScene("Dev");
     }
 }

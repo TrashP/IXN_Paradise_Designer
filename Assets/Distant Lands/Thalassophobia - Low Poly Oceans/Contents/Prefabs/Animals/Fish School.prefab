@@ -40,7 +40,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6023623886322974147}
-  - component: {fileID: 6023623886322974144}
   - component: {fileID: 624194975}
   m_Layer: 0
   m_Name: Fish School
@@ -65,27 +64,6 @@ Transform:
   - {fileID: 1712193694}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6023623886322974144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6023623886322974145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5808e206cf008184d850d804dfa27d9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fishPrefabs:
-  - {fileID: 3498951818301069886, guid: 4c22850fa43db6244866531d6c723aea, type: 3}
-  - {fileID: 609755293658269740, guid: 1ef5583172f4c05408c0d64359b3f3cc, type: 3}
-  - {fileID: 3895297913362526016, guid: e518ac867a11aed44a1c895ef554e7e3, type: 3}
-  fishSchool: {fileID: 6023623886322974145}
-  wanderSize: 7
-  target: {fileID: 1712193693}
-  numFish: 10
-  allFish: []
 --- !u!114 &624194975
 MonoBehaviour:
   m_ObjectHideFlags: 0

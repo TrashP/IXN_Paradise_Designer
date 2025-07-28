@@ -38,21 +38,27 @@ namespace Polyperfect.Crafting.Demo
         void HandleMovement()
         {
             var speed = Input.GetButton(SecondaryButton) ? SecondarySpeed : PrimarySpeed;
-            var groundNormal = isGrounded ? hitNormal : Vector3.up;
-            var inputVector = Vector3.ClampMagnitude(new Vector3(Input.GetAxisRaw(HorizontalAxis), 0f, Input.GetAxisRaw(VerticalAxis)),1f);
-            var excludedUpDirection = Quaternion.LookRotation(Vector3.ProjectOnPlane(Camera.main.transform.forward, Vector3.up).normalized);
+
+            var camForward = Vector3.ProjectOnPlane(Camera.main.transform.forward, Vector3.up).normalized;
+            var camRight = Vector3.ProjectOnPlane(Camera.main.transform.right, Vector3.up).normalized;
+
+            var inputVector = new Vector3(Input.GetAxisRaw(HorizontalAxis), 0f, Input.GetAxisRaw(VerticalAxis));
+            var moveDirection = (camForward * inputVector.z + camRight * inputVector.x).normalized;
+
             physicsVelocity += Physics.gravity * Time.deltaTime;
-            movementVelocity = Vector3.MoveTowards(movementVelocity, excludedUpDirection * inputVector * speed, Acceleration * Time.deltaTime);
-            if (isGrounded) 
+            movementVelocity = Vector3.MoveTowards(movementVelocity, moveDirection * speed, Acceleration * Time.deltaTime);
+
+            if (isGrounded)
                 physicsVelocity = Physics.gravity.normalized * StickStrength;
 
             if (isGrounded && Input.GetButtonDown(JumpButton))
                 physicsVelocity += -Physics.gravity.normalized * (JumpSpeed + StickStrength);
 
-            var appliedVelocity = Quaternion.FromToRotation(Vector3.up, groundNormal) * movementVelocity + physicsVelocity;
+            var appliedVelocity = Quaternion.FromToRotation(Vector3.up, isGrounded ? hitNormal : Vector3.up) * movementVelocity + physicsVelocity;
             var flags = controller.Move(Time.deltaTime * appliedVelocity);
             isGrounded = (flags & CollisionFlags.Below) != 0;
         }
+
 
         void OnControllerColliderHit(ControllerColliderHit hit)
         {
