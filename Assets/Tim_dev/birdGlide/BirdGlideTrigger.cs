@@ -26,6 +26,7 @@ public class BirdGlideTrigger : MonoBehaviour
     private bool isGliding = false;
     private GameObject player;
     private PlayerController playerController;
+    private UnifiedPlayerController unifiedPlayerController; // 添加统一玩家控制器引用 Add unified player controller reference
     private BirdGlideController glideController;
     private BirdMove birdMove; // 添加鸟类自动移动组件引用 Add bird auto-movement component reference
     private Rigidbody playerRigidbody;
@@ -86,6 +87,13 @@ public class BirdGlideTrigger : MonoBehaviour
         {
             Debug.LogWarning($"[{gameObject.name}] BirdGlideTrigger: 玩家对象缺少PlayerController组件!");
             Debug.LogWarning($"[{gameObject.name}] BirdGlideTrigger: Player object missing PlayerController component!");
+        }
+
+        unifiedPlayerController = player.GetComponent<UnifiedPlayerController>();
+        if (unifiedPlayerController == null)
+        {
+            Debug.LogWarning($"[{gameObject.name}] BirdGlideTrigger: 玩家对象缺少UnifiedPlayerController组件!");
+            Debug.LogWarning($"[{gameObject.name}] BirdGlideTrigger: Player object missing UnifiedPlayerController component!");
         }
 
         playerRigidbody = player.GetComponent<Rigidbody>();
@@ -168,6 +176,13 @@ public class BirdGlideTrigger : MonoBehaviour
             playerController.enabled = false;
         }
 
+        // 禁用统一玩家控制器
+        // Disable unified player controller
+        if (unifiedPlayerController != null)
+        {
+            unifiedPlayerController.enabled = false;
+        }
+
         // 禁用玩家物理
         // Disable player physics
         if (playerRigidbody != null)
@@ -181,6 +196,12 @@ public class BirdGlideTrigger : MonoBehaviour
         {
             playerCollider.enabled = false;
         }
+
+        // 重置鸟类旋转（保持Y轴旋转，重置X轴和Z轴）
+        // Reset bird rotation (keep Y-axis rotation, reset X and Z axes)
+        Vector3 currentBirdRotation = transform.rotation.eulerAngles;
+        Vector3 resetBirdRotation = new Vector3(0f, currentBirdRotation.y, 0f);
+        transform.rotation = Quaternion.Euler(resetBirdRotation);
 
         // 绑定玩家到鸟
         // Attach player to bird
@@ -235,6 +256,13 @@ public class BirdGlideTrigger : MonoBehaviour
         if (playerController != null)
         {
             playerController.enabled = true;
+        }
+
+        // 重新启用统一玩家控制器
+        // Re-enable unified player controller
+        if (unifiedPlayerController != null)
+        {
+            unifiedPlayerController.enabled = true;
         }
 
         // 重新启用玩家物理
