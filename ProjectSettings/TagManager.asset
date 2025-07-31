@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Interactable
   - CinemachineTarget
+  - Saveable
   layers:
   - Default
   - TransparentFX

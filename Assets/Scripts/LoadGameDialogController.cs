@@ -15,11 +15,14 @@ public class LoadGameDialogController : MonoBehaviour
 
     [Header("Action Buttons")]
     public Button btnLoadGame;
+    public Button btnSaveGame; // 新增保存按钮
     public Button btnDeleteSave;
     public Button btnClose;
 
-    [Header("Save Data Manager")]
-    public SaveData saveData; // 存档数据管理器
+    [Header("Player Reference")]
+    public Transform playerTransform; // 玩家Transform引用，用于保存位置
+
+    private int currentSelectedSlot = 1; // 当前选中的槽位
 
     void Start()
     {
@@ -28,11 +31,49 @@ public class LoadGameDialogController : MonoBehaviour
         // 设置按钮监听器
         SetupButtonListeners();
         
-        // 如果没有指定SaveData，尝试在场景中查找
-        if (saveData == null)
+        // 如果没有指定玩家Transform，尝试在场景中查找
+        if (playerTransform == null)
         {
-            saveData = FindObjectOfType<SaveData>();
+            // 方法1：通过Player标签查找
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                playerTransform = player.transform;
+                Debug.Log("通过Player标签找到玩家对象");
+            }
+            else
+            {
+                // 方法2：通过名称查找PlayerBoy
+                player = GameObject.Find("PlayerBoy");
+                if (player != null)
+                {
+                    playerTransform = player.transform;
+                    Debug.Log("通过名称PlayerBoy找到玩家对象");
+                }
+                else
+                {
+                    // 方法3：查找所有GameObject，找到包含"Player"的对象
+                    GameObject[] allObjects = FindObjectsOfType<GameObject>();
+                    foreach (GameObject obj in allObjects)
+                    {
+                        if (obj.name.Contains("Player") || obj.name.Contains("player"))
+                        {
+                            playerTransform = obj.transform;
+                            Debug.Log($"通过名称包含Player找到玩家对象: {obj.name}");
+                            break;
+                        }
+                    }
+                }
+            }
+            
+            if (playerTransform == null)
+            {
+                Debug.LogWarning("未找到玩家对象，请确保场景中有PlayerBoy对象或设置正确的Player标签");
+            }
         }
+
+        // 初始化存档系统
+        SaveDataManager.Initialize();
     }
 
     private void SetupButtonListeners()
@@ -50,6 +91,8 @@ public class LoadGameDialogController : MonoBehaviour
         // 设置功能按钮监听器
         if (btnLoadGame != null)
             btnLoadGame.onClick.AddListener(OnLoadGameClicked);
+        if (btnSaveGame != null)
+            btnSaveGame.onClick.AddListener(OnSaveGameClicked);
         if (btnDeleteSave != null)
             btnDeleteSave.onClick.AddListener(OnDeleteSaveClicked);
         if (btnClose != null)
@@ -74,65 +117,74 @@ public class LoadGameDialogController : MonoBehaviour
     // 槽位按钮点击事件
     private void OnSlotButtonClicked(int slotNumber)
     {
-        if (saveData != null)
-        {
-            saveData.SwitchSaveSlot(slotNumber);
-            UpdateUI();
-            Debug.Log($"切换到存档槽位 {slotNumber}");
-        }
+        currentSelectedSlot = slotNumber;
+        UpdateUI();
+        Debug.Log($"选中存档槽位 {currentSelectedSlot}");
     }
 
     // 加载游戏按钮点击事件
     private void OnLoadGameClicked()
     {
-        if (saveData != null)
+        if (SaveDataManager.HasSave(currentSelectedSlot))
         {
-            int currentSlot = saveData.GetCurrentSlot();
-            
-            if (saveData.HasSave(currentSlot))
+            PlayerSaveData loadedData = SaveDataManager.LoadPlayer(currentSelectedSlot);
+            if (loadedData != null && playerTransform != null)
             {
-                saveData.LoadCurrentSlot();
-                Debug.Log($"从槽位 {currentSlot} 加载游戏");
+                // 设置玩家位置
+                playerTransform.position = loadedData.position;
+                Debug.Log($"从槽位 {currentSelectedSlot} 加载游戏，位置: {loadedData.position}");
+                Debug.Log($"玩家当前位置: {playerTransform.position}");
                 
-                // 加载完成后可以切换到游戏场景
-                LoadGameScene();
+                // 确保玩家控制脚本被启用
+                EnsurePlayerControlsEnabled();
+                
+                // 关闭加载游戏对话框
+                HidePanel();
             }
-            else
-            {
-                Debug.LogWarning($"槽位 {currentSlot} 没有存档数据");
-            }
+        }
+        else
+        {
+            Debug.LogWarning($"槽位 {currentSelectedSlot} 没有存档数据");
+        }
+    }
+
+    // 保存游戏按钮点击事件
+    private void OnSaveGameClicked()
+    {
+        if (playerTransform != null)
+        {
+            SaveDataManager.SavePlayer(currentSelectedSlot, playerTransform.position);
+            Debug.Log($"已保存到槽位 {currentSelectedSlot}");
+            UpdateUI(); // 保存后刷新UI
+        }
+        else
+        {
+            Debug.LogError("未找到玩家Transform，无法保存位置");
         }
     }
 
     // 删除存档按钮点击事件
     private void OnDeleteSaveClicked()
     {
-        if (saveData != null)
+        if (SaveDataManager.HasSave(currentSelectedSlot))
         {
-            int currentSlot = saveData.GetCurrentSlot();
-            
-            if (saveData.HasSave(currentSlot))
-            {
-                saveData.DeleteSave(currentSlot);
-                UpdateUI();
-                Debug.Log($"已删除槽位 {currentSlot} 的存档");
-            }
-            else
-            {
-                Debug.LogWarning($"槽位 {currentSlot} 没有存档数据");
-            }
+            SaveDataManager.DeleteSave(currentSelectedSlot);
+            UpdateUI();
+            Debug.Log($"已删除槽位 {currentSelectedSlot} 的存档");
+        }
+        else
+        {
+            Debug.LogWarning($"槽位 {currentSelectedSlot} 没有存档数据");
         }
     }
 
     // 更新UI显示
     private void UpdateUI()
     {
-        if (saveData == null) return;
-
         // 更新当前槽位显示
         if (currentSlotText != null)
         {
-            currentSlotText.text = $"当前槽位: {saveData.GetCurrentSlot()}";
+            currentSlotText.text = $"当前槽位: {currentSelectedSlot}";
         }
 
         // 更新槽位信息显示
@@ -151,28 +203,25 @@ public class LoadGameDialogController : MonoBehaviour
     {
         if (infoText == null) return;
 
-        if (saveData.HasSave(slotNumber))
+        if (SaveDataManager.HasSave(slotNumber))
         {
-            PlayerSaveData saveInfo = saveData.GetSaveInfo(slotNumber);
+            PlayerSaveData saveInfo = SaveDataManager.GetSaveInfo(slotNumber);
             if (saveInfo != null)
             {
-                string timeStr = saveInfo.saveTime.ToString("yyyy-MM-dd HH:mm");
-                infoText.text = $"槽位 {slotNumber}\n{saveInfo.saveName}\n{timeStr}";
+                // 直接使用保存的时间字符串，不需要转换
+                infoText.text = $"{saveInfo.saveName}  {saveInfo.saveTimeString}";
             }
         }
         else
         {
-            infoText.text = $"槽位 {slotNumber}\n空槽位";
+            infoText.text = $"EMPTY";
         }
     }
 
     // 更新按钮状态
     private void UpdateButtonStates()
     {
-        if (saveData == null) return;
-
-        int currentSlot = saveData.GetCurrentSlot();
-        bool hasSave = saveData.HasSave(currentSlot);
+        bool hasSave = SaveDataManager.HasSave(currentSelectedSlot);
 
         // 加载和删除按钮只在有存档时可用
         if (btnLoadGame != null)
@@ -180,6 +229,10 @@ public class LoadGameDialogController : MonoBehaviour
             
         if (btnDeleteSave != null)
             btnDeleteSave.interactable = hasSave;
+
+        // 保存按钮在任何情况下都可用
+        if (btnSaveGame != null)
+            btnSaveGame.interactable = true;
     }
 
     // 加载游戏场景
@@ -202,20 +255,110 @@ public class LoadGameDialogController : MonoBehaviour
     // 公共方法：切换到指定槽位
     public void SwitchToSlot(int slotNumber)
     {
-        if (saveData != null)
-        {
-            saveData.SwitchSaveSlot(slotNumber);
-            UpdateUI();
-        }
+        currentSelectedSlot = slotNumber;
+        UpdateUI();
     }
 
     // 公共方法：从指定槽位加载
     public void LoadFromSlot(int slotNumber)
     {
-        if (saveData != null && saveData.HasSave(slotNumber))
+        if (SaveDataManager.HasSave(slotNumber))
         {
-            saveData.LoadPlayer(slotNumber);
-            LoadGameScene();
+            PlayerSaveData loadedData = SaveDataManager.LoadPlayer(slotNumber);
+            if (loadedData != null && playerTransform != null)
+            {
+                // 设置玩家位置
+                playerTransform.position = loadedData.position;
+                Debug.Log($"从槽位 {slotNumber} 加载游戏，位置: {loadedData.position}");
+                Debug.Log($"玩家当前位置: {playerTransform.position}");
+                
+                // 确保玩家控制脚本被启用
+                EnsurePlayerControlsEnabled();
+                
+                // 隐藏加载面板
+                HidePanel();
+            }
+        }
+    }
+
+    // 公共方法：保存到指定槽位
+    public void SaveToSlot(int slotNumber)
+    {
+        if (playerTransform != null)
+        {
+            SaveDataManager.SavePlayer(slotNumber, playerTransform.position);
+            UpdateUI();
+            Debug.Log($"已保存到槽位 {slotNumber}");
+        }
+        else
+        {
+            Debug.LogError("未找到玩家Transform，无法保存位置");
+        }
+    }
+
+    // 公共方法：获取当前选中的槽位
+    public int GetCurrentSelectedSlot()
+    {
+        return currentSelectedSlot;
+    }
+
+    // 确保玩家控制脚本被启用
+    private void EnsurePlayerControlsEnabled()
+    {
+        if (playerTransform != null)
+        {
+            // 获取玩家对象上的所有MonoBehaviour脚本
+            MonoBehaviour[] playerScripts = playerTransform.GetComponents<MonoBehaviour>();
+            
+            foreach (MonoBehaviour script in playerScripts)
+            {
+                if (script != null)
+                {
+                    // 检查是否是玩家控制相关的脚本
+                    string scriptName = script.GetType().Name.ToLower();
+                    if (scriptName.Contains("player") || 
+                        scriptName.Contains("movement") || 
+                        scriptName.Contains("controller") ||
+                        scriptName.Contains("input") ||
+                        scriptName.Contains("camera"))
+                    {
+                        // 确保脚本被启用
+                        if (!script.enabled)
+                        {
+                            script.enabled = true;
+                            Debug.Log($"重新启用玩家控制脚本: {script.GetType().Name}");
+                        }
+                    }
+                }
+            }
+            
+            // 如果有CharacterController，确保它不会阻止位置变化
+            CharacterController characterController = playerTransform.GetComponent<CharacterController>();
+            if (characterController != null)
+            {
+                // 强制更新CharacterController的位置
+                characterController.enabled = false;
+                characterController.enabled = true;
+                Debug.Log("重置CharacterController状态");
+            }
+        }
+        
+        // 查找并处理暂停菜单状态（如果存在）
+        PauseMenuManager pauseMenu = FindFirstObjectByType<PauseMenuManager>();
+        if (pauseMenu != null)
+        {
+            if (pauseMenu.IsPaused())
+            {
+                // 使用新的位置变化处理方法
+                pauseMenu.HandlePlayerPositionChange();
+                Debug.Log("处理暂停状态下的玩家位置变化");
+            }
+            else
+            {
+                // 如果不在暂停状态，确保游戏正常运行
+                pauseMenu.ForceResume();
+                Debug.Log("确保游戏正常运行状态");
+            }
         }
     }
 }

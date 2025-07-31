@@ -254,7 +254,7 @@ public class PauseMenuManager : MonoBehaviour
     private void OnLoadGameClicked()
     {
         // 查找并打开加载游戏对话框
-        LoadGameDialogController loadGameDialog = FindObjectOfType<LoadGameDialogController>();
+        LoadGameDialogController loadGameDialog = FindFirstObjectByType<LoadGameDialogController>();
         if (loadGameDialog != null)
         {
             loadGameDialog.ShowPanel();
@@ -329,6 +329,31 @@ public class PauseMenuManager : MonoBehaviour
     public void SetPlayerCamera(Camera camera)
     {
         playerCamera = camera;
+    }
+
+    // 公共方法：处理玩家位置变化（用于加载游戏时）
+    public void HandlePlayerPositionChange()
+    {
+        // 如果当前处于暂停状态，确保玩家控制脚本被正确管理
+        if (isPaused)
+        {
+            // 临时启用玩家控制以应用位置变化
+            EnablePlayerControls();
+            
+            // 延迟一帧后重新禁用（如果仍然暂停）
+            StartCoroutine(DelayedDisablePlayerControls());
+        }
+    }
+
+    // 协程：延迟禁用玩家控制
+    private System.Collections.IEnumerator DelayedDisablePlayerControls()
+    {
+        yield return null; // 等待一帧
+        
+        if (isPaused)
+        {
+            DisablePlayerControls();
+        }
     }
 
     // 在销毁时确保时间恢复正常
