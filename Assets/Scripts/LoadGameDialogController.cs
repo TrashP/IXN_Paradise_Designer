@@ -138,6 +138,9 @@ public class LoadGameDialogController : MonoBehaviour
                 // 确保玩家控制脚本被启用
                 EnsurePlayerControlsEnabled();
                 
+                // 强制恢复游戏状态，确保立即返回游戏
+                ForceResumeGame();
+                
                 // 关闭加载游戏对话框
                 HidePanel();
             }
@@ -275,6 +278,9 @@ public class LoadGameDialogController : MonoBehaviour
                 // 确保玩家控制脚本被启用
                 EnsurePlayerControlsEnabled();
                 
+                // 强制恢复游戏状态，确保立即返回游戏
+                ForceResumeGame();
+                
                 // 隐藏加载面板
                 HidePanel();
             }
@@ -300,6 +306,23 @@ public class LoadGameDialogController : MonoBehaviour
     public int GetCurrentSelectedSlot()
     {
         return currentSelectedSlot;
+    }
+
+    // 强制恢复游戏状态
+    private void ForceResumeGame()
+    {
+        // 查找暂停菜单管理器
+        PauseMenuManager pauseMenu = FindFirstObjectByType<PauseMenuManager>();
+        if (pauseMenu != null)
+        {
+            // 强制恢复游戏状态
+            pauseMenu.ForceResume();
+            Debug.Log("强制恢复游戏状态，立即返回游戏");
+        }
+        else
+        {
+            Debug.LogWarning("未找到PauseMenuManager，无法强制恢复游戏状态");
+        }
     }
 
     // 确保玩家控制脚本被启用
