@@ -6,26 +6,22 @@ using UnityEngine;
 /// </summary>
 public class BirdGlideController : MonoBehaviour
 {
-    [Header("飞行参数")]
-    [Header("Flight Parameters")]
-    [SerializeField, Range(1f, 50f)] private float glideSpeed = 10f; // 滑翔速度 Glide Speed
-    [SerializeField, Range(0.1f, 2f)] private float verticalInfluence = 0.2f; // 垂直影响 Vertical Influence
+    [Header("Flight Parameters 飞行参数")]
+    [SerializeField, Range(1f, 500f)] private float moveSpeed = 200f; // 移动速度 Move Speed
+    [SerializeField, Range(1f, 500f)] private float verticalSpeed = 100f; // 垂直速度 Vertical Speed
     
-    [Header("视角控制")]
-    [Header("Camera Control")]
+    [Header("Camera Control 视角控制")]
     [SerializeField, Range(0.1f, 5f)] private float mouseSensitivity = 2f; // 鼠标灵敏度 Mouse Sensitivity
     [SerializeField] private bool invertY = false; // 反转Y轴 Invert Y Axis
     [SerializeField] private bool lockCursor = true; // 锁定光标 Lock Cursor
     
-    [Header("边界限制")]
-    [Header("Boundary Limits")]
+    [Header("Boundary Limits 边界限制")]
     [SerializeField] private bool enableBoundaries = true; // 启用边界 Enable Boundaries
     [SerializeField] private float maxHeight = 100f; // 最大高度 Maximum Height
     [SerializeField] private float minHeight = 5f; // 最小高度 Minimum Height
     [SerializeField] private float boundaryRadius = 500f; // 边界半径 Boundary Radius
     
-    [Header("平滑控制")]
-    [Header("Smoothing Control")]
+    [Header("Smoothing Control 平滑控制")]
     [SerializeField, Range(0.1f, 10f)] private float rotationSmoothing = 5f; // 旋转平滑 Rotation Smoothing
     [SerializeField, Range(0.1f, 10f)] private float movementSmoothing = 3f; // 移动平滑 Movement Smoothing
     
@@ -40,10 +36,10 @@ public class BirdGlideController : MonoBehaviour
     
     // 属性访问器
     // Property Accessors
-    public float GlideSpeed 
+    public float MoveSpeed 
     { 
-        get => glideSpeed; 
-        set => glideSpeed = Mathf.Clamp(value, 1f, 50f); 
+        get => moveSpeed; 
+        set => moveSpeed = Mathf.Clamp(value, 1f, 500f); 
     }
     
     public float MouseSensitivity 
@@ -122,7 +118,7 @@ public class BirdGlideController : MonoBehaviour
         
         // 处理鼠标解锁
         // Handle mouse unlock
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             ToggleCursorLock();
         }
@@ -156,18 +152,34 @@ public class BirdGlideController : MonoBehaviour
             // Set target rotation
             targetRotation = new Vector3(currentPitch, currentYaw, 0f);
             
-            // 垂直移动控制（W/S键）
-            // Vertical movement control (W/S keys)
-            float verticalInput = Input.GetAxis("Vertical");
-            verticalInput = ApplyDeadzone(verticalInput, 0.1f);
+            // 前进控制（W键）
+            // Forward movement control (W key)
+            float forwardInput = Input.GetAxis("Vertical");
+            forwardInput = ApplyDeadzone(forwardInput, 0.1f);
             
-            // 计算目标位置 - 基于当前朝向
-            // Calculate target position - based on current orientation
-            Vector3 forwardDirection = transform.forward;
-            Vector3 verticalDirection = Vector3.up * verticalInput * verticalInfluence;
+            // 垂直上升控制（空格键）
+            // Vertical ascent control (Space key)
+            float verticalInput = Input.GetKey(KeyCode.Space) ? 1f : 0f;
+            
+            // 计算目标位置 - 基于当前朝向和输入
+            // Calculate target position - based on current orientation and input
+            Vector3 forwardDirection = transform.forward * forwardInput;
+            Vector3 verticalDirection = Vector3.up * verticalInput;
             Vector3 targetDirection = (forwardDirection + verticalDirection).normalized;
             
-            targetPosition = transform.position + targetDirection * glideSpeed * Time.deltaTime;
+            // 只有在有输入时才移动
+            // Only move when there's input
+            if (forwardInput > 0f || verticalInput > 0f)
+            {
+                float currentSpeed = forwardInput > 0f ? moveSpeed : verticalSpeed;
+                targetPosition = transform.position + targetDirection * currentSpeed * Time.deltaTime;
+            }
+            else
+            {
+                // 没有输入时保持当前位置
+                // Keep current position when no input
+                targetPosition = transform.position;
+            }
         }
         catch (System.Exception e)
         {
@@ -285,12 +297,12 @@ public class BirdGlideController : MonoBehaviour
     }
     
     /// <summary>
-    /// 设置飞行速度
-    /// Set flight speed
+    /// 设置移动速度
+    /// Set movement speed
     /// </summary>
-    public void SetGlideSpeed(float newSpeed)
+    public void SetMoveSpeed(float newSpeed)
     {
-        GlideSpeed = newSpeed;
+        MoveSpeed = newSpeed;
     }
     
     /// <summary>
@@ -316,9 +328,9 @@ public class BirdGlideController : MonoBehaviour
     {
         // 在编辑器中验证参数
         // Validate parameters in editor
-        glideSpeed = Mathf.Clamp(glideSpeed, 1f, 50f);
+        moveSpeed = Mathf.Clamp(moveSpeed, 1f, 500f);
+        verticalSpeed = Mathf.Clamp(verticalSpeed, 1f, 500f);
         mouseSensitivity = Mathf.Clamp(mouseSensitivity, 0.1f, 5f);
-        verticalInfluence = Mathf.Clamp(verticalInfluence, 0.1f, 2f);
         rotationSmoothing = Mathf.Clamp(rotationSmoothing, 0.1f, 10f);
         movementSmoothing = Mathf.Clamp(movementSmoothing, 0.1f, 10f);
         
