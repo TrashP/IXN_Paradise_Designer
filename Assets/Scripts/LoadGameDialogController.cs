@@ -24,6 +24,11 @@ public class LoadGameDialogController : MonoBehaviour
 
     private int currentSelectedSlot = 1; // 当前选中的槽位
 
+    // 静态变量用于在场景切换后保存数据
+    private static bool pendingLoadGame = false;
+    private static int pendingSlotNumber = 1;
+    private static Vector3 pendingPlayerPosition = Vector3.zero;
+
     void Start()
     {
         loadGamePanel.SetActive(false);
@@ -74,6 +79,9 @@ public class LoadGameDialogController : MonoBehaviour
 
         // 初始化存档系统
         SaveDataManager.Initialize();
+
+        // 检查是否有待加载的游戏数据
+        CheckPendingLoadGame();
     }
 
     private void SetupButtonListeners()
@@ -128,18 +136,44 @@ public class LoadGameDialogController : MonoBehaviour
         if (SaveDataManager.HasSave(currentSelectedSlot))
         {
             PlayerSaveData loadedData = SaveDataManager.LoadPlayer(currentSelectedSlot);
-            if (loadedData != null && playerTransform != null)
+            if (loadedData != null)
             {
-                // 设置玩家位置
-                playerTransform.position = loadedData.position;
-                Debug.Log($"从槽位 {currentSelectedSlot} 加载游戏，位置: {loadedData.position}");
-                Debug.Log($"玩家当前位置: {playerTransform.position}");
+                // 检查当前场景
+                string currentScene = SceneManager.GetActiveScene().name;
                 
-                // 确保玩家控制脚本被启用
-                EnsurePlayerControlsEnabled();
-                
-                // 强制恢复游戏状态，确保立即返回游戏
-                ForceResumeGame();
+                if (currentScene == "HomePage" || currentScene == "MainMenu" || currentScene != "Dev")
+                {
+                    // 在主菜单场景中，需要先加载Dev场景，然后设置玩家位置
+                    Debug.Log($"当前在 {currentScene} 场景，需要先加载Dev场景");
+                    
+                    // 保存需要加载的数据到静态变量
+                    pendingLoadGame = true;
+                    pendingSlotNumber = currentSelectedSlot;
+                    pendingPlayerPosition = loadedData.position;
+                    
+                    // 加载Dev场景
+                    SceneManager.LoadScene("Dev");
+                }
+                else
+                {
+                    // 在Dev场景中，直接设置玩家位置
+                    if (playerTransform != null)
+                    {
+                        playerTransform.position = loadedData.position;
+                        Debug.Log($"从槽位 {currentSelectedSlot} 加载游戏，位置: {loadedData.position}");
+                        Debug.Log($"玩家当前位置: {playerTransform.position}");
+                        
+                        // 确保玩家控制脚本被启用
+                        EnsurePlayerControlsEnabled();
+                        
+                        // 强制恢复游戏状态，确保立即返回游戏
+                        ForceResumeGame();
+                    }
+                    else
+                    {
+                        Debug.LogError("未找到玩家Transform，无法设置位置");
+                    }
+                }
                 
                 // 关闭加载游戏对话框
                 HidePanel();
@@ -268,18 +302,44 @@ public class LoadGameDialogController : MonoBehaviour
         if (SaveDataManager.HasSave(slotNumber))
         {
             PlayerSaveData loadedData = SaveDataManager.LoadPlayer(slotNumber);
-            if (loadedData != null && playerTransform != null)
+            if (loadedData != null)
             {
-                // 设置玩家位置
-                playerTransform.position = loadedData.position;
-                Debug.Log($"从槽位 {slotNumber} 加载游戏，位置: {loadedData.position}");
-                Debug.Log($"玩家当前位置: {playerTransform.position}");
+                // 检查当前场景
+                string currentScene = SceneManager.GetActiveScene().name;
                 
-                // 确保玩家控制脚本被启用
-                EnsurePlayerControlsEnabled();
-                
-                // 强制恢复游戏状态，确保立即返回游戏
-                ForceResumeGame();
+                if (currentScene == "HomePage" || currentScene == "MainMenu" || currentScene != "Dev")
+                {
+                    // 在主菜单场景中，需要先加载Dev场景，然后设置玩家位置
+                    Debug.Log($"当前在 {currentScene} 场景，需要先加载Dev场景");
+                    
+                    // 保存需要加载的数据到静态变量
+                    pendingLoadGame = true;
+                    pendingSlotNumber = slotNumber;
+                    pendingPlayerPosition = loadedData.position;
+                    
+                    // 加载Dev场景
+                    SceneManager.LoadScene("Dev");
+                }
+                else
+                {
+                    // 在Dev场景中，直接设置玩家位置
+                    if (playerTransform != null)
+                    {
+                        playerTransform.position = loadedData.position;
+                        Debug.Log($"从槽位 {slotNumber} 加载游戏，位置: {loadedData.position}");
+                        Debug.Log($"玩家当前位置: {playerTransform.position}");
+                        
+                        // 确保玩家控制脚本被启用
+                        EnsurePlayerControlsEnabled();
+                        
+                        // 强制恢复游戏状态，确保立即返回游戏
+                        ForceResumeGame();
+                    }
+                    else
+                    {
+                        Debug.LogError("未找到玩家Transform，无法设置位置");
+                    }
+                }
                 
                 // 隐藏加载面板
                 HidePanel();
@@ -383,5 +443,77 @@ public class LoadGameDialogController : MonoBehaviour
                 Debug.Log("确保游戏正常运行状态");
             }
         }
+    }
+
+    // 检查并处理待加载的游戏数据
+    private void CheckPendingLoadGame()
+    {
+        if (pendingLoadGame)
+        {
+            Debug.Log($"检测到待加载的游戏数据，槽位: {pendingSlotNumber}");
+            
+            // 延迟一帧执行，确保场景完全加载
+            StartCoroutine(DelayedLoadGameData());
+        }
+    }
+
+    // 协程：延迟加载游戏数据
+    private System.Collections.IEnumerator DelayedLoadGameData()
+    {
+        // 等待一帧，确保场景完全加载
+        yield return null;
+        
+        // 再次尝试查找玩家对象
+        if (playerTransform == null)
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player == null)
+            {
+                player = GameObject.Find("PlayerBoy");
+            }
+            if (player == null)
+            {
+                GameObject[] allObjects = FindObjectsOfType<GameObject>();
+                foreach (GameObject obj in allObjects)
+                {
+                    if (obj.name.Contains("Player") || obj.name.Contains("player"))
+                    {
+                        player = obj;
+                        break;
+                    }
+                }
+            }
+            
+            if (player != null)
+            {
+                playerTransform = player.transform;
+                Debug.Log($"场景切换后重新找到玩家对象: {player.name}");
+            }
+        }
+
+        if (playerTransform != null)
+        {
+            // 设置玩家位置
+            playerTransform.position = pendingPlayerPosition;
+            Debug.Log($"从槽位 {pendingSlotNumber} 加载游戏，位置: {pendingPlayerPosition}");
+            Debug.Log($"玩家当前位置: {playerTransform.position}");
+            
+            // 确保玩家控制脚本被启用
+            EnsurePlayerControlsEnabled();
+            
+            // 强制恢复游戏状态，确保立即返回游戏
+            ForceResumeGame();
+            
+            Debug.Log("成功加载游戏数据");
+        }
+        else
+        {
+            Debug.LogError("场景切换后仍未找到玩家对象，无法设置位置");
+        }
+
+        // 清除待加载数据
+        pendingLoadGame = false;
+        pendingSlotNumber = 1;
+        pendingPlayerPosition = Vector3.zero;
     }
 }
