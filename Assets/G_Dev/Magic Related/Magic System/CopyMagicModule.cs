@@ -1,12 +1,15 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using MagicSystem;
 
 public class CopyMagicModule : MonoBehaviour, ISpellModule
 {
-    [Header("Effect Prefabs")]
-    [SerializeField] GameObject absorbEffect;
-    [SerializeField] GameObject releaseEffect;
+    [Header("Absorb Effects (Right Click)")]
+    [SerializeField] List<VFXSequence> absorbVFXSequence;
+
+    [Header("Release Effects (Left Click)")]
+    [SerializeField] List<VFXSequence> releaseVFXSequence;
 
     [Header("Timing")]
     [SerializeField] float releaseDelay = 1.5f;
@@ -32,14 +35,10 @@ public class CopyMagicModule : MonoBehaviour, ISpellModule
         if (copy != null)
         {
             cachedMagic = copy;
-            copiedTarget = enabler.gameObject; 
+            copiedTarget = enabler.gameObject;
 
-            if (absorbEffect)
-            {
-                var absorbFX = Instantiate(absorbEffect, hit.point, Quaternion.identity);
-                Destroy(absorbFX, releaseDelay);
-            }
-
+            // Play absorb effects
+            context.StartCoroutine(VFXUtility.PlayVFXSequence(absorbVFXSequence, hit.point));
             Debug.Log($"[CopyMagic] Absorbed from: {copiedTarget.name}");
         }
         else
@@ -58,19 +57,16 @@ public class CopyMagicModule : MonoBehaviour, ISpellModule
             return;
         }
 
-        GameObject effectInstance = null;
-        if (releaseEffect)
-            effectInstance = Instantiate(releaseEffect, hit.point, Quaternion.identity);
-
-        context.StartCoroutine(DelayedPlace(hit.point, effectInstance));
+        // Play release VFX immediately, but destruction is delayed
+        context.StartCoroutine(DelayedPlace(hit.point, context));
     }
 
-    IEnumerator DelayedPlace(Vector3 position, GameObject effect)
+    IEnumerator DelayedPlace(Vector3 position, WandSpellCaster context)
     {
-        yield return new WaitForSeconds(releaseDelay);
+        // Play release effect immediately
+        context.StartCoroutine(VFXUtility.PlayVFXSequence(releaseVFXSequence, position));
 
-        if (effect)
-            Destroy(effect);
+        yield return new WaitForSeconds(releaseDelay);
 
         // Ensure consistent forward direction
         Vector3 forward = new Vector3(transform.forward.x, 0f, transform.forward.z);
