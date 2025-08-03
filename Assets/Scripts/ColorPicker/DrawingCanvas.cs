@@ -146,4 +146,20 @@ public class DrawingCanvas : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         SaveImage();
         SceneManager.LoadScene("TerrainScene");
     }
+
+    public void SetBrushToGreen()
+    {
+        currentColor = new Color32(0x2d, 0x7c, 0x2d, 255); 
+    }
+
+    public void SetBrushToBrown()
+    {
+        currentColor = new Color32(0xcd, 0x85, 0x3f, 255);
+    }
+
+    public void SetBrushToBlue()
+    {
+        currentColor = new Color32(0x00, 0xbc, 0xff, 255); 
+    }
+
 }
