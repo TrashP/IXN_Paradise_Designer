@@ -19,6 +19,9 @@ public class DrawingCanvas : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     public Button btnContinue;
     public Button btnClose;
 
+    [Header("Instruction Panel UI")]
+    public GameObject instructionPanel;
+
     private bool isDrawing = false;
     private int brushSize = 1;
 
@@ -34,6 +37,7 @@ public class DrawingCanvas : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         if (btnYes != null) btnYes.onClick.AddListener(SaveAndGoToTerrain);
         if (btnNo != null) btnNo.onClick.AddListener(HideConfirmPanel);
         if (btnClose != null) btnClose.onClick.AddListener(HideConfirmPanel);
+        if (instructionPanel != null) instructionPanel.SetActive(false);
     }
 
     void Update()
@@ -160,6 +164,18 @@ public class DrawingCanvas : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     public void SetBrushToBlue()
     {
         currentColor = new Color32(0x00, 0xbc, 0xff, 255); 
+    }
+
+    public void ShowInstructionPanel()
+    {
+        if (instructionPanel != null)
+            instructionPanel.SetActive(true);
+    }
+
+    public void HideInstructionPanel()
+    {
+        if (instructionPanel != null)
+            instructionPanel.SetActive(false);
     }
 
 }
