@@ -158,7 +158,7 @@ public class DrawingCanvas : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     public void SetBrushToBrown()
     {
-        currentColor = new Color32(0xcd, 0x85, 0x3f, 255);
+        currentColor = new Color32(255, 153, 0, 255);
     }
 
     public void SetBrushToBlue()

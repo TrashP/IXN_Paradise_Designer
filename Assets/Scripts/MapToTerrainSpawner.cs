@@ -7,7 +7,7 @@ public class MapToTerrainSpawner : MonoBehaviour
 {
     [Header("Prefab Settings")]
     public GameObject[] forestPrefabs;
-    public GameObject beachPrefab;
+    public GameObject sandPrefab;
     public GameObject[] grasslandPrefabs;
     public GameObject pondPrefab;
 
@@ -18,7 +18,7 @@ public class MapToTerrainSpawner : MonoBehaviour
 
     [Header("Color Thresholds")]
     public float greenThreshold = 0.4f;
-    public float beachThreshold = 0.4f;
+    public float sandThreshold = 0.4f;
     public float pondThreshold = 0.3f;
 
     [Header("Prefab Scale Adjustment")]
@@ -46,7 +46,7 @@ public class MapToTerrainSpawner : MonoBehaviour
     private bool[,] isPondBlock;
     private bool[,] visited;
 
-    enum TerrainType { Forest, Beach, Grass }
+    enum TerrainType { Forest, Sand, Grass }
 
     void Start()
     {
@@ -81,7 +81,7 @@ public class MapToTerrainSpawner : MonoBehaviour
             }
         }
 
-        // Step 2: flood fill 并放置 pond prefab
+        // Step 2: flood fill and put pond prefab
         for (int y = 0; y < blocksY; y++)
         {
             for (int x = 0; x < blocksX; x++)
@@ -95,7 +95,7 @@ public class MapToTerrainSpawner : MonoBehaviour
             }
         }
 
-        // Step 3: 生成其他地形（跳过 pond）
+        // Step 3: generate other terrains
         for (int y = 0; y < blocksY; y++)
         {
             for (int x = 0; x < blocksX; x++)
@@ -117,8 +117,8 @@ public class MapToTerrainSpawner : MonoBehaviour
                         if (forestPrefabs != null && forestPrefabs.Length > 0)
                             go = Instantiate(forestPrefabs[Random.Range(0, forestPrefabs.Length)], worldPos, Quaternion.identity, terrainParent);
                         break;
-                    case TerrainType.Beach:
-                        go = Instantiate(beachPrefab, worldPos, Quaternion.identity, terrainParent);
+                    case TerrainType.Sand:
+                        go = Instantiate(sandPrefab, worldPos, Quaternion.identity, terrainParent);
                         break;
                     case TerrainType.Grass:
                     default:
@@ -180,25 +180,23 @@ public class MapToTerrainSpawner : MonoBehaviour
         float targetWidth = (maxX - minX + 1) * worldUnitPerBlock;
         float targetDepth = (maxY - minY + 1) * worldUnitPerBlock;
 
-        // ✅ 生成前先算目标左下角
         Vector3 targetBottomLeft = new Vector3(minX * worldUnitPerBlock, 0f, minY * worldUnitPerBlock);
 
-        // ✅ 实例化但先不缩放
         GameObject pond = Instantiate(pondPrefab, Vector3.zero, Quaternion.identity, terrainParent);
 
         MeshFilter meshFilter = pond.GetComponentInChildren<MeshFilter>();
         if (meshFilter == null || meshFilter.sharedMesh == null)
         {
-            Debug.LogError("❌ pondPrefab 缺少有效 MeshFilter");
+            Debug.LogError("❌ pondPrefab lacks effective MeshFilter");
             return;
         }
 
-        // ✅ 获取 prefab 原始 mesh 的 local 尺寸和中心点
+        // ✅ Obtain the local dimensions and center point of the original mesh of the prefab
         Bounds meshBounds = meshFilter.sharedMesh.bounds;
         Vector3 meshSize = meshBounds.size;
         Vector3 meshCenter = meshBounds.center;
 
-        // ✅ 正确的缩放系数
+        // ✅ The correct scaling factor
         float scaleX = targetWidth / meshSize.x;
         float scaleZ = targetDepth / meshSize.z;
 
@@ -253,7 +251,7 @@ public class MapToTerrainSpawner : MonoBehaviour
     TerrainType GetTerrainType(Texture2D tex, int startX, int startY, int size)
     {
         int forestCount = 0;
-        int beachCount = 0;
+        int sandCount = 0;
         int total = 0;
 
         for (int y = 0; y < size; y++)
@@ -269,17 +267,17 @@ public class MapToTerrainSpawner : MonoBehaviour
                 total++;
 
                 if (IsPixelGreen(c)) forestCount++;
-                else if (IsPixelSand(c)) beachCount++;
+                else if (IsPixelSand(c)) sandCount++;
             }
         }
 
         if (total == 0) return TerrainType.Grass;
 
         float forestRatio = forestCount / (float)total;
-        float beachRatio = beachCount / (float)total;
+        float sandRatio = sandCount / (float)total;
 
         if (forestRatio > greenThreshold) return TerrainType.Forest;
-        if (beachRatio > beachThreshold) return TerrainType.Beach;
+        if (sandRatio > sandThreshold) return TerrainType.Sand;
 
         return TerrainType.Grass;
     }
