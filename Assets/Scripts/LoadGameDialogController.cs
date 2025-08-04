@@ -58,7 +58,7 @@ public class LoadGameDialogController : MonoBehaviour
                 else
                 {
                     // 方法3：查找所有GameObject，找到包含"Player"的对象
-                    GameObject[] allObjects = FindObjectsOfType<GameObject>();
+                    GameObject[] allObjects = FindObjectsByType<GameObject>(FindObjectsSortMode.None);
                     foreach (GameObject obj in allObjects)
                     {
                         if (obj.name.Contains("Player") || obj.name.Contains("player"))
@@ -473,7 +473,7 @@ public class LoadGameDialogController : MonoBehaviour
             }
             if (player == null)
             {
-                GameObject[] allObjects = FindObjectsOfType<GameObject>();
+                GameObject[] allObjects = FindObjectsByType<GameObject>(FindObjectsSortMode.None);
                 foreach (GameObject obj in allObjects)
                 {
                     if (obj.name.Contains("Player") || obj.name.Contains("player"))
