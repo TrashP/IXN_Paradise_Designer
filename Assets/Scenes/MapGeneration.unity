@@ -119,7 +119,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &396743584
+--- !u!1 &505209723
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,78 +127,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 396743586}
-  - component: {fileID: 396743585}
-  m_Layer: 0
-  m_Name: MapSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &396743585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 396743584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d640bd38011d894d8ab8c75672174d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  forestPrefabs:
-  - {fileID: 8540687384028605394, guid: c39ae40cb482a234792edefea5feebd6, type: 3}
-  - {fileID: 1836398225608791762, guid: 5b3b3499a8e9f61499320219d73e91a0, type: 3}
-  - {fileID: 7771704114495537016, guid: a08c465912199a34e8c57ee34a4e2557, type: 3}
-  - {fileID: 6841516933329154563, guid: 9a828f71cf2d71f498e2d999b8a66a46, type: 3}
-  - {fileID: 4548839007238629056, guid: f28fe84c942718a4e8523584260c4ca3, type: 3}
-  sandPrefab: {fileID: 5338803941395252741, guid: abc9f20bb7027414383a225bb8d139d4, type: 3}
-  beachPrefab: {fileID: 6411738443661073235, guid: 1ab2cfa6fe7f28c49ab6f8803d9f9c04, type: 3}
-  grasslandPrefabs:
-  - {fileID: 736750167527066476, guid: 7dd27e93bd1ab3445ba01366856451d4, type: 3}
-  - {fileID: 5621841586226651050, guid: 91ef61361f49c5143a142e02d0168611, type: 3}
-  - {fileID: 2600763221332592650, guid: 224661a116b768e4fb0c616a57231cc8, type: 3}
-  - {fileID: 2954811995799161790, guid: 4e2512b0de2cf764996b664f9a950028, type: 3}
-  - {fileID: 5625556548472183488, guid: 083ada6fad4134c4eb9379045c2c2fed, type: 3}
-  pondPrefab: {fileID: 177812671613682861, guid: e8d06bd91c81b84488eb7b7911c5d7b6, type: 3}
-  mountainPrefab: {fileID: 8706367838263947735, guid: 080aaf37bf46251449cfde1a0b1ac6fa, type: 3}
-  blockSize: 20
-  worldUnitPerBlock: 50
-  greenThreshold: 0.4
-  sandThreshold: 0.4
-  pondThreshold: 0.3
-  prefabOriginalSize: 50
-  logDebug: 0
-  playerPrefab: {fileID: 2331758082621129301, guid: 6cf5d686f3aa56a48b2c91c083cf327d, type: 3}
-  oceanPrefab: {fileID: 2977676640362983461, guid: 45febbc11ada3fb41ac604b6519c98cd, type: 3}
---- !u!4 &396743586
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 396743584}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1912695795
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1912695797}
-  - component: {fileID: 1912695796}
-  - component: {fileID: 1912695798}
+  - component: {fileID: 505209725}
+  - component: {fileID: 505209724}
+  - component: {fileID: 505209726}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -206,13 +137,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!108 &1912695796
+--- !u!108 &505209724
 Light:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1912695795}
+  m_GameObject: {fileID: 505209723}
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
@@ -271,13 +202,13 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
---- !u!4 &1912695797
+--- !u!4 &505209725
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1912695795}
+  m_GameObject: {fileID: 505209723}
   serializedVersion: 2
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
   m_LocalPosition: {x: 0, y: 3, z: 0}
@@ -286,13 +217,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!114 &1912695798
+--- !u!114 &505209726
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1912695795}
+  m_GameObject: {fileID: 505209723}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
@@ -309,9 +240,165 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1 &765005961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 765005963}
+  - component: {fileID: 765005962}
+  m_Layer: 0
+  m_Name: MapManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &765005962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765005961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75479c0b1d5c2484ba5ecdf2f15e6d24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forestPrefabs:
+  - {fileID: 8540687384028605394, guid: c39ae40cb482a234792edefea5feebd6, type: 3}
+  - {fileID: 1836398225608791762, guid: 5b3b3499a8e9f61499320219d73e91a0, type: 3}
+  - {fileID: 7771704114495537016, guid: a08c465912199a34e8c57ee34a4e2557, type: 3}
+  - {fileID: 6841516933329154563, guid: 9a828f71cf2d71f498e2d999b8a66a46, type: 3}
+  - {fileID: 4548839007238629056, guid: f28fe84c942718a4e8523584260c4ca3, type: 3}
+  sandPrefab: {fileID: 5338803941395252741, guid: abc9f20bb7027414383a225bb8d139d4, type: 3}
+  mountainPrefab: {fileID: 3492425901706400542, guid: cea6de0949eb10f4a9c4ca4a36602962, type: 3}
+  islandPrefab: {fileID: 7625928816078333025, guid: 8d8591caa82cba247b47250c9a4c0347, type: 3}
+  oceanPrefab: {fileID: 2977676640362983461, guid: 45febbc11ada3fb41ac604b6519c98cd, type: 3}
+  blockSize: 32
+  worldUnitPerBlock: 100
+  forestYOffset: 60
+  sandYOffset: 70
+  mountainYOffset: 2
+  oceanSizeMultiplier: 3
+  greenThreshold: 0.4
+  sandThreshold: 0.4
+  grayThreshold: 0.4
+--- !u!4 &765005963
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765005961}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2155.738, y: 0, z: 1773.0034}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1167032660
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1167032663}
+  - component: {fileID: 1167032662}
+  - component: {fileID: 1167032661}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!81 &1167032661
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167032660}
+  m_Enabled: 1
+--- !u!20 &1167032662
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167032660}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &1167032663
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167032660}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1912695797}
-  - {fileID: 396743586}
+  - {fileID: 1167032663}
+  - {fileID: 505209725}
+  - {fileID: 765005963}
