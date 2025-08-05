@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2193035037477918556}
   - component: {fileID: 8148945105602798791}
   - component: {fileID: 7987563342996065722}
+  - component: {fileID: 4903247270100779315}
   m_Layer: 0
   m_Name: default
   m_TagString: Untagged
@@ -86,6 +87,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4903247270100779315
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456417270409522757}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2432090755550338912, guid: a6c4e4d4f8bc2a846b850a48767567ea, type: 3}
 --- !u!1 &8855188446340776595
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,6 +118,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2357694727495052077}
+  - component: {fileID: 1944728677814541342}
+  - component: {fileID: 597127332212495380}
   m_Layer: 0
   m_Name: Campfire
   m_TagString: Untagged
@@ -119,6 +144,35 @@ Transform:
   - {fileID: 4378167807707934095}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1944728677814541342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8855188446340776595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c1e4c1c4004e404ea582f3d8171e9f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayBeforeDestroy: 0
+  dropItemPrefab: {fileID: 0}
+  dropCount: 1
+--- !u!114 &597127332212495380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8855188446340776595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b37ad5e8f274bf641a4358107850602b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magicModules:
+  - {fileID: 1944728677814541342}
 --- !u!1001 &5257190264812924188
 PrefabInstance:
   m_ObjectHideFlags: 0
