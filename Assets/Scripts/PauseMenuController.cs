@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Polyperfect.Crafting.Demo; // 添加 Polyperfect 命名空间
 
 public class PauseMenuManager : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class PauseMenuManager : MonoBehaviour
     private CursorLockMode previousCursorLockMode;
     private bool previousCursorVisible;
     private MonoBehaviour[] playerControlScripts; // 存储玩家控制脚本 store player control scripts
+    private ICommandablePlayer commandablePlayer; // 存储可命令玩家组件 store commandable player component
 
     void Start()
     {
@@ -101,6 +103,9 @@ public class PauseMenuManager : MonoBehaviour
         if (playerObject != null)
         {
             playerControlScripts = playerObject.GetComponents<MonoBehaviour>();
+            
+            // 获取可命令玩家组件 get commandable player component
+            commandablePlayer = playerObject.GetComponent<ICommandablePlayer>();
         }
     }
 
@@ -140,6 +145,9 @@ public class PauseMenuManager : MonoBehaviour
         // 显示鼠标光标 show mouse cursor
         SetCursorLocked(false);
 
+        // 取消正在执行的命令 cancel any executing commands
+        CancelExecutingCommands();
+
         // 禁用玩家 control
         DisablePlayerControls();
 
@@ -177,6 +185,36 @@ public class PauseMenuManager : MonoBehaviour
         EnablePlayerControls();
 
         Debug.Log("玩家操作已恢复 player control is resumed");
+    }
+
+    // 取消正在执行的命令 cancel executing commands
+    private void CancelExecutingCommands()
+    {
+        // 查找所有正在执行的命令并取消它们 find all executing commands and cancel them
+        var commands = FindObjectsOfType<MonoBehaviour>();
+        foreach (var command in commands)
+        {
+            if (command is ICommand cmd)
+            {
+                // 检查命令是否已完成 check if command is finished
+                var baseCommand = cmd as BaseCommand;
+                if (baseCommand != null)
+                {
+                    // 使用反射检查 finished 字段 use reflection to check finished field
+                    var finishedField = typeof(BaseCommand).GetField("finished", 
+                        System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                    if (finishedField != null)
+                    {
+                        bool isFinished = (bool)finishedField.GetValue(baseCommand);
+                        if (!isFinished)
+                        {
+                            cmd.Cancel();
+                            Debug.Log($"已取消正在执行的命令: {cmd.GetType().Name} cancelled executing command: {cmd.GetType().Name}");
+                        }
+                    }
+                }
+            }
+        }
     }
 
     // 设置鼠标锁定状态 set cursor locked state
