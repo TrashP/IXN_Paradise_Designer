@@ -99,8 +99,17 @@ public class MainMenuController : MonoBehaviour
     private void ShowLoadGamePanel()
     {
         HideAllPanels();
-        if (loadGamePanel != null)
-            loadGamePanel.SetActive(true);
+        // 查找并打开加载游戏对话框
+        LoadGameDialogController loadGameDialog = FindFirstObjectByType<LoadGameDialogController>();
+        if (loadGameDialog != null)
+        {
+            loadGameDialog.ShowPanel();
+            Debug.Log("打开加载游戏对话框");
+        }
+        else
+        {
+            Debug.LogWarning("未找到LoadGameDialogController组件");
+        }
     }
 
     private void ShowSettingsPanel()
