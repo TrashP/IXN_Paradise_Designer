@@ -28,6 +28,8 @@ public class LoadGameDialogController : MonoBehaviour
     private static bool pendingLoadGame = false;
     private static int pendingSlotNumber = 1;
     private static Vector3 pendingPlayerPosition = Vector3.zero;
+    private static Quaternion pendingPlayerRotation = Quaternion.identity;
+    private static Vector3 pendingPlayerScale = Vector3.one;
 
     void Start()
     {
@@ -150,18 +152,22 @@ public class LoadGameDialogController : MonoBehaviour
                     pendingLoadGame = true;
                     pendingSlotNumber = currentSelectedSlot;
                     pendingPlayerPosition = loadedData.position;
+                    pendingPlayerRotation = loadedData.rotation;
+                    pendingPlayerScale = loadedData.scale;
                     
                     // 加载Dev场景
                     SceneManager.LoadScene("Dev");
                 }
                 else
                 {
-                    // 在Dev场景中，直接设置玩家位置
+                    // 在Dev场景中，直接设置玩家transform
                     if (playerTransform != null)
                     {
                         playerTransform.position = loadedData.position;
-                        Debug.Log($"从槽位 {currentSelectedSlot} 加载游戏，位置: {loadedData.position}");
-                        Debug.Log($"玩家当前位置: {playerTransform.position}");
+                        playerTransform.rotation = loadedData.rotation;
+                        playerTransform.localScale = loadedData.scale;
+                        Debug.Log($"从槽位 {currentSelectedSlot} 加载游戏，位置: {loadedData.position}, 旋转: {loadedData.rotation}, 缩放: {loadedData.scale}");
+                        Debug.Log($"玩家当前transform: 位置={playerTransform.position}, 旋转={playerTransform.rotation}, 缩放={playerTransform.localScale}");
                         
                         // 确保玩家控制脚本被启用
                         EnsurePlayerControlsEnabled();
@@ -171,7 +177,7 @@ public class LoadGameDialogController : MonoBehaviour
                     }
                     else
                     {
-                        Debug.LogError("未找到玩家Transform，无法设置位置");
+                        Debug.LogError("未找到玩家Transform，无法设置transform数据");
                     }
                 }
                 
@@ -190,13 +196,13 @@ public class LoadGameDialogController : MonoBehaviour
     {
         if (playerTransform != null)
         {
-            SaveDataManager.SavePlayer(currentSelectedSlot, playerTransform.position);
+            SaveDataManager.SavePlayer(currentSelectedSlot, playerTransform.position, playerTransform.rotation, playerTransform.localScale);
             Debug.Log($"已保存到槽位 {currentSelectedSlot}");
             UpdateUI(); // 保存后刷新UI
         }
         else
         {
-            Debug.LogError("未找到玩家Transform，无法保存位置");
+            Debug.LogError("未找到玩家Transform，无法保存transform数据");
         }
     }
 
@@ -316,18 +322,22 @@ public class LoadGameDialogController : MonoBehaviour
                     pendingLoadGame = true;
                     pendingSlotNumber = slotNumber;
                     pendingPlayerPosition = loadedData.position;
+                    pendingPlayerRotation = loadedData.rotation;
+                    pendingPlayerScale = loadedData.scale;
                     
                     // 加载Dev场景
                     SceneManager.LoadScene("Dev");
                 }
                 else
                 {
-                    // 在Dev场景中，直接设置玩家位置
+                    // 在Dev场景中，直接设置玩家transform
                     if (playerTransform != null)
                     {
                         playerTransform.position = loadedData.position;
-                        Debug.Log($"从槽位 {slotNumber} 加载游戏，位置: {loadedData.position}");
-                        Debug.Log($"玩家当前位置: {playerTransform.position}");
+                        playerTransform.rotation = loadedData.rotation;
+                        playerTransform.localScale = loadedData.scale;
+                        Debug.Log($"从槽位 {slotNumber} 加载游戏，位置: {loadedData.position}, 旋转: {loadedData.rotation}, 缩放: {loadedData.scale}");
+                        Debug.Log($"玩家当前transform: 位置={playerTransform.position}, 旋转={playerTransform.rotation}, 缩放={playerTransform.localScale}");
                         
                         // 确保玩家控制脚本被启用
                         EnsurePlayerControlsEnabled();
@@ -337,7 +347,7 @@ public class LoadGameDialogController : MonoBehaviour
                     }
                     else
                     {
-                        Debug.LogError("未找到玩家Transform，无法设置位置");
+                        Debug.LogError("未找到玩家Transform，无法设置transform数据");
                     }
                 }
                 
@@ -352,13 +362,13 @@ public class LoadGameDialogController : MonoBehaviour
     {
         if (playerTransform != null)
         {
-            SaveDataManager.SavePlayer(slotNumber, playerTransform.position);
+            SaveDataManager.SavePlayer(slotNumber, playerTransform.position, playerTransform.rotation, playerTransform.localScale);
             UpdateUI();
             Debug.Log($"已保存到槽位 {slotNumber}");
         }
         else
         {
-            Debug.LogError("未找到玩家Transform，无法保存位置");
+            Debug.LogError("未找到玩家Transform，无法保存transform数据");
         }
     }
 
@@ -493,10 +503,12 @@ public class LoadGameDialogController : MonoBehaviour
 
         if (playerTransform != null)
         {
-            // 设置玩家位置
+            // 设置玩家transform
             playerTransform.position = pendingPlayerPosition;
-            Debug.Log($"从槽位 {pendingSlotNumber} 加载游戏，位置: {pendingPlayerPosition}");
-            Debug.Log($"玩家当前位置: {playerTransform.position}");
+            playerTransform.rotation = pendingPlayerRotation;
+            playerTransform.localScale = pendingPlayerScale;
+            Debug.Log($"从槽位 {pendingSlotNumber} 加载游戏，位置: {pendingPlayerPosition}, 旋转: {pendingPlayerRotation}, 缩放: {pendingPlayerScale}");
+            Debug.Log($"玩家当前transform: 位置={playerTransform.position}, 旋转={playerTransform.rotation}, 缩放={playerTransform.localScale}");
             
             // 确保玩家控制脚本被启用
             EnsurePlayerControlsEnabled();
@@ -508,12 +520,14 @@ public class LoadGameDialogController : MonoBehaviour
         }
         else
         {
-            Debug.LogError("场景切换后仍未找到玩家对象，无法设置位置");
+            Debug.LogError("场景切换后仍未找到玩家对象，无法设置transform数据");
         }
 
         // 清除待加载数据
         pendingLoadGame = false;
         pendingSlotNumber = 1;
         pendingPlayerPosition = Vector3.zero;
+        pendingPlayerRotation = Quaternion.identity;
+        pendingPlayerScale = Vector3.one;
     }
 }
