@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1076650220925664706}
+  - component: {fileID: 7349948982909746091}
+  - component: {fileID: 4834999640587095748}
   m_Layer: 0
   m_Name: Simple Bed
   m_TagString: Untagged
@@ -32,6 +34,35 @@ Transform:
   - {fileID: 7806160053224043150}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7349948982909746091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812206017207944236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c1e4c1c4004e404ea582f3d8171e9f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayBeforeDestroy: 0
+  dropItemPrefab: {fileID: 0}
+  dropCount: 1
+--- !u!114 &4834999640587095748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812206017207944236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b37ad5e8f274bf641a4358107850602b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magicModules:
+  - {fileID: 7349948982909746091}
 --- !u!1001 &3932500630126295422
 PrefabInstance:
   m_ObjectHideFlags: 0
