@@ -37,20 +37,17 @@
 
 
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ObjectImporterUI : MonoBehaviour
 {
-    public Button importButton;
-
-    void Start()
+    void Update()
     {
-        importButton.onClick.AddListener(() =>
+        if (Input.GetKeyDown(KeyCode.I))
         {
-            Debug.Log("Import button clicked!");
+            Debug.Log("Import triggered via 'I' key!");
 
-            // Try to load from Resources/model.txt or model.obj (no extension needed)
-            TextAsset objFile = Resources.Load<TextAsset>("model"); // Put your file in Assets/Resources/model.txt
+            // Try to load from Resources/model.txt
+            TextAsset objFile = Resources.Load<TextAsset>("model");  // Assets/Resources/model.txt
             if (objFile == null)
             {
                 Debug.LogError("Could not find 'model.txt' in Resources folder.");
@@ -61,6 +58,6 @@ public class ObjectImporterUI : MonoBehaviour
             Debug.Log("Loaded text from model.txt, parsing...");
 
             ObjLoaderFromString.Load(objData);
-        });
+        }
     }
 }
