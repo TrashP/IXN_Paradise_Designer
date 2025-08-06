@@ -7,24 +7,22 @@ using UnityEngine.AI;
 /// </summary>
 public class BirdMove : MonoBehaviour
 {
-    [Header("移动设置")]
-    [Header("Movement Settings")]
+    [Header("Movement Settings 移动设置")]
     [SerializeField] private float moveRange = 10f;           // 移动范围 Movement Range
     [SerializeField] private float sampleRadius = 2f;         // 采样半径 Sample Radius
     [SerializeField] private int maxSampleAttempts = 30;      // 最大采样尝试次数 Max Sample Attempts
     [SerializeField] private float minDistanceToTarget = 0.5f; // 到达目标的最小距离 Min Distance to Target
     [SerializeField] private float idleTime = 2f;             // 到达目标后的等待时间 Idle Time After Reaching Target
     
-    [Header("飞行设置")]
-    [Header("Flight Settings")]
+    [Header("Flight Settings 飞行设置")]
     [SerializeField] private bool enableFlying = true;        // 是否启用飞行 Enable Flying
-    [SerializeField] private float minFlightHeight = 5f;      // 最小飞行高度 Min Flight Height
+    [SerializeField] private float minFlightHeight = 1f;      // 最小飞行高度 Min Flight Height
     [SerializeField] private float maxFlightHeight = 10f;     // 最大飞行高度 Max Flight Height
-    [SerializeField] private float flightSpeed = 3f;          // 飞行速度 Flight Speed
+    [SerializeField] private float flightSpeed = 1f;          // 飞行速度 Flight Speed
     [SerializeField] private float heightChangeSpeed = 2f;    // 高度变化速度 Height Change Speed
+    [SerializeField] private bool enableYAxisRotation = true;  // 是否启用Y轴旋转（左右转向）Enable Y-axis Rotation (Left/Right Turning)
     
-    [Header("调试设置")]
-    [Header("Debug Settings")]
+    [Header("Debug Settings 调试设置")]
     [SerializeField] private bool showDebugInfo = false;      // 是否显示调试信息 Show Debug Info
     
     // 私有变量
@@ -89,12 +87,24 @@ public class BirdMove : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, newY, transform.position.z);
             }
             
-            // 平滑朝向目标
-            // Smoothly face target
-            if (direction != Vector3.zero)
+            // 平滑朝向目标（仅Y轴旋转）
+            // Smoothly face target (Y-axis rotation only)
+            if (enableYAxisRotation && direction != Vector3.zero)
             {
-                Quaternion targetRotation = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 3f * Time.deltaTime);
+                // 只允许Y轴旋转，保持X轴和Z轴不变
+                // Only allow Y-axis rotation, keep X and Z axes unchanged
+                Vector3 horizontalDirection = new Vector3(direction.x, 0, direction.z).normalized;
+                if (horizontalDirection != Vector3.zero)
+                {
+                    Quaternion targetRotation = Quaternion.LookRotation(horizontalDirection);
+                    // 保持当前的X和Z轴旋转，只改变Y轴
+                    // Keep current X and Z rotation, only change Y axis
+                    Vector3 currentEuler = transform.rotation.eulerAngles;
+                    Vector3 targetEuler = targetRotation.eulerAngles;
+                    Vector3 newEuler = new Vector3(currentEuler.x, targetEuler.y, currentEuler.z);
+                    Quaternion newRotation = Quaternion.Euler(newEuler);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, 3f * Time.deltaTime);
+                }
             }
         }
     }
