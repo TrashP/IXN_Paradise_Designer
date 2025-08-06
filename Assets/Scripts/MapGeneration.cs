@@ -5,11 +5,20 @@ using System.Collections.Generic;
 public class MapGenerator : MonoBehaviour
 {
     [Header("Prefab Settings")]
-    public GameObject[] forestPrefabs;  // ✅ 支持多个森林 prefab
+    public GameObject[] forestPrefabs;
     public GameObject sandPrefab;
     public GameObject mountainPrefab;
     public GameObject islandPrefab;
     public GameObject oceanPrefab;
+
+    [Header("Player Settings")]
+    public GameObject playerPrefab;
+    public float playerSpawnHeight = 150f;
+
+    [Header("NPC Settings")]
+    public GameObject npcPrefab;
+    public float npcYOffset = 80f;
+
 
     [Header("Block & Placement Settings")]
     public int blockSize = 32;
@@ -44,6 +53,7 @@ public class MapGenerator : MonoBehaviour
 
         GenerateIsland(texture.width, texture.height);
         SpawnTerrainFromImage();
+        SpawnPlayer();
     }
 
     void GenerateIsland(int texWidth, int texHeight)
@@ -87,6 +97,8 @@ public class MapGenerator : MonoBehaviour
         int blocksX = texWidth / blockSize;
         int blocksY = texHeight / blockSize;
 
+        Vector3? npcSpawnPoint = null;
+
         for (int y = 0; y < blocksY; y++)
         {
             for (int x = 0; x < blocksX; x++)
@@ -106,6 +118,11 @@ public class MapGenerator : MonoBehaviour
                     GameObject prefab = forestPrefabs[randomIndex];
                     Vector3 pos = basePos + Vector3.up * forestYOffset;
                     Instantiate(prefab, pos, Quaternion.identity);
+
+                    if (npcSpawnPoint == null)
+                    {
+                        npcSpawnPoint = basePos;
+                    }
                 }
                 else if (IsYellow(avgColor) && sandPrefab != null)
                 {
@@ -118,6 +135,24 @@ public class MapGenerator : MonoBehaviour
                     Instantiate(mountainPrefab, pos, Quaternion.identity);
                 }
             }
+        }
+        if (npcSpawnPoint != null && npcPrefab != null)
+        {
+            Vector3 npcPos = npcSpawnPoint.Value + Vector3.up * npcYOffset;
+            Instantiate(npcPrefab, npcPos, Quaternion.identity);
+        }
+    }
+
+    void SpawnPlayer()
+    {
+        if (playerPrefab != null)
+        {
+            Vector3 spawnPos = new Vector3(islandCenter.x, playerSpawnHeight, islandCenter.z);
+            Instantiate(playerPrefab, spawnPos, Quaternion.identity);
+        }
+        else
+        {
+            Debug.LogWarning("⚠️ Player prefab not assigned in Inspector!");
         }
     }
 

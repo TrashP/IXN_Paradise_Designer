@@ -6,9 +6,8 @@ public class Billboard : MonoBehaviour
     {
         if (Camera.main != null)
         {
-            Vector3 camForward = Camera.main.transform.forward;
-            Vector3 camUp = Camera.main.transform.up;
-            transform.rotation = Quaternion.LookRotation(camForward, camUp);
+            transform.LookAt(Camera.main.transform);
+            transform.Rotate(0, 180, 0);
         }
     }
 }
