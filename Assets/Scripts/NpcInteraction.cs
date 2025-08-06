@@ -1,12 +1,16 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class NPCInteraction : MonoBehaviour
 {
     public GameObject dialogueUI;   
     public Text dialogueText;      
     [TextArea(2, 5)]
-    public string[] dialogueLines; 
+    public string[] dialogueLines;
+
+    public GameObject interactionPrompt;
+
     private int currentLineIndex = 0;
     private bool playerInRange = false;
     private bool dialogueActive = false;
@@ -31,6 +35,8 @@ public class NPCInteraction : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
+            if (interactionPrompt != null)
+                interactionPrompt.SetActive(true);
         }
     }
 
@@ -39,12 +45,16 @@ public class NPCInteraction : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+            if (interactionPrompt != null)
+                interactionPrompt.SetActive(false);
             EndDialogue();
         }
     }
 
     void StartDialogue()
     {
+        if (interactionPrompt != null)
+            interactionPrompt.SetActive(false);
         dialogueUI.SetActive(true);
         dialogueText.text = dialogueLines[currentLineIndex];
         dialogueActive = true;
