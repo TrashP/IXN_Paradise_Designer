@@ -279,7 +279,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 57725420}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1548934219}
+        m_TargetAssemblyTypeName: UI_SettingsMenu, Assembly-CSharp
+        m_MethodName: CloseSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &57725420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,7 +412,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 319189122}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1548934219}
+        m_TargetAssemblyTypeName: UI_SettingsMenu, Assembly-CSharp
+        m_MethodName: SaveAndExit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &319189122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -800,7 +824,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 512020889}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1548934219}
+        m_TargetAssemblyTypeName: UI_SettingsMenu, Assembly-CSharp
+        m_MethodName: CloseSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &512020889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1304,6 +1340,7 @@ GameObject:
   - component: {fileID: 1548934217}
   - component: {fileID: 1548934216}
   - component: {fileID: 1548934215}
+  - component: {fileID: 1548934219}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1395,6 +1432,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1548934219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548934214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6111da72d5cd714c8e453b85402fe88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settingsPanel: {fileID: 1772959298}
+  homePageSceneName: HomePage
 --- !u!1 &1772959298
 GameObject:
   m_ObjectHideFlags: 0
@@ -1412,7 +1463,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1772959299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1557,7 +1608,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1905895119}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1548934219}
+        m_TargetAssemblyTypeName: UI_SettingsMenu, Assembly-CSharp
+        m_MethodName: ToggleSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1905895119
 MonoBehaviour:
   m_ObjectHideFlags: 0
