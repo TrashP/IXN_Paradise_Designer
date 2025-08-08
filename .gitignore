@@ -34,6 +34,9 @@
 # Ignore visual studio stuff
 .vs/
 
+# Ignore saves
+/Saves/
+
 # Ignore local Unity user settings
 /UserSettings/
 *.dwlt
@@ -58,3 +61,5 @@
 *.unitypackage
 *.app
 *.log
+Logs/
+UserSettings/
