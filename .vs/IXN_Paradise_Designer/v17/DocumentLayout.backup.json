@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\UnityProjects\\IXN_Paradise_Designer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\UnityProjects\\IXN_Paradise_Designer\\Assets\\Scripts\\Billboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Billboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\UnityProjects\\IXN_Paradise_Designer\\Assets\\Scripts\\DrawingCanvas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\DrawingCanvas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\UnityProjects\\IXN_Paradise_Designer\\Assets\\Scripts\\NpcInteraction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\NpcInteraction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\UnityProjects\\IXN_Paradise_Designer\\Assets\\Scripts\\StartGameDialogController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\StartGameDialogController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\UnityProjects\\IXN_Paradise_Designer\\Assets\\Scripts\\MapToTerrainSpawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -27,27 +27,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Billboard.cs",
-              "DocumentMoniker": "D:\\UnityProjects\\IXN_Paradise_Designer\\Assets\\Scripts\\Billboard.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Billboard.cs",
-              "ToolTip": "D:\\UnityProjects\\IXN_Paradise_Designer\\Assets\\Scripts\\Billboard.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Billboard.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Title": "DrawingCanvas.cs",
+              "DocumentMoniker": "D:\\UnityProjects\\IXN_Paradise_Designer\\Assets\\Scripts\\DrawingCanvas.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\DrawingCanvas.cs",
+              "ToolTip": "D:\\UnityProjects\\IXN_Paradise_Designer\\Assets\\Scripts\\DrawingCanvas.cs",
+              "RelativeToolTip": "Assets\\Scripts\\DrawingCanvas.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAADwvx0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T10:56:01.743Z",
+              "WhenOpened": "2025-07-25T15:24:47.877Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "NpcInteraction.cs",
-              "DocumentMoniker": "D:\\UnityProjects\\IXN_Paradise_Designer\\Assets\\Scripts\\NpcInteraction.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\NpcInteraction.cs",
-              "ToolTip": "D:\\UnityProjects\\IXN_Paradise_Designer\\Assets\\Scripts\\NpcInteraction.cs",
-              "RelativeToolTip": "Assets\\Scripts\\NpcInteraction.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAADwv0gAAAAAAAAAAAAAAA==",
+              "Title": "StartGameDialogController.cs",
+              "DocumentMoniker": "D:\\UnityProjects\\IXN_Paradise_Designer\\Assets\\Scripts\\StartGameDialogController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\StartGameDialogController.cs",
+              "ToolTip": "D:\\UnityProjects\\IXN_Paradise_Designer\\Assets\\Scripts\\StartGameDialogController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\StartGameDialogController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T10:06:01.859Z",
+              "WhenOpened": "2025-07-25T14:23:11.682Z",
               "EditorCaption": ""
             },
             {
@@ -58,7 +58,7 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\MapToTerrainSpawner.cs",
               "ToolTip": "D:\\UnityProjects\\IXN_Paradise_Designer\\Assets\\Scripts\\MapToTerrainSpawner.cs",
               "RelativeToolTip": "Assets\\Scripts\\MapToTerrainSpawner.cs",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAAANsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAAANsAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-23T16:28:15.031Z",
               "EditorCaption": ""

@@ -19,9 +19,6 @@ public class DrawingCanvas : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     public Button btnContinue;
     public Button btnClose;
 
-    [Header("Instruction Panel UI")]
-    public GameObject instructionPanel;
-
     private bool isDrawing = false;
     private int brushSize = 1;
 
@@ -37,7 +34,6 @@ public class DrawingCanvas : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         if (btnYes != null) btnYes.onClick.AddListener(SaveAndGoToTerrain);
         if (btnNo != null) btnNo.onClick.AddListener(HideConfirmPanel);
         if (btnClose != null) btnClose.onClick.AddListener(HideConfirmPanel);
-        if (instructionPanel != null) instructionPanel.SetActive(false);
     }
 
     void Update()
@@ -148,40 +144,6 @@ public class DrawingCanvas : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     public void SaveAndGoToTerrain()
     {
         SaveImage();
-        SceneManager.LoadScene("MapGeneration");
+        SceneManager.LoadScene("TerrainScene");
     }
-
-    public void SetBrushToGreen()
-    {
-        currentColor = new Color32(0x2d, 0x7c, 0x2d, 255); 
-    }
-
-    public void SetBrushToBrown()
-    {
-        currentColor = new Color32(255, 153, 0, 255);
-    }
-
-    public void SetBrushToBlue()
-    {
-        currentColor = new Color32(0x00, 0xbc, 0xff, 255); 
-    }
-
-    public void SetBrushToGray()
-    {
-        currentColor = new Color32(95, 95, 95, 255);  
-    }
-
-
-    public void ShowInstructionPanel()
-    {
-        if (instructionPanel != null)
-            instructionPanel.SetActive(true);
-    }
-
-    public void HideInstructionPanel()
-    {
-        if (instructionPanel != null)
-            instructionPanel.SetActive(false);
-    }
-
 }

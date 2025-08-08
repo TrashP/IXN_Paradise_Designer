@@ -1022,6 +1022,10 @@ MonoBehaviour:
   greenThreshold: 0.4
   sandThreshold: 0.4
   grayThreshold: 0.4
+  texture: {fileID: 0}
+  islandCenter: {x: 0, y: 0, z: 0}
+  islandMinBound: {x: 0, y: 0, z: 0}
+  islandMaxBound: {x: 0, y: 0, z: 0}
 --- !u!4 &765005963
 Transform:
   m_ObjectHideFlags: 0

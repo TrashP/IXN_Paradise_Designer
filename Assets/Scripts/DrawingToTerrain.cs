@@ -13,11 +13,11 @@ public class DrawingToTerrain : MonoBehaviour
 
         if (string.IsNullOrEmpty(latestPng))
         {
-            Debug.LogError("❌ no PNG files！");
+            Debug.LogError("❌ 没有找到任何 PNG 文件！");
             return;
         }
 
-        Debug.Log("✅ find the latest image：" + latestPng);
+        Debug.Log("✅ 找到最新图片：" + latestPng);
         PlayerPrefs.SetString("SavedMapPath", latestPng);
         SceneManager.LoadScene("TerrainScene");
     }
@@ -26,7 +26,7 @@ public class DrawingToTerrain : MonoBehaviour
     {
         if (!Directory.Exists(folderPath))
         {
-            Debug.LogError("❌ folder does not exist: " + folderPath);
+            Debug.LogError("❌ 文件夹不存在: " + folderPath);
             return null;
         }
 
