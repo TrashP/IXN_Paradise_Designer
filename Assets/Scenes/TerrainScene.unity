@@ -154,7 +154,8 @@ MonoBehaviour:
   - {fileID: 7771704114495537016, guid: a08c465912199a34e8c57ee34a4e2557, type: 3}
   - {fileID: 6841516933329154563, guid: 9a828f71cf2d71f498e2d999b8a66a46, type: 3}
   - {fileID: 4548839007238629056, guid: f28fe84c942718a4e8523584260c4ca3, type: 3}
-  beachPrefab: {fileID: 5338803941395252741, guid: abc9f20bb7027414383a225bb8d139d4, type: 3}
+  sandPrefab: {fileID: 5338803941395252741, guid: abc9f20bb7027414383a225bb8d139d4, type: 3}
+  beachPrefab: {fileID: 6411738443661073235, guid: 1ab2cfa6fe7f28c49ab6f8803d9f9c04, type: 3}
   grasslandPrefabs:
   - {fileID: 736750167527066476, guid: 7dd27e93bd1ab3445ba01366856451d4, type: 3}
   - {fileID: 5621841586226651050, guid: 91ef61361f49c5143a142e02d0168611, type: 3}
@@ -162,20 +163,16 @@ MonoBehaviour:
   - {fileID: 2954811995799161790, guid: 4e2512b0de2cf764996b664f9a950028, type: 3}
   - {fileID: 5625556548472183488, guid: 083ada6fad4134c4eb9379045c2c2fed, type: 3}
   pondPrefab: {fileID: 177812671613682861, guid: e8d06bd91c81b84488eb7b7911c5d7b6, type: 3}
-  folderPath: C:\Users\lenovo\Desktop\SavedImage
+  mountainPrefab: {fileID: 8706367838263947735, guid: 080aaf37bf46251449cfde1a0b1ac6fa, type: 3}
   blockSize: 20
   worldUnitPerBlock: 50
   greenThreshold: 0.4
-  beachThreshold: 0.4
+  sandThreshold: 0.4
   pondThreshold: 0.3
-  blockScaleFactor: 1
+  prefabOriginalSize: 50
   logDebug: 0
   playerPrefab: {fileID: 2331758082621129301, guid: 6cf5d686f3aa56a48b2c91c083cf327d, type: 3}
   oceanPrefab: {fileID: 2977676640362983461, guid: 45febbc11ada3fb41ac604b6519c98cd, type: 3}
-  oceanOffsetTop: 1.8
-  oceanOffsetBottom: 0.5
-  oceanOffsetLeft: 0.5
-  oceanOffsetRight: 2
 --- !u!4 &396743586
 Transform:
   m_ObjectHideFlags: 0

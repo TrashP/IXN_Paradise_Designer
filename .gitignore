@@ -61,3 +61,5 @@
 *.unitypackage
 *.app
 *.log
+Logs/
+UserSettings/

@@ -7,23 +7,24 @@ public class MapToTerrainSpawner : MonoBehaviour
 {
     [Header("Prefab Settings")]
     public GameObject[] forestPrefabs;
+    public GameObject sandPrefab;
     public GameObject beachPrefab;
     public GameObject[] grasslandPrefabs;
     public GameObject pondPrefab;
+    public GameObject mountainPrefab;
 
     [Header("Drawing Map Settings")]
     private string folderPath;
     public int blockSize = 32;
-    public float worldUnitPerBlock = 100f;
+    public float worldUnitPerBlock = 200f;
 
     [Header("Color Thresholds")]
     public float greenThreshold = 0.4f;
-    public float beachThreshold = 0.4f;
+    public float sandThreshold = 0.4f;
     public float pondThreshold = 0.3f;
 
     [Header("Prefab Scale Adjustment")]
-    public float blockScaleFactor = 1f;
-
+    public float prefabOriginalSize = 50f;
 
     [Header("Debug Options")]
     public bool logDebug = true;
@@ -33,26 +34,20 @@ public class MapToTerrainSpawner : MonoBehaviour
 
     [Header("Ocean Settings")]
     public GameObject oceanPrefab;
-    public float oceanOffsetTop = 0.1f;
-    public float oceanOffsetBottom = 0.1f;
-    public float oceanOffsetLeft = 0.1f;
-    public float oceanOffsetRight = 0.1f;
 
     private Transform terrainParent;
 
-    private int blocksX;
-    private int blocksY;
-
     private bool[,] isPondBlock;
-    private bool[,] visited;
+    private bool[,] visitedPond;
+    private bool[,] isMountainBlock;
+    private bool[,] visitedMountain;
 
-    enum TerrainType { Forest, Beach, Grass }
+    enum TerrainType { Forest, Sand, Grass }
 
     void Start()
     {
         folderPath = Path.Combine(Application.persistentDataPath, "SavedImage");
         string imagePath = GetLatestImagePath(folderPath);
-
         if (string.IsNullOrEmpty(imagePath) || !File.Exists(imagePath))
         {
             Debug.LogError("❌ Cannot find image: " + imagePath);
@@ -69,38 +64,53 @@ public class MapToTerrainSpawner : MonoBehaviour
         int blocksX = tex.width / blockSize;
         int blocksY = tex.height / blockSize;
         isPondBlock = new bool[blocksX, blocksY];
-        visited = new bool[blocksX, blocksY];
+        visitedPond = new bool[blocksX, blocksY];
+        isMountainBlock = new bool[blocksX, blocksY];
+        visitedMountain = new bool[blocksX, blocksY];
 
-        // Step 1: target pond region
         for (int y = 0; y < blocksY; y++)
         {
             for (int x = 0; x < blocksX; x++)
             {
-                float pondRatio = GetPondRatio(tex, x * blockSize, y * blockSize, blockSize);
-                isPondBlock[x, y] = pondRatio > pondThreshold;
+                Color avgColor = GetAverageBlockColor(tex, x * blockSize, y * blockSize, blockSize);
+                isPondBlock[x, y] = IsPixelBlue(avgColor);
+                isMountainBlock[x, y] = IsPixelGray(avgColor);
             }
         }
 
-        // Step 2: flood fill 并放置 pond prefab
         for (int y = 0; y < blocksY; y++)
         {
             for (int x = 0; x < blocksX; x++)
             {
-                if (isPondBlock[x, y] && !visited[x, y])
+                if (isPondBlock[x, y] && !visitedPond[x, y])
                 {
-                    List<Vector2Int> pondRegion = new List<Vector2Int>();
-                    FloodFillPond(x, y, blocksX, blocksY, pondRegion);
-                    PlacePondGroup(pondRegion);
+                    List<Vector2Int> region = new List<Vector2Int>();
+                    FloodFill(x, y, blocksX, blocksY, isPondBlock, visitedPond, region);
+                    PlacePrefabGroup(region, pondPrefab, new Vector3(0f, -1.5f, 0f));
                 }
             }
         }
 
-        // Step 3: 生成其他地形（跳过 pond）
         for (int y = 0; y < blocksY; y++)
         {
             for (int x = 0; x < blocksX; x++)
             {
-                if (isPondBlock[x, y]) continue;
+                if (isMountainBlock[x, y] && !visitedMountain[x, y])
+                {
+                    List<Vector2Int> region = new List<Vector2Int>();
+                    FloodFill(x, y, blocksX, blocksY, isMountainBlock, visitedMountain, region);
+                    PlacePrefabGroup(region, mountainPrefab, Vector3.zero);
+                }
+            }
+        }
+
+        float scaleFactor = worldUnitPerBlock / prefabOriginalSize;
+
+        for (int y = 0; y < blocksY; y++)
+        {
+            for (int x = 0; x < blocksX; x++)
+            {
+                if (isPondBlock[x, y] || isMountainBlock[x, y]) continue;
 
                 Vector3 worldPos = new Vector3(
                     x * worldUnitPerBlock + worldUnitPerBlock / 2f,
@@ -110,34 +120,34 @@ public class MapToTerrainSpawner : MonoBehaviour
 
                 GameObject go = null;
                 TerrainType type = GetTerrainType(tex, x * blockSize, y * blockSize, blockSize);
-
                 switch (type)
                 {
                     case TerrainType.Forest:
-                        if (forestPrefabs != null && forestPrefabs.Length > 0)
+                        if (forestPrefabs.Length > 0)
                             go = Instantiate(forestPrefabs[Random.Range(0, forestPrefabs.Length)], worldPos, Quaternion.identity, terrainParent);
                         break;
-                    case TerrainType.Beach:
-                        go = Instantiate(beachPrefab, worldPos, Quaternion.identity, terrainParent);
+                    case TerrainType.Sand:
+                        go = Instantiate(sandPrefab, worldPos, Quaternion.identity, terrainParent);
                         break;
                     case TerrainType.Grass:
                     default:
-                        if (grasslandPrefabs != null && grasslandPrefabs.Length > 0)
+                        if (grasslandPrefabs.Length > 0)
                             go = Instantiate(grasslandPrefabs[Random.Range(0, grasslandPrefabs.Length)], worldPos, Quaternion.identity, terrainParent);
                         break;
                 }
 
                 if (go != null)
-                    go.transform.localScale = new Vector3(blockScaleFactor, 1f, blockScaleFactor);
+                    go.transform.localScale = Vector3.one * scaleFactor;
             }
         }
 
         SpawnPlayer(blocksX, blocksY);
-        SurroundWithOceanByBlockRange(blocksX, blocksY);
-        Debug.Log("✅ Terrain generation completed with corrected pond logic!");
+        SurroundWithBeachAndOcean(blocksX, blocksY);
+
+        Debug.Log("✅ Terrain generation completed.");
     }
 
-    void FloodFillPond(int startX, int startY, int maxX, int maxY, List<Vector2Int> region)
+    void FloodFill(int startX, int startY, int maxX, int maxY, bool[,] mask, bool[,] visited, List<Vector2Int> region)
     {
         Queue<Vector2Int> queue = new Queue<Vector2Int>();
         queue.Enqueue(new Vector2Int(startX, startY));
@@ -158,7 +168,7 @@ public class MapToTerrainSpawner : MonoBehaviour
 
                 if (nx >= 0 && nx < maxX && ny >= 0 && ny < maxY)
                 {
-                    if (isPondBlock[nx, ny] && !visited[nx, ny])
+                    if (mask[nx, ny] && !visited[nx, ny])
                     {
                         visited[nx, ny] = true;
                         queue.Enqueue(new Vector2Int(nx, ny));
@@ -168,120 +178,139 @@ public class MapToTerrainSpawner : MonoBehaviour
         }
     }
 
-    void PlacePondGroup(List<Vector2Int> region)
+    void PlacePrefabGroup(List<Vector2Int> region, GameObject prefab, Vector3 positionOffset)
     {
-        if (pondPrefab == null || region.Count == 0) return;
+        if (prefab == null || region.Count == 0) return;
 
         int minX = region.Min(p => p.x);
         int maxX = region.Max(p => p.x);
         int minY = region.Min(p => p.y);
         int maxY = region.Max(p => p.y);
 
-        float targetWidth = (maxX - minX + 1) * worldUnitPerBlock;
-        float targetDepth = (maxY - minY + 1) * worldUnitPerBlock;
+        float width = (maxX - minX + 1) * worldUnitPerBlock;
+        float depth = (maxY - minY + 1) * worldUnitPerBlock;
+        Vector3 bottomLeft = new Vector3(minX * worldUnitPerBlock, 0f, minY * worldUnitPerBlock);
 
-        // ✅ 生成前先算目标左下角
-        Vector3 targetBottomLeft = new Vector3(minX * worldUnitPerBlock, 0f, minY * worldUnitPerBlock);
-
-        // ✅ 实例化但先不缩放
-        GameObject pond = Instantiate(pondPrefab, Vector3.zero, Quaternion.identity, terrainParent);
-
-        MeshFilter meshFilter = pond.GetComponentInChildren<MeshFilter>();
-        if (meshFilter == null || meshFilter.sharedMesh == null)
+        GameObject go = Instantiate(prefab, Vector3.zero, Quaternion.identity, terrainParent);
+        MeshFilter mf = go.GetComponentInChildren<MeshFilter>();
+        if (mf == null || mf.sharedMesh == null)
         {
-            Debug.LogError("❌ pondPrefab 缺少有效 MeshFilter");
+            Debug.LogError("❌ Prefab lacks mesh");
             return;
         }
 
-        // ✅ 获取 prefab 原始 mesh 的 local 尺寸和中心点
-        Bounds meshBounds = meshFilter.sharedMesh.bounds;
-        Vector3 meshSize = meshBounds.size;
-        Vector3 meshCenter = meshBounds.center;
+        Bounds bounds = mf.sharedMesh.bounds;
+        Vector3 meshSize = bounds.size;
+        Vector3 meshCenter = bounds.center;
 
-        // ✅ 正确的缩放系数
-        float scaleX = targetWidth / meshSize.x;
-        float scaleZ = targetDepth / meshSize.z;
+        float scaleX = width / meshSize.x;
+        float scaleZ = depth / meshSize.z;
 
-        pond.transform.localScale = new Vector3(
-            pond.transform.localScale.x * scaleX,
-            pond.transform.localScale.y,
-            pond.transform.localScale.z * scaleZ
+        go.transform.localScale = new Vector3(
+            go.transform.localScale.x * scaleX,
+            go.transform.localScale.y,
+            go.transform.localScale.z * scaleZ
         );
 
-        // ✅ mesh pivot 偏移量（local space）
-        Vector3 localOffset = meshCenter - new Vector3(meshSize.x / 2f, 0f, meshSize.z / 2f);
-
-        // ✅ 变换为 world 空间的偏移量（用于修正位置）
-        Vector3 worldOffset = Vector3.Scale(localOffset, pond.transform.localScale);
-
-        //// ✅ 设置最终位置 = 目标左下角 - pivot 偏移
-        //pond.transform.position = targetBottomLeft - worldOffset;
-        float pondYOffset = -1.5f; // ← 根据你的模型调整，建议你看 inspector 试出来
-        pond.transform.position = targetBottomLeft - worldOffset + new Vector3(0f, pondYOffset, 0f);
-
-        if (logDebug)
-        {
-            Debug.Log($"✅ Pond aligned at {pond.transform.position}, scale=({scaleX:F2}, {scaleZ:F2}), targetSize=({targetWidth}, {targetDepth})");
-        }
+        Vector3 worldOffset = Vector3.Scale(meshCenter - new Vector3(meshSize.x / 2f, 0f, meshSize.z / 2f), go.transform.localScale);
+        go.transform.position = bottomLeft - worldOffset + positionOffset;
     }
 
-
-
-    float GetPondRatio(Texture2D tex, int startX, int startY, int size)
+    void SurroundWithBeachAndOcean(int blocksX, int blocksY)
     {
-        int pondCount = 0;
-        int total = 0;
+        if (beachPrefab == null || oceanPrefab == null) return;
 
-        for (int y = 0; y < size; y++)
+        float unit = worldUnitPerBlock;
+        float offset = unit / 2f;
+
+        int beachRingMinX = -1;
+        int beachRingMaxX = blocksX;
+        int beachRingMinY = -1;
+        int beachRingMaxY = blocksY;
+
+        for (int x = beachRingMinX; x <= beachRingMaxX; x++)
         {
-            for (int x = 0; x < size; x++)
+            for (int y = beachRingMinY; y <= beachRingMaxY; y++)
             {
-                int px = startX + x;
-                int py = startY + y;
-
-                if (px >= tex.width || py >= tex.height) continue;
-
-                Color c = tex.GetPixel(px, py);
-                total++;
-                if (IsPixelBlue(c)) pondCount++;
+                if (x == beachRingMinX || x == beachRingMaxX || y == beachRingMinY || y == beachRingMaxY)
+                {
+                    float posX = x * unit + offset;
+                    float posZ = y * unit + offset;
+                    Instantiate(beachPrefab, new Vector3(posX, 0f, posZ), Quaternion.identity, terrainParent);
+                }
             }
         }
 
-        return (total == 0) ? 0f : (pondCount / (float)total);
+        for (int x = beachRingMinX - 1; x <= beachRingMaxX + 1; x++)
+        {
+            for (int y = beachRingMinY - 1; y <= beachRingMaxY + 1; y++)
+            {
+                bool isOuterRing = (x == beachRingMinX - 1 || x == beachRingMaxX + 1 || y == beachRingMinY - 1 || y == beachRingMaxY + 1);
+                if (isOuterRing)
+                {
+                    float posX = x * unit + offset;
+                    float posZ = y * unit + offset;
+                    Instantiate(oceanPrefab, new Vector3(posX, 0f, posZ), Quaternion.identity, terrainParent);
+                }
+            }
+        }
+    }
+
+    void SpawnPlayer(int blocksX, int blocksY)
+    {
+        if (playerPrefab == null) return;
+
+        float centerX = (blocksX / 2f) * worldUnitPerBlock;
+        float centerZ = (blocksY / 2f) * worldUnitPerBlock;
+        Vector3 origin = new Vector3(centerX, 100f, centerZ);
+
+        if (Physics.Raycast(origin, Vector3.down, out RaycastHit hit, 200f))
+            Instantiate(playerPrefab, hit.point + Vector3.up * 2f, Quaternion.identity);
+        else
+            Instantiate(playerPrefab, new Vector3(centerX, 2f, centerZ), Quaternion.identity);
     }
 
     TerrainType GetTerrainType(Texture2D tex, int startX, int startY, int size)
     {
-        int forestCount = 0;
-        int beachCount = 0;
-        int total = 0;
+        int forest = 0, sand = 0, total = 0;
+        for (int y = 0; y < size; y++)
+            for (int x = 0; x < size; x++)
+            {
+                int px = startX + x, py = startY + y;
+                if (px >= tex.width || py >= tex.height) continue;
+
+                Color c = tex.GetPixel(px, py);
+                if (IsPixelGreen(c)) forest++;
+                else if (IsPixelSand(c)) sand++;
+                total++;
+            }
+
+        float forestRatio = forest / (float)total;
+        float sandRatio = sand / (float)total;
+
+        if (forestRatio > greenThreshold) return TerrainType.Forest;
+        if (sandRatio > sandThreshold) return TerrainType.Sand;
+
+        return TerrainType.Grass;
+    }
+
+    Color GetAverageBlockColor(Texture2D tex, int startX, int startY, int size)
+    {
+        Color sum = Color.black;
+        int count = 0;
 
         for (int y = 0; y < size; y++)
-        {
             for (int x = 0; x < size; x++)
             {
                 int px = startX + x;
                 int py = startY + y;
-
                 if (px >= tex.width || py >= tex.height) continue;
 
-                Color c = tex.GetPixel(px, py);
-                total++;
-
-                if (IsPixelGreen(c)) forestCount++;
-                else if (IsPixelSand(c)) beachCount++;
+                sum += tex.GetPixel(px, py);
+                count++;
             }
-        }
 
-        if (total == 0) return TerrainType.Grass;
-
-        float forestRatio = forestCount / (float)total;
-        float beachRatio = beachCount / (float)total;
-
-        if (forestRatio > greenThreshold) return TerrainType.Forest;
-        if (beachRatio > beachThreshold) return TerrainType.Beach;
-
-        return TerrainType.Grass;
+        return (count > 0) ? sum / count : Color.black;
     }
 
     bool IsPixelGreen(Color color)
@@ -296,77 +325,23 @@ public class MapToTerrainSpawner : MonoBehaviour
         return h >= 0.10f && h <= 0.17f && s > 0.4f && v > 0.4f;
     }
 
-
     bool IsPixelBlue(Color color)
     {
         Color.RGBToHSV(color, out float h, out float s, out float v);
         return h >= 0.50f && h <= 0.70f && s > 0.4f && v > 0.4f;
     }
 
-
-    void SpawnPlayer(int blocksX, int blocksY)
+    bool IsPixelGray(Color color)
     {
-        if (playerPrefab == null) return;
-
-        float centerX = (blocksX / 2f) * worldUnitPerBlock;
-        float centerZ = (blocksY / 2f) * worldUnitPerBlock;
-        Vector3 spawnRayOrigin = new Vector3(centerX, 100f, centerZ);
-
-        if (Physics.Raycast(spawnRayOrigin, Vector3.down, out RaycastHit hit, 200f))
-        {
-            Instantiate(playerPrefab, hit.point + Vector3.up * 2f, Quaternion.identity);
-        }
-        else
-        {
-            Instantiate(playerPrefab, new Vector3(centerX, 2f, centerZ), Quaternion.identity);
-        }
-    }
-
-    void SurroundWithOceanByBlockRange(int blocksX, int blocksY)
-    {
-        if (oceanPrefab == null) return;
-
-        float unit = worldUnitPerBlock;
-        float offset = unit / 2f;
-
-        for (int x = -1; x <= blocksX; x++)
-        {
-            float posX = x * unit + offset;
-            float topZ = (blocksY * unit + offset) + unit * oceanOffsetTop;
-            float bottomZ = (-1 * unit + offset) - unit * oceanOffsetBottom;
-
-            Instantiate(oceanPrefab, new Vector3(posX, 0f, topZ), Quaternion.identity, terrainParent);
-            Instantiate(oceanPrefab, new Vector3(posX, 0f, bottomZ), Quaternion.identity, terrainParent);
-        }
-
-        for (int y = 0; y < blocksY; y++)
-        {
-            float posZ = y * unit + offset;
-            float leftX = (-1 * unit + offset) - unit * oceanOffsetLeft;
-            float rightX = (blocksX * unit + offset) + unit * oceanOffsetRight;
-
-            Instantiate(oceanPrefab, new Vector3(leftX, 0f, posZ), Quaternion.identity, terrainParent);
-            Instantiate(oceanPrefab, new Vector3(rightX, 0f, posZ), Quaternion.identity, terrainParent);
-        }
+        Color.RGBToHSV(color, out float h, out float s, out float v);
+        return s < 0.2f && v > 0.2f && v < 0.8f;
     }
 
     string GetLatestImagePath(string folderPath)
     {
-        if (!Directory.Exists(folderPath))
-        {
-            Debug.LogError("📂 Folder does not exist: " + folderPath);
-            return null;
-        }
-
+        if (!Directory.Exists(folderPath)) return null;
         var files = Directory.GetFiles(folderPath, "*.png");
-        if (files.Length == 0)
-        {
-            Debug.LogError("🖼 No images in folder: " + folderPath);
-            return null;
-        }
-
-        string latestFile = files.OrderByDescending(File.GetLastWriteTime).First();
-        Debug.Log("🆕 Latest image path: " + latestFile);
-        return latestFile;
+        if (files.Length == 0) return null;
+        return files.OrderByDescending(File.GetLastWriteTime).First();
     }
 }
